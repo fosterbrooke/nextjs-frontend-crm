@@ -54,7 +54,10 @@ export default function ReportPage() {
           </div>
         </div>
         <div className="mt-8 flex justify-center">
-          <PrimaryButton handleClick={() => setCurTabIndex(0)}>
+          <PrimaryButton
+            handleClick={() => setCurTabIndex(0)}
+            className="text-[16px] px-16 py-2"
+          >
             Generate Report
           </PrimaryButton>
         </div>
