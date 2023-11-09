@@ -18,7 +18,12 @@ const ServicesBanner = () => {
         </span>
       </div>
       <div className="mt-[48px]">
-        <PrimaryButton href="/Registration/1">Hire a Caregiver</PrimaryButton>
+        <PrimaryButton
+          href="/auth/app/client/1"
+          className="px-16 py-2 text-[20px]"
+        >
+          Hire a Caregiver
+        </PrimaryButton>
       </div>
     </div>
   );

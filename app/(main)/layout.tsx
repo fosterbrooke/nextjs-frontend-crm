@@ -63,15 +63,17 @@ export default function RootLayout({
                             4xl:px-[150px] 3xl:px-[150px] px-[50px] md:py-[20px] sm:py-[20px]`}
         >
           <div className="flex mt-auto mb-auto h-auto cursor-pointer">
-          <Image
-            alt="logo"
-            src="/icons/app_logo.svg"
-            onClick={() => router.push("/")}
-            width={isSM ? 120 : 160}
-            height={60}
-            priority={true}
-          />
-          <div className="font-arial lg:hidden sm:hidden mt-[20px] ml-[20px]">Senior Home Care Agency..</div>
+            <Image
+              alt="logo"
+              src="/icons/app_logo.svg"
+              onClick={() => router.push("/")}
+              width={isSM ? 120 : 160}
+              height={60}
+              priority={true}
+            />
+            <div className="font-arial lg:hidden sm:hidden mt-[20px] ml-[20px]">
+              Senior Home Care Agency..
+            </div>
           </div>
           <div className="flex md:hidden sm:hidden md:flex-col sm:flex-col items-center md:items-start sm:items-start">
             <button
@@ -80,7 +82,12 @@ export default function RootLayout({
             >
               <Link href="/auth/signup">Apply as a caregiver</Link>
             </button>
-            <PrimaryButton href="/auth/app/client/1">Hire a Caregiver</PrimaryButton>
+            <PrimaryButton
+              href="/auth/app/client/1"
+              className="px-16 py-2 text-[20px]"
+            >
+              Hire a Caregiver
+            </PrimaryButton>
             <button
               className={`text-primary text-bigPrimaryButtonTextSize sm:text-[25px] ml-[50px] md:mr-0 sm:mr-0 
                                 md:mt-[20px] md:mb-[20px] sm:mt-[20px] sm:mb-[20px]`}
