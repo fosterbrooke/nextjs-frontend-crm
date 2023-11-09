@@ -172,8 +172,8 @@ export default function TimesheetArea({
           />
         </div>
       </div>
-      <div className="m-12">
-        <table className="w-full h-10/12 border border-solid 1px border-[#282828] rounded-xl text-center ">
+      <div className="mx-12 my-4">
+        <table className="w-full h-10/12 border rounded-tl-xl rounded-tr-xl border-solid 1px border-[#282828] text-center">
           <thead>
             <tr
               className="text font-[#282828] font-bold"
@@ -188,7 +188,7 @@ export default function TimesheetArea({
               <th className="border border-solid 1px border-[#828282] p-6">
                 End Hour
               </th>
-              <th className="border border-solid 1px border-[#828282] rounded-md first-letter:p-6">
+              <th className="border border-solid 1px border-[#828282] rounded-md">
                 Total Hour
               </th>
               <th className="p-6">Total Amount</th>

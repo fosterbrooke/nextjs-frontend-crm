@@ -1,5 +1,3 @@
-import DatePickerCom from "@/components/ui/auth/client/DatePickerCom";
-import CalendarCollapse from "@/components/ui/dashboard/CalendarCollapse";
 import React, { useState } from "react";
 import ServiceSummaryReport from "./ServiceSummaryReport";
 import { PrimaryButton } from "@/components/ui/common/PrimaryButton";
@@ -7,7 +5,7 @@ import BillingStatement from "./BillingStatement";
 import DatePicker from "../../../DatePicker";
 
 export default function ReportPage() {
-  const [curTabIndex, setCurTabIndex] = useState(0);
+  const [curTabIndex, setCurTabIndex] = useState(-1);
 
   const activeStyle = {
     color: "#CB5A6F",
@@ -56,11 +54,19 @@ export default function ReportPage() {
           </div>
         </div>
         <div className="mt-8 flex justify-center">
-          <PrimaryButton href="">Generate Report</PrimaryButton>
+          <PrimaryButton handleClick={() => setCurTabIndex(0)}>
+            Generate Report
+          </PrimaryButton>
         </div>
       </div>
       <div>
-        {curTabIndex == 0 ? <ServiceSummaryReport /> : <BillingStatement />}
+        {curTabIndex == 0 ? (
+          <ServiceSummaryReport />
+        ) : curTabIndex == 1 ? (
+          <BillingStatement />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
