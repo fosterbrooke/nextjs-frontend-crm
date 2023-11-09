@@ -4,6 +4,10 @@ import { render } from "react-dom";
 import DailyActivities from "./DailyActivities";
 import { Box, Modal, Typography } from "@mui/material";
 import Careplandlg from "./Careplandlg";
+import Image from "next/image";
+import careplan2Pic from "@/public/images/careplan/2.png";
+import careplan3Pic from "@/public/images/careplan/3.png";
+import careplan4Pic from "@/public/images/careplan/3.png";
 
 const CurrentPlan = () => {
   const [isOpenModal, setIsOpenModal] = React.useState(false);
@@ -18,9 +22,9 @@ const CurrentPlan = () => {
           </p>
         </div>
         <div className="flex flex-row justify-center gap-6 my-12">
-          <img src="/images/careplan/2.png" />
-          <img src="/images/careplan/2.png" />
-          <img src="/images/careplan/3.png" />
+          <Image alt="careplan2" src={careplan2Pic} />
+          <Image alt="careplan3" src={careplan3Pic} />
+          <Image alt="careplan4" src={careplan4Pic} />
         </div>
         <div className="px-24 py-12 flex justify-center">
           <button

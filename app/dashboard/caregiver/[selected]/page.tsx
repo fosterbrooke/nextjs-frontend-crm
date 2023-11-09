@@ -1,7 +1,6 @@
 "use client";
 
 import ContractPage from "@/components/ui/dashboard/pages/caregiver/contract";
-import CaregiverManagementPage from "@/components/ui/dashboard/pages/caregiver/caregivermanagement";
 import EventsPage from "@/components/ui/dashboard/pages/caregiver/events";
 import MessagesPage from "@/components/ui/dashboard/pages/caregiver/messages";
 import PaymentPage from "@/components/ui/dashboard/pages/caregiver/payment";
@@ -63,10 +62,6 @@ const sidebarLinks: sidebarItem[] = [
   {
     pathname: "contract",
     component: <ContractPage />,
-  },
-  {
-    pathname: "caregivermanagement",
-    component: <CaregiverManagementPage />,
   },
   {
     pathname: "application",

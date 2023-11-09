@@ -23,12 +23,15 @@ import CaregiverManagementIcon from "@/public/icons/sidebar/caregiver_management
 import ApplicationIcon from "@/public/icons/sidebar/application_icon";
 import HelpIcon from "@/public/icons/sidebar/help_icon";
 import SettingsIcon from "@/public/icons/sidebar/settings_icon";
+import ClientsIcon from "@/public/icons/sidebar/clients_icon";
+import EmployeesIcon from "@/public/icons/sidebar/employees_icon";
+import BackgroundchecksIcon from "@/public/icons/sidebar/backgroundchecks_icon";
 
 interface MenuItem {
   name: string;
   path: string;
   icon: any;
-  role?: string;
+  role?: string[];
   children: MenuItem[];
 }
 
@@ -40,16 +43,38 @@ const menuItems: MenuItem[] = [
     children: [],
   },
   {
+    name: "Clients",
+    path: "/clients",
+    icon: ClientsIcon,
+    role: ["admin"],
+    children: [],
+  },
+  {
+    name: "Employees",
+    path: "/employees",
+    icon: EmployeesIcon,
+    role: ["admin"],
+    children: [],
+  },
+  {
+    name: "Backgorund checks",
+    path: "/background_checks",
+    icon: BackgroundchecksIcon,
+    role: ["admin"],
+    children: [],
+  },
+  {
     name: "Recommendations",
     path: "/recommendations",
     icon: RecommendationsIcon,
+    role: ["client", "caregiver"],
     children: [],
   },
   {
     name: "Care Plan",
     path: "/careplan",
     icon: CarePlanIcon,
-    role: "client",
+    role: ["client"],
     children: [],
   },
   {
@@ -98,7 +123,7 @@ const menuItems: MenuItem[] = [
     name: "Caregiver Management",
     path: "/caregivermanagement",
     icon: CaregiverManagementIcon,
-    role: "client",
+    role: ["client"],
     children: [],
   },
   {
@@ -111,6 +136,7 @@ const menuItems: MenuItem[] = [
     name: "Help",
     path: "",
     icon: HelpIcon,
+    role: ["client", "caregiver"],
     children: [
       {
         name: "Support",
@@ -125,6 +151,13 @@ const menuItems: MenuItem[] = [
         children: [],
       },
     ],
+  },
+  {
+    name: "Support",
+    path: "/support",
+    icon: HelpIcon,
+    role: ["admin"],
+    children: [],
   },
   {
     name: "Settings",
@@ -152,16 +185,32 @@ const DashboardSideBar = ({ setBreadCrumb }: { setBreadCrumb: any }) => {
   const [menus, setMenus] = useState<MenuItem[]>(menuItems);
 
   useEffect(() => {
-    if (pathname.split("/").find((item) => item === "caregiver")) {
-      setMenus(
-        menus.filter((item) => (item.role ? item.role != "client" : true))
-      );
-      let endpoint = pathname.split("/").reverse()[0];
-      endpoint = "/" + endpoint;
-      if (endpoint === "/caregiver" || endpoint === "/client")
-        setSelectedItem("/");
-      else setSelectedItem(endpoint);
+    // if (pathname.split("/").find((item) => item === "caregiver")) {
+    //   setMenus(
+    //     menus.filter((item) => (item.role ? item.role != "client" : true))
+    //   );
+    //   let endpoint = pathname.split("/").reverse()[0];
+    //   endpoint = "/" + endpoint;
+    //   if (endpoint === "/caregiver" || endpoint === "/client")
+    //     setSelectedItem("/");
+    //   else setSelectedItem(endpoint);
+    // }
+    let pathArray = pathname.split("/");
+    let endpoint = "";
+    if (pathArray.find((item) => item === "caregiver")) {
+      endpoint = "caregiver";
+    } else if (pathArray.find((item) => item === "client")) {
+      endpoint = "client";
+    } else if (pathArray.find((item) => item === "admin")) {
+      endpoint = "admin";
     }
+    setMenus(
+      menus.filter((menu) =>
+        menu.role == undefined
+          ? true
+          : menu.role.find((item) => item === endpoint)
+      )
+    );
   }, [pathname]);
 
   const handleToggle = (index: number) => {
@@ -178,13 +227,19 @@ const DashboardSideBar = ({ setBreadCrumb }: { setBreadCrumb: any }) => {
     if (pathSuffix === "") setBreadCrumb("Dashboard");
     else setBreadCrumb(name);
 
-    let role = "caregiver";
-    let target = pathname.split("/").find((item) => item === "caregiver");
-    role = target === undefined ? "client" : "caregiver";
-    if (path) router.push(`/dashboard/${role}/${path}`);
+    let pathArray = pathname.split("/");
+    let endpoint = "";
+    if (pathArray.find((item) => item === "caregiver")) {
+      endpoint = "caregiver";
+    } else if (pathArray.find((item) => item === "client")) {
+      endpoint = "client";
+    } else if (pathArray.find((item) => item === "admin")) {
+      endpoint = "admin";
+    }
+    if (path) router.push(`/dashboard/${endpoint}/${path}`);
   };
 
-  const renderMenuItems = (items: MenuItem[]): JSX.Element[] => {
+  const renderMenuItems = (items: MenuItem[]) => {
     return items.map((item, index) => (
       <React.Fragment key={index}>
         <ListItemButton
