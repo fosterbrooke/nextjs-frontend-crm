@@ -41,6 +41,9 @@ const PrimaryButton = ({
   );
 };
 
+PrimaryButton.defualtProps = {
+  href: "",
+};
 PrimaryButton.displayName = "PrimaryButton";
 
 export { PrimaryButton };

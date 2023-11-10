@@ -3,7 +3,7 @@ import MyServices from "./MyServices";
 import ServiceManagement from "./ServiceManagement";
 
 export default function ServicesPage() {
-  const [curTabIndex, setCurTabIndex] = useState(0);
+  const [curTabIndex, setCurTabIndex] = useState(1);
 
   const activeStyle = {
     color: "#CB5A6F",
