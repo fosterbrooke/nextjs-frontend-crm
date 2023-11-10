@@ -16,7 +16,7 @@ export default function AddNewServiceModal({
   open: boolean;
   setOpen: any;
 }) {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [confirmOpen, setConfirmOpen] = useState(false);
 
@@ -49,7 +49,9 @@ export default function AddNewServiceModal({
             </span>
             <div
               className="border border-dashed border-distlineColor rounded-lg flex justify-center items-center py-12 mt-2 w-2/5 cursor-pointer"
-              onClick={() => fileInputRef.current.click()}
+              onClick={() => {
+                if (fileInputRef.current !== null) fileInputRef.current.click();
+              }}
             >
               <span className="font-bold underline underline-offset-2">
                 Choose file
