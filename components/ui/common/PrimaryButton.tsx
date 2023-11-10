@@ -26,18 +26,18 @@ const PrimaryButton = ({
   };
 
   return (
-    <Button
-      className={`${className} px-4 sm:px-4 py-1 bg-primary hover:bg-primary rounded-md normal-case`}
+    <span
+      className={`${className} px-8 sm:px-4 py-3 bg-primary hover:bg-primary rounded-md normal-case text-white cursor-pointer`}
       onClick={handleButtonClick}
     >
-      <span className="text-primaryButtonTextColor">{children}</span>
+      {children}
       {/* <Link
         className="text-primaryButtonTextColor text-bigPrimaryButtonTextSize sm:text-[20px] text-[14px]"
         href={href}
       >
         {children}
       </Link> */}
-    </Button>
+    </span>
   );
 };
 

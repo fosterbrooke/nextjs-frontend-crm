@@ -49,7 +49,7 @@ const Login = () => {
               <AuthConvert
                 experssion="Don’t have an account "
                 action="Create account"
-                href="/signup"
+                href="/auth/signup"
               />
             </div>
           </div>

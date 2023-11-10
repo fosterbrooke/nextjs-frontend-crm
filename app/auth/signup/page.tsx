@@ -54,7 +54,7 @@ const Signup = () => {
             <AuthConvert
               experssion="Already have an account"
               action="Sign in"
-              href="/login"
+              href="/auth/login"
             />
           </div>
         </div>

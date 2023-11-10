@@ -65,7 +65,7 @@ export default function AdminServiceTable() {
   return (
     <Table>
       <TableHead>
-        <TableRow className="text-distlineColor bg-[#F9FAFB] rounded-lg">
+        <TableRow className="text-distlineColor bg-[#F9FAFB]">
           <TableCell sx={{ width: "30%" }}>Client</TableCell>
           <TableCell sx={{ width: "30%" }}>Assigned Caregiver</TableCell>
           <TableCell sx={{ width: "40%" }}>Service Types</TableCell>
@@ -73,14 +73,10 @@ export default function AdminServiceTable() {
       </TableHead>
       <TableBody>
         {fakeData.map((item, idx) => (
-          <TableRow key={`adminservicetable-row-${idx}`}>
-            <TableCell className="text-textdarkColor font-bold">
-              {item.client}
-            </TableCell>
-            <TableCell className="text-textdarkColor">
-              {item.caregiver}
-            </TableCell>
-            <TableCell className="text-distlineColor">{item.type}</TableCell>
+          <TableRow key={`adminiservicetable-row-${idx}`}>
+            <TableCell className="font-bold">{item.client}</TableCell>
+            <TableCell>{item.caregiver}</TableCell>
+            <TableCell>{item.type}</TableCell>
           </TableRow>
         ))}
       </TableBody>

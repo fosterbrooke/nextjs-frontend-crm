@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MyServices from "./MyServices";
-import TaskManagement from "./TaskManagement";
+import ServiceManagement from "./ServiceManagement";
 
 export default function ServicesPage() {
   const [curTabIndex, setCurTabIndex] = useState(0);
@@ -27,17 +27,17 @@ export default function ServicesPage() {
           style={curTabIndex == 0 ? activeStyle : {}}
           onClick={handleSummaryTab}
         >
-          Service Catelog
+          Services
         </div>
         <div
           className="cursor-pointer"
           style={curTabIndex == 1 ? activeStyle : {}}
           onClick={handleBillingTab}
         >
-          Scheduled Services
+          Manage Services
         </div>
       </div>
-      <div>{curTabIndex == 0 ? <MyServices /> : <TaskManagement />}</div>
+      <div>{curTabIndex == 0 ? <MyServices /> : <ServiceManagement />}</div>
     </div>
   );
 }
