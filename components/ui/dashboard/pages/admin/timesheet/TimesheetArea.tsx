@@ -142,11 +142,11 @@ export default function TimesheetArea({
         </div>
         <div className="m-4 flex">
           <button
-            className="px-8 py-2 rounded-1 bg-red-800"
+            className="px-8 py-2 rounded-md bg-primary"
             style={{ color: "white" }}
             onClick={handleApproveclicked}
           >
-            approve
+            Approve
           </button>
         </div>
       </div>

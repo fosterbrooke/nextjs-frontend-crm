@@ -17,6 +17,7 @@ import ClientsPage from "@/components/ui/dashboard/pages/admin/clients";
 import EmployeesPage from "@/components/ui/dashboard/pages/admin/employees";
 import BackgroundChecksPage from "@/components/ui/dashboard/pages/admin/background_checks";
 import SupportPage from "@/components/ui/dashboard/pages/admin/support";
+import CaregiverProfilePage from "@/components/ui/dashboard/pages/admin/caregiver_profile";
 
 interface sidebarItem {
   pathname: string;
@@ -83,6 +84,10 @@ const sidebarLinks: sidebarItem[] = [
   {
     pathname: "client_profile",
     component: <ClientProfilePage />,
+  },
+  {
+    pathname: "caregiver_profile",
+    component: <CaregiverProfilePage />,
   },
   {
     pathname: "appusage",

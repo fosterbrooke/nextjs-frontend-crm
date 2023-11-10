@@ -51,6 +51,8 @@ const InputField = ({
             style={{ borderRadius: "6px" }}
             multiline={multiline}
             rows={rows}
+            value={value}
+            onChange={(e) => handleChange(e)}
           />
           {/* <FormHelperText>Without label</FormHelperText> */}
         </ThemeProvider>

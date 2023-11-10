@@ -29,7 +29,7 @@ export default function ChangeConfirmModal({
           />
         </div>
         <div className="text-bold text-[20px] mt-8 mb-4">
-          Are you sure you want to leave event?
+          Are you sure you want to cancel changes?
         </div>
         <Divider />
         <div className="flex justify-center gap-12 mt-4">

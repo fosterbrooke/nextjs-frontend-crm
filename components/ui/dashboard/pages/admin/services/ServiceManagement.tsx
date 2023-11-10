@@ -191,7 +191,12 @@ export default function ServiceManagement() {
                 {item.description}
               </TableCell>
               <TableCell className="text-distlineColor text-center">
-                <Button className="bg-forgotColor hover:bg-forgotColor text-white px-16 py-2 normal-case">
+                <Button
+                  className="bg-forgotColor hover:bg-forgotColor text-white px-16 py-2 normal-case"
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                >
                   Edit
                 </Button>
               </TableCell>

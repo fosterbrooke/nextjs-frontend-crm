@@ -10,6 +10,7 @@ import CertificationCard from "../../caregivermanagement/components/Certificatio
 import EducationCard from "../../caregivermanagement/components/EducationCard";
 import TerminateConfirmModal from "../../caregivermanagement/components/TerminateConfirmModal";
 import ScheduleMettingModal from "@/components/ui/dashboard/Modals/ScheduleMettingModal";
+import SubmitMsgModal from "@/components/ui/dashboard/Modals/SubmitMsgModal";
 
 const certifications = [
   {
@@ -73,6 +74,33 @@ const ProfileDetailPage: React.FC<Props> = ({
   onTerminateClick,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [status, setStatus] = useState(
+    localStorage.getItem("application_status")
+  );
+
+  const renderOptions = () => {
+    if (status === "Approved")
+      return <span className="text-[#30A64A] text-[18px]">Approved</span>;
+    else if (status === "Cancelled")
+      return <span className="text-[#DC0035] text-[18px]">Cancelled</span>;
+    else status === "Pending";
+    return (
+      <div className="flex gap-8">
+        <span
+          className="text-white px-12 py-2 rounded-md cursor-pointer bg-[#30A64A]"
+          onClick={() => setStatus("Approved")}
+        >
+          Approve
+        </span>
+        <span
+          className="text-white px-12 py-2 rounded-md cursor-pointer bg-[#DC0035]"
+          onClick={() => setModalOpen(true)}
+        >
+          Reject
+        </span>
+      </div>
+    );
+  };
 
   return (
     <div className="flex flex-col p-4 gap-4">
@@ -88,15 +116,7 @@ const ProfileDetailPage: React.FC<Props> = ({
                 Available
               </span>
             </div>
-            <div className="flex gap-2 items-center">
-              <SvgSms />
-              <span
-                className="bg-primary px-8 py-2 rounded-md font-semibold cursor-pointer text-white text-xl"
-                onClick={() => setModalOpen(true)}
-              >
-                Schedule Meeting
-              </span>
-            </div>
+            <div className="flex gap-2 items-center">{renderOptions()}</div>
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex gap-2 items-center">
@@ -246,10 +266,12 @@ const ProfileDetailPage: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      <ScheduleMettingModal
+      <SubmitMsgModal
         open={modalOpen}
         setOpen={setModalOpen}
-        name="Jimmy Dunta"
+        // onSubmit={() => {}}
+        title="Reason for rejection"
+        description="Please leave us a message about why caregiver application was rejected."
       />
     </div>
   );

@@ -1,220 +1,103 @@
 import React, { useState } from "react";
 import RecommendedClient from "../../../RecommendedClient";
-import { Button } from "@mui/material";
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
+import { PrimaryButton } from "@/components/ui/common/PrimaryButton";
 
-const recommendedClientsData = [
+const fakeData = [
   {
-    isBestMatch: true,
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
+    name: "Jane Alonso",
+    type: "caregiver",
+    status: "Cancelled",
   },
   {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
+    name: "Frank Sergio",
+    type: "caregiver",
+    status: "Approved",
   },
   {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
+    name: "Kate Hyndai",
+    type: "caregiver",
+    status: "Pending",
   },
 ];
-
-const raceItems = [
-  "White & European American",
-  "Hispanic & Latino American",
-  "African American",
-  "Asian American",
-  "Native American & Alaska Natives",
-  "Native Hawaiians & Pacific Islanders",
-  "Middle Easterners & North African",
-  "Asian American",
-  "Others",
-];
-
-const genderItems = ["Any", "Male", "Female", "Prefer not to say"];
 
 export default function RecommendationsPage() {
-  const [filterMenuState, setFilterMenuState] = useState<boolean>(false);
-  const [showCaregiver, setShowCaregiver] = useState<boolean>(false);
-
   const router = useRouter();
 
-  const toggleFilterMenu = (open: boolean) => {
-    setFilterMenuState(open);
-  };
-
-  const handleAccept = () => {
-    router.push("/dashboard/client/caregiver_profile");
+  const renderStatus = (status: string) => {
+    let bgColor = "#FBD5D5";
+    let fgColor = "#9B1C1C";
+    switch (status) {
+      case "Approved":
+        bgColor = "#DEF7EC";
+        fgColor = "#03543F";
+        break;
+      case "Pending":
+        bgColor = "#E1EFFE";
+        fgColor = "#1E429F";
+        break;
+    }
+    return (
+      <span
+        className="px-4 py-2 rounded-full"
+        style={{
+          backgroundColor: bgColor,
+          color: fgColor,
+        }}
+      >
+        {status}
+      </span>
+    );
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-4/5 h-full p-2">
-        <div className="p-2">
-          {!showCaregiver && (
-            <div className="flex flex-col items-center pt-40">
-              <p className="text-bannerTextColor text-xl">
-                &quot;Clients in need of a caregiver will show up here&quot;
-                view
-              </p>
-              <p className="text-bannerTextColor text-xl">
-                <span
-                  className="text-primary cursor-pointer text-xl"
-                  onClick={() => setShowCaregiver(true)}
+    <div
+      className="p-4 m-8"
+      style={{
+        borderRadius: "16.963px",
+        background: "var(--mainwhite, #FFF)",
+        boxShadow:
+          "0px 1.06021px 3.18062px 0px rgba(0, 0, 0, 0.10), 0px 1.06021px 2.12041px 0px rgba(0, 0, 0, 0.06)",
+      }}
+    >
+      <Table>
+        <TableHead>
+          <TableRow className="text-distlineColor bg-[#F9FAFB]">
+            <TableCell>Application Name</TableCell>
+            <TableCell>Application Type</TableCell>
+            <TableCell>Status</TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {fakeData.map((item, idx) => (
+            <TableRow key={`application-index-row-${idx}`}>
+              <TableCell className="font-bold">{item.name}</TableCell>
+              <TableCell>{item.type}</TableCell>
+              <TableCell>{renderStatus(item.status)}</TableCell>
+              <TableCell className="py-2">
+                <PrimaryButton
+                  className="px-8"
+                  handleClick={() => {
+                    localStorage.setItem("application_status", item.status);
+                    router.push("/dashboard/admin/caregiver_profile");
+                  }}
                 >
-                  recommendations
-                </span>{" "}
-                to get started
-              </p>
-            </div>
-          )}
-          {showCaregiver && (
-            <div>
-              <div className="text-center font-bold text-[24px] mb-4">
-                You have 2 pending applications
-              </div>
-              {recommendedClientsData.map((item, index) => (
-                <>
-                  <RecommendedClient
-                    key={index}
-                    {...item}
-                    onConnect={() => {}}
-                  />
-                  <div className="flex justify-center gap-4 py-2">
-                    <Button
-                      variant="contained"
-                      className="bg-success hover:bg-success normal-case rounded-full"
-                      onClick={handleAccept}
-                    >
-                      Accept
-                    </Button>
-                    <Button
-                      variant="contained"
-                      className="bg-brightRedColor hover:bg-brightRedColor normal-case rounded-full"
-                    >
-                      Reject
-                    </Button>
-                  </div>
-                </>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+                  {item.status === "Pending" ? "Review" : "Details"}
+                </PrimaryButton>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 }
