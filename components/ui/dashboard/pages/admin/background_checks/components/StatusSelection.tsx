@@ -1,5 +1,3 @@
-"use client";
-
 import {
   FormControl,
   InputLabel,
@@ -16,21 +14,18 @@ const theme = createTheme({
     primary: {
       main: "#CB5A6F",
       dark: "#CB5A6F",
-      // light: will be calculated from palette.primary.main,
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contrast with palette.primary.main
     },
   },
 });
 
-type customSelectionProps = {
+type StatusSelectionProps = {
   name: string;
   label: string;
   items?: string[]; // Make the 'items' prop optional
   onChange?: (value: string) => void; // Make this optional
 };
 
-const RowSelection: FC<customSelectionProps> = ({
+const StatusSelection: FC<StatusSelectionProps> = ({
   name,
   label,
   items,
@@ -46,11 +41,11 @@ const RowSelection: FC<customSelectionProps> = ({
   };
 
   return (
-    <div className="  flex justify-center">
+    <div className="w-full flex justify-center">
       <div className="text-xs font-arial font-normal text-distlineColor">
         {name}
       </div>
-      <FormControl fullWidth={false} sx={{ minWidth: 50 }}>
+      <FormControl fullWidth={true} sx={{ my: 1 }}>
         <InputLabel
           id="select-value-label"
           shrink={false}
@@ -73,13 +68,12 @@ const RowSelection: FC<customSelectionProps> = ({
                 </MenuItem>
               ))}
           </Select>
-          {/* <FormHelperText>Without label</FormHelperText> */}
         </ThemeProvider>
       </FormControl>
     </div>
   );
 };
 
-RowSelection.displayName = "CustomSelection";
+StatusSelection.displayName = "StatusSelection";
 
-export default RowSelection;
+export default StatusSelection;

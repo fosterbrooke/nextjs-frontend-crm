@@ -25,12 +25,21 @@ export default function ConditionSelect({
 }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
     setAnchorEl(null);
   };
 
@@ -49,7 +58,7 @@ export default function ConditionSelect({
           aria-expanded={isMenuOpen ? "true" : undefined}
           onClick={handleClick}
         >
-          {by}
+          {choices[selectedIndex]}
           {<ArrowDropDownIcon />}
         </MenuButton>
         <Menu
@@ -64,7 +73,8 @@ export default function ConditionSelect({
           {choices.map((choice, idx) => (
             <MenuItem
               key={`condition-select-menu-item-${idx}`}
-              onClick={handleMenuClose}
+              selected={idx == selectedIndex}
+              onClick={(event) => handleMenuItemClick(event, idx)}
             >
               {choice}
             </MenuItem>

@@ -1,7 +1,7 @@
 "use client";
 
 import ContractPage from "@/components/ui/dashboard/pages/admin/contract";
-import EventsPage from "@/components/ui/dashboard/pages/admin/events/Events";
+import EventsPage from "@/components/ui/dashboard/pages/admin/events";
 import MessagesPage from "@/components/ui/dashboard/pages/admin/messages";
 import PaymentPage from "@/components/ui/dashboard/pages/admin/payment";
 import ReportPage from "@/components/ui/dashboard/pages/admin/report";
