@@ -77,22 +77,37 @@ export default function RootLayout({
           </div>
           <div className="flex md:hidden sm:hidden md:flex-col sm:flex-col items-center md:items-start sm:items-start">
             <button
-              className={`text-primary text-bigPrimaryButtonTextSize sm:text-[25px] mr-[50px] md:mr-0 sm:mr-0 
-                                md:mt-[20px] md:mb-[20px] sm:mt-[20px] sm:mb-[20px]`}
+              className={`bg-transparent text-primary hover:text-white hover:bg-primary text-bigPrimaryButtonTextSize px-8 py-4 mx-4 rounded-lg`}
+              onClick={() => {
+                localStorage.setItem("signup_mode", "caregiver");
+                router.push("/auth/signup");
+              }}
             >
-              <Link href="/auth/signup">Apply as a caregiver</Link>
+              Apply as a caregiver
             </button>
-            <PrimaryButton
+            {/* <PrimaryButton
               href="/auth/app/client/1"
               className="px-16 py-2 text-[20px]"
             >
               Hire a Caregiver
-            </PrimaryButton>
+            </PrimaryButton> */}
             <button
-              className={`text-primary text-bigPrimaryButtonTextSize sm:text-[25px] ml-[50px] md:mr-0 sm:mr-0 
-                                md:mt-[20px] md:mb-[20px] sm:mt-[20px] sm:mb-[20px]`}
+              className={`bg-transparent text-primary hover:text-white hover:bg-primary text-bigPrimaryButtonTextSize px-8 py-4 mx-4 rounded-lg`}
+              onClick={() => {
+                localStorage.setItem("signup_mode", "client");
+                router.push("/auth/signup");
+              }}
             >
-              <Link href="/auth/login">Login</Link>
+              Hire a Caregiver
+            </button>
+            <button
+              className={`bg-transparent text-primary hover:text-white hover:bg-primary text-bigPrimaryButtonTextSize px-8 py-4 mx-4 rounded-lg`}
+              onClick={() => {
+                localStorage.setItem("signup_mode", "after login");
+                router.push("/auth/login");
+              }}
+            >
+              Login
             </button>
           </div>
           <ToogleButton onClicked={() => setShowDropMenu(!showDropMenu)} />

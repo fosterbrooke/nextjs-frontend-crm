@@ -35,7 +35,14 @@ const Signup = () => {
             <CreateAccount passStatus="weak" />
             <div className="relative">
               <FormPrimaryBtn
-                onClicked={() => router.push("/auth/selectoption")}
+                onClicked={() => {
+                  let mode = localStorage.getItem("signup_mode");
+                  if (mode === "caregiver")
+                    router.push("/auth/app/caregiver/1");
+                  else if (mode === "client") router.push("/auth/app/client/1");
+                  else if (mode === "after login")
+                    router.push("/auth/selectoption");
+                }}
               >
                 Create account
               </FormPrimaryBtn>

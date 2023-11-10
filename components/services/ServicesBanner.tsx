@@ -1,6 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { PrimaryButton } from "../ui/common/PrimaryButton";
 
 const ServicesBanner = () => {
+  const router = useRouter();
+
   return (
     <div className="bg-[#f5f5f5] bg-services-banner lg:bg-none md:bg-none sm:bg-none bg-cover h-[720px] lg:h-auto md:h-auto sm:h-auto 2xl:ml-[-130px] xl:ml-[-130px] 4xl:pl-[190px] 3xl:pl-[190px] 2xl:pl-[180px] xl:pl-[180px] px-[50px] pt-[114px] lg:py-[50px] md:py-[50px] sm:py-[50px]">
       <div className="w-[550px] lg:w-full md:w-full sm:w-full">
@@ -19,8 +24,12 @@ const ServicesBanner = () => {
       </div>
       <div className="mt-[48px]">
         <PrimaryButton
-          href="/auth/app/client/1"
+          href="#"
           className="px-16 py-2 text-[20px]"
+          handleClick={() => {
+            localStorage.setItem("signup_mode", "client");
+            router.push("/auth/signup");
+          }}
         >
           Hire a Caregiver
         </PrimaryButton>
