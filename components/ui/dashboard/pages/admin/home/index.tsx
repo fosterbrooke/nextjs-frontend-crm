@@ -13,6 +13,8 @@ import CaregivernumCard from "./components/CaregivernumCard";
 import ClientnumCard from "./components/ClientnumCard";
 import Requests from "./components/Requests";
 import ContractCard from "./components/ContractCard";
+import ViewapplicationCard from "./components/ViewapplicationCard";
+import Userchart from "./components/Userchart";
 
 const DashboardPage = () => {
   return (
@@ -23,13 +25,17 @@ const DashboardPage = () => {
             <CaregivernumCard num={68} />
             <ClientnumCard num={1000} />
           </div>
-          <div className="col-start-4 col-span-5"></div>
+          <div className="col-start-4 col-span-5">
+            <ViewapplicationCard />
+          </div>
           <div className="col-start-9 col-span-4">
             <Requests />
           </div>
         </div>
         <div className="w-full flex gap-4">
-          <div className="w-1/2">adsfsadf</div>
+          <div className="w-1/2">
+            <Userchart />
+          </div>
           <div className="w-1/2">
             <ContractCard />
           </div>
