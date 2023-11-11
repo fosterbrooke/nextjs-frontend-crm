@@ -9,35 +9,35 @@ import UpcomingVisitsCard from "../../../UpcomingVisitsCard";
 import CalendarCollapse from "../../../CalendarCollapse";
 import ActiveTimesheets from "../../../ActiveTimesheets";
 import CaregiversTableCard from "../../../CaregiversTableCard";
+import CaregivernumCard from "./components/CaregivernumCard";
+import ClientnumCard from "./components/ClientnumCard";
+import Requests from "./components/Requests";
+import ContractCard from "./components/ContractCard";
 
 const DashboardPage = () => {
   return (
     <div className="pl-4 pr-12 flex flex-col w-full">
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="w-full flex gap-2">
-          <div className="w-2/3">
-            <div className="flex w-full">
-              <UpcomingCareVisitCard />
-            </div>
-            <div className="mt-4">
-              <MoneySpentCard />
-            </div>
-            <div className="mt-4 w-full">
-              <CaregiversTableCard />
-            </div>
+        <div className="grid grid-cols-12 flex gap-2">
+          <div className="col-start-1  col-span-3 mt-4 flex flex-col gap-3">
+            <CaregivernumCard num={68} />
+            <ClientnumCard num={1000} />
           </div>
-          <div className="w-1/3 border-[#D2D2D2]">
-            <CalendarCollapse handleDateClick={() => {}} />
-            <UpcomingVisitsCard />
+          <div className="col-start-4 col-span-5"></div>
+          <div className="col-start-9 col-span-4">
+            <Requests />
           </div>
         </div>
-        <div className="w-full">
-          <ActiveTimesheets />
+        <div className="w-full flex gap-4">
+          <div className="w-1/2">adsfsadf</div>
+          <div className="w-1/2">
+            <ContractCard />
+          </div>
+        </div>
+        <div className=" w-full mt-4">
+          <MoneySpentCard />
         </div>
 
-        <div className="w-full mt-4">
-          <MessagePreview />
-        </div>
         <div className="w-full flex gap-4 justify-between mt-4">
           <div className="w-2/3">
             <UpcomingInterviews />

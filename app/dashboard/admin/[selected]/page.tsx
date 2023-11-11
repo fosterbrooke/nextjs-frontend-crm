@@ -17,6 +17,10 @@ import ClientsPage from "@/components/ui/dashboard/pages/admin/clients";
 import EmployeesPage from "@/components/ui/dashboard/pages/admin/employees";
 import BackgroundChecksPage from "@/components/ui/dashboard/pages/admin/background_checks";
 import SupportPage from "@/components/ui/dashboard/pages/admin/support";
+import Caregivermeetingrequest from "@/components/ui/dashboard/pages/admin/Caregivermeetingrequest/Caregivermeetingrequest";
+import Clientdetails from "@/components/ui/dashboard/pages/admin/clientsdetails/Clientdetails";
+import Employdetails from "@/components/ui/dashboard/pages/admin/employdetails";
+import ProfileDetailPage from "@/components/ui/dashboard/pages/admin/application/components/ProfileDetailPage";
 import CaregiverProfilePage from "@/components/ui/dashboard/pages/admin/caregiver_profile";
 
 interface sidebarItem {
@@ -96,6 +100,18 @@ const sidebarLinks: sidebarItem[] = [
   {
     pathname: "privacy_concern",
     component: <PrivacyConcernPage />,
+  },
+  {
+    pathname: "caregivermeetingrequest",
+    component: <Caregivermeetingrequest />,
+  },
+  {
+    pathname: "clientsdetails",
+    component: <Clientdetails />,
+  },
+  {
+    pathname: "employdetails",
+    component: <Employdetails />,
   },
   // {
   //   pathname: "service-overview",
