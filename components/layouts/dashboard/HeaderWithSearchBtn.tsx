@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import app_logo from "@/public/icons/app_logo.svg";
 import sm_avatar from "@/public/avatars/sample.png";
 import CollapseDown from "@/public/icons/collapse_down";
-import { IconButton, InputBase } from "@mui/material";
+import { Badge, IconButton, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { Notifications } from "@mui/icons-material";
 
 const HeaderWithSearchBtn = () => {
   const router = useRouter();
@@ -50,6 +51,11 @@ const HeaderWithSearchBtn = () => {
             Gabby
           </span>
           <CollapseDown color="#000" width={25} height={26} />
+          <IconButton>
+            <Badge color="error" variant="dot">
+              <Notifications />
+            </Badge>
+          </IconButton>
         </div>
       </div>
     </>
