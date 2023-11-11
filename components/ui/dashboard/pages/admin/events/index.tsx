@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PaymentMethod from "./components/PaymentMethod";
-import PaymentHistory from "./components/PaymentHistory";
+import MyEvents from "./components/MyEvents";
+import BrowseEvents from "./components/BrowseEvents";
 
-const PaymentPage = () => {
+const EventsPage = () => {
   const [tabNumber, setTabNumber] = useState<number>(0);
 
   return (
@@ -21,7 +21,7 @@ const PaymentPage = () => {
               tabNumber == 0 ? "text-primary" : "text-textdarkColor"
             }`}
           >
-            Payment Method
+            My Events
           </p>
         </div>
         <div
@@ -37,15 +37,15 @@ const PaymentPage = () => {
               tabNumber == 1 ? "text-primary" : "text-textdarkColor"
             }`}
           >
-            Payment History
+            Browse Events
           </p>
         </div>
       </div>
-      <div className="w-full h-full flex flex-col items-center">
-        {tabNumber == 0 ? <PaymentMethod /> : <PaymentHistory />}
+      <div className="w-full h-full px-40 py-2">
+        {tabNumber == 0 ? <MyEvents /> : <BrowseEvents />}
       </div>
     </div>
   );
 };
 
-export default PaymentPage;
+export default EventsPage;

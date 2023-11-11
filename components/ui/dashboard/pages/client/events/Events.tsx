@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import RowSelection from "../../../RowsSelection";
 import { Pagination } from "@mui/material";
-import BrowseEvents from "../../caregiver/events/components/BrowseEvents";
 import BrowseRegisterEvents from "./BrowseRegisterEvents";
 
 const Events = () => {

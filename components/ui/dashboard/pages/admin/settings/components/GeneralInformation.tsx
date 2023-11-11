@@ -13,7 +13,8 @@ type Props = {
     emAddress: string,
     emEmail: string,
     emMobileNumber: string,
-    handlePasswordChange: Function
+    handlePasswordChange: Function,
+    handleEditClicked: Function
 };
 
 export default function GeneralInformation (props: Props) {
@@ -25,7 +26,10 @@ export default function GeneralInformation (props: Props) {
             <div className="w-[873px] rounded-md border border-borderGreyColor">
                 <div className="flex justify-between bg-[#FFF2F5] px-4 py-4">
                     <p className="font-bold">General Information</p>
-                    <p className="text-[#4285F4] cursor-pointer">Edit</p>
+                    <p className="text-[#4285F4] cursor-pointer"
+                        onClick={()=>props.handleEditClicked()}>
+                        Edit
+                    </p>
                 </div>
                 <div className="grid gap-8 grid-cols-2 pl-4 pt-4 pr-20 pb-4">
                     <p className="font-bold">Full Name</p>
