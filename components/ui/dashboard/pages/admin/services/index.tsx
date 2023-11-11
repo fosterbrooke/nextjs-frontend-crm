@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MyServices from "./MyServices";
 import ServiceManagement from "./ServiceManagement";
+import { SetCrumbContext } from "@/components/layouts/dashboard/Layout";
 
 export default function ServicesPage() {
   const [curTabIndex, setCurTabIndex] = useState(1);
@@ -11,8 +12,11 @@ export default function ServicesPage() {
     fontWeight: "bold",
   };
 
+  const setBreadCrumb = useContext(SetCrumbContext);
+
   const handleSummaryTab = () => {
     setCurTabIndex(0);
+    setBreadCrumb("Reports > Services summary report");
   };
 
   const handleBillingTab = () => {

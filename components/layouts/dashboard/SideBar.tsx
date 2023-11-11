@@ -176,27 +176,30 @@ const theme = createTheme({
   },
 });
 
-const DashboardSideBar = ({ setBreadCrumb }: { setBreadCrumb: any }) => {
+import {SetCrumbContext} from "./Layout";
+
+const DashboardSideBar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [openItems, setOpenItems] = useState<number[]>([]);
   const [selectedItem, setSelectedItem] = useState<string>("");
 
   const [menus, setMenus] = useState<MenuItem[]>(menuItems);
+  const setBreadCrumb = useContext(SetCrumbContext);
 
   useEffect(() => {
-    // if (pathname.split("/").find((item) => item === "caregiver")) {
-    //   setMenus(
-    //     menus.filter((item) => (item.role ? item.role != "client" : true))
-    //   );
-    //   let endpoint = pathname.split("/").reverse()[0];
-    //   endpoint = "/" + endpoint;
-    //   if (endpoint === "/caregiver" || endpoint === "/client")
-    //     setSelectedItem("/");
-    //   else setSelectedItem(endpoint);
-    // }
     let pathArray = pathname.split("/");
     let endpoint = "";
+
+    endpoint = pathArray.reverse()[0];
+    if (
+      endpoint === "caregiver" ||
+      endpoint === "client" ||
+      endpoint === "admin"
+    )
+      setSelectedItem("/");
+    else setSelectedItem("/" + endpoint);
+
     if (pathArray.find((item) => item === "caregiver")) {
       endpoint = "caregiver";
     } else if (pathArray.find((item) => item === "client")) {
