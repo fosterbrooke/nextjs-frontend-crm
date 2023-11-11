@@ -46,11 +46,11 @@ const CustomSelection: FC<customSelectionProps> = ({
   };
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex flex-col justify-center">
       <div className="text-xs font-arial font-normal text-distlineColor">
         {name}
       </div>
-      <FormControl fullWidth={false} sx={{ my: 1, minWidth: 300 }}>
+      <FormControl fullWidth={true} sx={{ my: 1 }}>
         <InputLabel
           id="select-value-label"
           shrink={false}

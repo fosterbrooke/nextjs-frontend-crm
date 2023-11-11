@@ -1,31 +1,49 @@
+"use client";
+
 import { Button } from "@mui/material";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const PrimaryButton = ({
   children,
   href,
   handleClick,
+  className,
 }: {
   children: React.ReactNode;
-  href: string;
+  href?: string;
   handleClick?: Function;
+  className?: string;
 }) => {
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    if (href == "" || href == "#" || href == undefined) {
+      if (handleClick) handleClick();
+    } else {
+      if (href) router.push(href);
+    }
+  };
+
   return (
-    <Button
-      className="px-4 sm:px-4 py-1 bg-primary hover:bg-primary rounded-md normal-case"
-      // onClick={() => (handleClick === undefined ? null : handleClick())}
+    <span
+      className={`${className} px-8 sm:px-4 py-3 bg-primary hover:bg-primary rounded-md normal-case text-white cursor-pointer`}
+      onClick={handleButtonClick}
     >
-      <Link
+      {children}
+      {/* <Link
         className="text-primaryButtonTextColor text-bigPrimaryButtonTextSize sm:text-[20px] text-[14px]"
         href={href}
       >
         {children}
-      </Link>
-    </Button>
+      </Link> */}
+    </span>
   );
 };
 
+PrimaryButton.defualtProps = {
+  href: "",
+};
 PrimaryButton.displayName = "PrimaryButton";
 
 export { PrimaryButton };

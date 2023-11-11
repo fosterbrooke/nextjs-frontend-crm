@@ -64,7 +64,10 @@ const BlogSection = ({
               align == "left" && !isMD ? "text-right" : "text-left"
             } md:text-right sm:text-center mt-[20px]`}
           >
-            <PrimaryButton href={`/dashboard/blog/${id}`}>
+            <PrimaryButton
+              href={`/dashboard/blog/${id}`}
+              className="text-[20px]"
+            >
               Learn More
             </PrimaryButton>
           </div>

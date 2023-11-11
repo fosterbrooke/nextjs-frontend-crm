@@ -1,121 +1,80 @@
+import { Message } from "@mui/icons-material";
 import React, { useState } from "react";
-import { Avatar, Button, IconButton, InputBase } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import FilterListIcon from "@mui/icons-material/FilterList";
+import ChatPanel from "./ChatPanel";
+import { SmsIcon } from "@/components/ui/common/Icons";
 
-import ChatToggleButtonGroup from "./ChatToggleButtonGroup";
-import ConditionSelect from "../../../ConditionSelect";
-import FilterIcon from "@/public/icons/Filter";
-import UserCard from "./UserCard";
-import ChatArea from "./ChatArea";
-
-const users = [
+const summaries = [
   {
-    name: "Jessica Watson",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "14 Mins ago",
+    name: "Chat",
+    icon: SmsIcon,
+    fgcolor: "#C75167",
+    bgcolor: "#C7516750",
+    unreadCount: 6,
   },
   {
-    name: "Ashley Gwen",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "YESTERDAY",
+    name: "Email",
+    icon: SmsIcon,
+    fgcolor: "#5042F4",
+    bgcolor: "#5042F450",
+    unreadCount: 6,
   },
   {
-    name: "Sharon Lanister",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "SEP 13",
-  },
-  {
-    name: "Kimberly Shannon",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "AUG 31",
-  },
-  {
-    name: "Gabby Alao",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "JUN 19",
-  },
-  {
-    name: "Gabby Alao",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "MAR 23",
-  },
-  {
-    name: "Gabby Alao",
-    subtitle: "HEC certified",
-    latest: "When would you be free our appoint...",
-    time: "FEB 23",
+    name: "SMS",
+    icon: SmsIcon,
+    fgcolor: "#F442A2",
+    bgcolor: "#F442A250",
+    unreadCount: 6,
   },
 ];
 
-export default function MessagesPage(props: any) {
-  const [curUser, setCurUser] = useState(-1);
-  const [partnerName, setPartnerName] = useState("Jessica Watson");
-  const [subTitle, setSubTitle] = useState("HEC certified");
-
-  const handleCardClick = (idx: number, name: string, subtitle: string) => {
-    setPartnerName(name);
-    setSubTitle(subtitle);
-    setCurUser(idx);
-  };
-
+const ChatSummaryItem = (props: any) => {
   return (
-    <div className="w-full h-full flex bg-white">
-      <div
-        className="w-[375px] overflow-hidden"
-        style={{
-          borderRight: "1px solid var(--grey-text, #828282)",
-        }}
-      >
-        <div className="mt-2 px-4">
-          <ChatToggleButtonGroup chatTypes={["Admin", "Client"]} />
-          <div className="mt-2 flex">
-            <ConditionSelect
-              icon={<FilterListIcon />}
-              method="sort"
-              by="Recent"
-              choices={["Most recent", "Oldest to Newest", "Newest to Oldest"]}
-            />
-            <ConditionSelect
-              icon={<FilterIcon />}
-              method="filter"
-              by="All"
-              choices={["All", "Unread"]}
-            />
-          </div>
-          <div className="mt-2">
-            <div className="flex flex-row items-center h-[50px] sm:hidden md:hidden rounded-xl w-full bg-[#FAFAFB]">
-              <IconButton type="submit">
-                <SearchIcon />
-              </IconButton>
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Global search"
-                inputProps={{ "aria-label": "search google maps" }}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="mt-4 h-[calc(100% - 66px)] overflow-y-auto">
-          {users.map((user, idx) => (
-            <UserCard
-              {...user}
-              selected={idx === curUser}
-              key={`messages-usercard-${idx}`}
-              onCardClick={() => handleCardClick(idx, user.name, user.subtitle)}
+    <div
+      className="bg-sectionBgColor flex rounded-md w-[250px] h-[120px] p-4 cursor-pointer"
+      onClick={props.onClick}
+    >
+      <div className=" flex justify-center items-center ">
+        <span
+          className="w-[50px] h-[50px] flex justify-center items-center rounded-full"
+          style={{
+            backgroundColor: props.bgcolor,
+          }}
+        >
+          <props.icon style={{ color: props.fgcolor }} />
+        </span>
+      </div>
+      <div className="flex flex-col justify-between ml-4">
+        <span className="font-bold text-[24px] text-textdarkColor">
+          {props.name}
+        </span>
+        <span
+          className="font-bold text-[20px]"
+          style={{ color: props.fgcolor }}
+        >
+          {props.unreadCount} unread
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default function MessagesPage() {
+  const [showPanel, setShowPanel] = useState(false);
+  return (
+    <div>
+      {!showPanel ? (
+        <div className="w-full h-full p-4 flex justify-center gap-8">
+          {summaries.map((summary, idx) => (
+            <ChatSummaryItem
+              key={`chatsummaryitem-${idx}`}
+              {...summary}
+              onClick={() => setShowPanel(true)}
             />
           ))}
         </div>
-      </div>
-      <div className="w-[calc(100%-375px)] relative">
-        <ChatArea partner={partnerName} subtitle={subTitle} />
-      </div>
+      ) : (
+        <ChatPanel />
+      )}
     </div>
   );
 }

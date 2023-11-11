@@ -73,7 +73,10 @@ const HomeServiceSection = ({
               align == "left" && !isLG ? "text-right" : "text-left"
             } lg:text-right md:text-right sm:text-center mt-[48px]`}
           >
-            <PrimaryButton href={`/dashboard/services/${id}`}>
+            <PrimaryButton
+              href={`/dashboard/services/${id}`}
+              className="text-[20px]"
+            >
               Learn More
             </PrimaryButton>
           </div>

@@ -16,13 +16,13 @@ type StrengthListType = {
 
 const CreateAccount = ({ passStatus }: { passStatus: string }) => {
   const strengthList: StrengthListType = {
-    weak: { icon: "icons/pass_weak.svg", color: "text-primary" },
+    weak: { icon: "/icons/pass_weak.svg", color: "text-primary" },
     normal: {
-      icon: "icons/pass_normal.svg",
+      icon: "/icons/pass_normal.svg",
       color: "text-passwordMediumColor",
     },
     strong: {
-      icon: "icons/pass_strong.svg",
+      icon: "/icons/pass_strong.svg",
       color: "text-passwordStrongColor",
     },
   };
@@ -103,8 +103,8 @@ const CreateAccount = ({ passStatus }: { passStatus: string }) => {
             className="object-contain"
             src={strengthList[passStrength].icon}
             alt="pw_status"
-            width={9.6}
-            height={12}
+            width={16}
+            height={20}
           ></Image>
           <span
             className={`${strengthList[passStrength].color} text-xs leading-[18px] pl-[5px]`}

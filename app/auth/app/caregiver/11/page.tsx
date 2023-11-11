@@ -257,7 +257,7 @@ const Login = () => {
           </div>
           <br />
           <br />
-          <BasicModal path={""} />
+          <BasicModal path="/dashboard/caregiver" />
         </div>
       </div>
     </>

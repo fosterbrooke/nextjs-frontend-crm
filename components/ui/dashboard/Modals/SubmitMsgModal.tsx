@@ -20,7 +20,7 @@ const theme = createTheme({
   },
 });
 
-export default function ScheduleMettingModal({
+export default function SubmitMsgModal({
   title,
   description,
   open,
@@ -56,14 +56,15 @@ export default function ScheduleMettingModal({
         <div className="text-dislintColor ml-4 mr-12">{description}</div>
         <div className="flex flex-col mx-4 mt-4">
           <div className="mt-4">
-            <ThemeProvider theme={theme}></ThemeProvider>
-            <TextField
-              multiline
-              rows={6}
-              variant="outlined"
-              label="Leave a message"
-              fullWidth
-            />
+            <ThemeProvider theme={theme}>
+              <TextField
+                multiline
+                rows={6}
+                variant="outlined"
+                label="Leave a message"
+                fullWidth
+              />
+            </ThemeProvider>
           </div>
           <div className="text-right mt-8">
             <PrimaryButton href="" handleClick={() => {}}>
