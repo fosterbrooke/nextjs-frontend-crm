@@ -1,7 +1,7 @@
 "use client";
 
 import ContractPage from "@/components/ui/dashboard/pages/admin/contract";
-import EventsPage from "@/components/ui/dashboard/pages/admin/events/Events";
+import EventsPage from "@/components/ui/dashboard/pages/admin/events";
 import MessagesPage from "@/components/ui/dashboard/pages/admin/messages";
 import PaymentPage from "@/components/ui/dashboard/pages/admin/payment";
 import ReportPage from "@/components/ui/dashboard/pages/admin/report";
@@ -21,6 +21,7 @@ import Caregivermeetingrequest from "@/components/ui/dashboard/pages/admin/Careg
 import Clientdetails from "@/components/ui/dashboard/pages/admin/clientsdetails/Clientdetails";
 import Employdetails from "@/components/ui/dashboard/pages/admin/employdetails";
 import ProfileDetailPage from "@/components/ui/dashboard/pages/admin/application/components/ProfileDetailPage";
+import CaregiverProfilePage from "@/components/ui/dashboard/pages/admin/caregiver_profile";
 
 interface sidebarItem {
   pathname: string;
@@ -87,6 +88,10 @@ const sidebarLinks: sidebarItem[] = [
   {
     pathname: "client_profile",
     component: <ClientProfilePage />,
+  },
+  {
+    pathname: "caregiver_profile",
+    component: <CaregiverProfilePage />,
   },
   {
     pathname: "appusage",

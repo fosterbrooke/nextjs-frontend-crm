@@ -27,12 +27,16 @@ const InputField = ({
   type,
   value,
   handleChange,
+  multiline,
+  rows,
 }: {
   title: string;
   placholder: string | undefined;
   type: string;
   value: string;
   handleChange: Function;
+  multiline?: boolean;
+  rows?: number;
 }) => {
   return (
     <div>
@@ -45,6 +49,10 @@ const InputField = ({
             type={type}
             placeholder={placholder}
             style={{ borderRadius: "6px" }}
+            multiline={multiline}
+            rows={rows}
+            value={value}
+            onChange={(e) => handleChange(e)}
           />
           {/* <FormHelperText>Without label</FormHelperText> */}
         </ThemeProvider>

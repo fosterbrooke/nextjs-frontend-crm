@@ -2,6 +2,9 @@ import React from "react";
 
 import SvgFilter from "@/public/icons/Filter";
 import ConditionSelect from "@/components/ui/dashboard/ConditionSelect";
+import EventCard from "../../../EventCard";
+import { Pagination } from "@mui/material";
+import RowSelection from "@/components/ui/dashboard/RowsSelection";
 
 const eventsData = [
   {
@@ -29,39 +32,40 @@ const eventsData = [
 
 const BrowseEvents = () => {
   return (
-    <div className="flex flex-col items-center px-20">
-      <div className="w-2/3 flex justify-end">
-        <ConditionSelect
-          icon={<SvgFilter />}
-          method="filter"
-          by="All"
-          choices={["All", "Free", "Paid", "Ongoing", "Past Events"]}
-        />
+    <div className="h-full flex flex-col px-20 justify-between">
+      <div className="flex flex-col">
+        <div className="flex justify-end">
+          <ConditionSelect
+            icon={<SvgFilter />}
+            method="filter"
+            by="All"
+            choices={["All", "Free", "Paid", "Ongoing", "Past Events"]}
+          />
+        </div>
+        <div className="flex justify-between">
+          {eventsData.map((item, index) => (
+            <EventCard
+              key={index}
+              creator={item.creator}
+              name={item.name}
+              fee={item.fee}
+              date={item.date}
+              time={item.time}
+            />
+          ))}
+        </div>
       </div>
-      <div className="w-2/3 flex justify-between">
-        {eventsData.map((item, index) => (
-          <div
-            key={`browseevent-${index}`}
-            className="flex flex-col justify-between bg-black w-[350px] h-[240px] m-1 p-2"
-          >
-            <div className="text-white">{`Created by: ${item.creator}`}</div>
-            <div className="text-white">
-              <div className="flex items-center">
-                <p className="font-bold text-xl mr-1">{item.name}</p>
-                <p>{`Fee: ${item.fee}`}</p>
-              </div>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p> {item.date} </p>
-                  <p> {item.time} </p>
-                </div>
-                <span className="px-8 py-2 border border-white cursor-pointer">
-                  <p>VIEW</p>
-                </span>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="flex items-center justify-between">
+        <div className="inline-flex items-center justify-between">
+          <span className="text-textdarkColor w-[130px] mr-2 font-arial">
+            1 to 1 4 records
+          </span>
+          <RowSelection />
+          <span className="text-textdarkColor w-[130px] ml-2 font-arial">
+            items per page
+          </span>
+        </div>
+        <Pagination count={1} variant="outlined" shape="rounded" />
       </div>
     </div>
   );

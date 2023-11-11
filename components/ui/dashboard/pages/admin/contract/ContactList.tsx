@@ -87,7 +87,7 @@ export default function ContactList({
           choices={["All", "Unread", "Pending", "Cancelled"]}
         />
       </div>
-      <div className="bg-white p-4">
+      <div className="p-4">
         {fakerData.map((item, idx) => (
           <ContractListItem
             key={`contract-listitem-${idx}`}

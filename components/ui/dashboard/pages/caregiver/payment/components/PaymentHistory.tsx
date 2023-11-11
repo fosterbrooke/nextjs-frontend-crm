@@ -65,7 +65,7 @@ const statusBtnColor = [
 
 const PaymentHistory = () => {
   return (
-    <div className="w-11/12 grid justify-items-center">
+    <div className="w-11/12 h-full flex flex-col justify-between items-center">
       <div className="w-full p-4 bg-white m-2 grid justify-items-center">
         <div className="w-11/12 pb-2">
           <p className="text-black font-bold">Transactions</p>

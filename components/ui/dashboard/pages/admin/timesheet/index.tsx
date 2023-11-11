@@ -43,7 +43,7 @@ export default function TimesheetPage() {
     setCurUser(idx);
   };
   return (
-    <div className="w-full h-[calc(100%-66px)] flex bg-white">
+    <div className="w-full h-full flex bg-white">
       <div
         className="w-[375px] overflow-hidden"
         style={{

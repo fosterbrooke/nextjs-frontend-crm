@@ -1,10 +1,10 @@
 import DashboardLayout from "@/components/layouts/dashboard/Layout";
 import "@/app/globals.css";
 
-export const metadata = {
-  title: "Seasoned Senior LLC",
-  description: "Personal Information",
-};
+// export const metadata = {
+//   title: "Seasoned Senior LLC",
+//   description: "Personal Information",
+// };
 
 export default function RootLayout({
   children,
