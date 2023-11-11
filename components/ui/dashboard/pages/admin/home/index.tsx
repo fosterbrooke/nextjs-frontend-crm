@@ -1,6 +1,5 @@
 import React, { Suspense, useState } from "react";
 import UpcomingCareVisitCard from "./UpcomingCareVisitCard";
-import CareVisitsCard from "./CareVisitsCard";
 import MoneySpentCard from "./MoneySpentCard";
 import MessagePreview from "../../../MessagePreview";
 import UpcomingInterviews from "../../../UpcomingInterviews";
@@ -9,6 +8,8 @@ import UpcomingVisitsCard from "../../../UpcomingVisitsCard";
 import CalendarCollapse from "../../../CalendarCollapse";
 import ActiveTimesheets from "../../../ActiveTimesheets";
 import CaregiversTableCard from "../../../CaregiversTableCard";
+import Notifications from "./Notifications";
+import NotificationModal from "../../../Modals/NotificationModal";
 
 const DashboardPage = () => {
   return (
@@ -54,6 +55,7 @@ const DashboardPage = () => {
             <UpcomingInterviews />
             <UpcomingEventsPreview />
           </div> */}
+        <NotificationModal name={""} open={true} setOpen={() => {}} />
       </Suspense>
     </div>
   );
