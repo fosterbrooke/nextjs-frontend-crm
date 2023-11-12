@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 export default function ContractCard() {
+  const router = useRouter();
   return (
     <div className="bg-[white] p-4">
       <div className="text-[20px] font-bold">Contracts</div>
@@ -47,7 +50,12 @@ export default function ContractCard() {
         <div className="text-[#CB5A6F] text-[16px]">View Contract</div>
       </div>
       <div className="mt-4 flex gap-2">
-        <div className="text-[#CB5A6F] text-[16px] font-bold">
+        <div
+          className="text-[#CB5A6F] text-[16px] font-bold cursor-pointer"
+          onClick={() => {
+            router.push("/dashboard/admin/contract");
+          }}
+        >
           View All Contracts
         </div>
         <div>

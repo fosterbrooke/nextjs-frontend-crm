@@ -1,7 +1,9 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { userAgent } from "next/server";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const chartData = {
@@ -28,6 +30,7 @@ const options = {
 };
 
 export default function ViewapplicationCard({}: {}) {
+  const router = useRouter();
   return (
     <div className="flex flex-col border border-solid border-borderGreyColor p-4 bg-white">
       <div className="font-bold text-[20px]">Applications</div>
@@ -37,7 +40,25 @@ export default function ViewapplicationCard({}: {}) {
         </div>
         <div></div>
       </div>
-      <div></div>
+      <div className="mt-4 flex gap-2">
+        <div
+          className="text-[#CB5A6F] text-[16px] font-bold cursor-pointer"
+          onClick={() => {
+            router.push("/dashboard/admin/application");
+          }}
+        >
+          View Application
+        </div>
+        <div>
+          <Image
+            alt=""
+            src="/images/admin/vector.png"
+            className="mx-auto mt-[]"
+            width={24}
+            height={0}
+          />
+        </div>
+      </div>
     </div>
   );
 }

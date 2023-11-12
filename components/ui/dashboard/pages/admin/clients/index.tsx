@@ -32,7 +32,7 @@ export default function ClientsPage() {
   ];
   const [showcontract, setshowcontract] = useState(false);
   const statustext = ["Active", "Inactive"];
-  const statusbtn = ["bg-green-200 text-[green]", "bg-red-300 text-[#DC0035]"];
+  const statusbtn = ["bg-green-200 text-[green]", "bg-red-200 text-[#DC0035]"];
   return (
     <div className="mt-10">
       {!showcontract && (
@@ -64,7 +64,7 @@ export default function ClientsPage() {
                     </td>
                     <td className="py-3">
                       <div
-                        className={`text-distlineColor text-center rounded-2xl py-2 ${
+                        className={`text-center rounded-2xl py-2 ${
                           statusbtn[item.status]
                         }`}
                       >

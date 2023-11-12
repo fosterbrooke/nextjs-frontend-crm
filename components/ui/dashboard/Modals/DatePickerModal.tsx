@@ -48,7 +48,7 @@ export default function DatePickerModal({
             className="w-full py-4 rounded-md cursor-pointer text-white bg-[#CB5A6F] text-center"
             onClick={() => setOpen(false)}
           >
-            Choose Time
+            Choose day
           </div>
         </div>
       </div>

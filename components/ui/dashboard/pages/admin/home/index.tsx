@@ -15,28 +15,35 @@ import Requests from "./components/Requests";
 import ContractCard from "./components/ContractCard";
 import ViewapplicationCard from "./components/ViewapplicationCard";
 import Userchart from "./components/Userchart";
+import FilteredTable from "./components/FilteredTable";
 
 const DashboardPage = () => {
   return (
     <div className="pl-4 pr-12 flex flex-col w-full">
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="grid grid-cols-12 flex gap-2">
-          <div className="col-start-1  col-span-3 mt-4 flex flex-col gap-3">
-            <CaregivernumCard num={68} />
-            <ClientnumCard num={1000} />
+        <div className="flex justify-center">
+          <div className="w-1/4 mt-4">
+            <div className="flex flex-col justify-between">
+              <CaregivernumCard num={68} />
+              <ClientnumCard num={1000} />
+            </div>
           </div>
-          <div className="col-start-4 col-span-5">
-            <ViewapplicationCard />
+          <div className="w-1/3">
+            <div className="">
+              <ViewapplicationCard />
+            </div>
           </div>
-          <div className="col-start-9 col-span-4">
-            <Requests />
+          <div className="w-5/12">
+            <div className="">
+              <Requests />
+            </div>
           </div>
         </div>
         <div className="w-full flex gap-4">
-          <div className="w-1/2">
+          <div className="w-1/2 ">
             <Userchart />
           </div>
-          <div className="w-1/2">
+          <div className="w-1/2 ">
             <ContractCard />
           </div>
         </div>
@@ -51,6 +58,22 @@ const DashboardPage = () => {
           <div className="w-1/3">
             <UpcomingEventsPreview />
           </div>
+        </div>
+        <div className="flex justify-normal items-center   gap-6 mx-10">
+          <div className="text-[20px] text-[#282828] font-bold">
+            Background Checks
+          </div>
+          <div
+            className="text-[16px] text-[#CB5A6F]"
+            style={{ borderBottom: "2px solid", borderBottomColor: "#F9FAFB" }}
+          >
+            All Checks
+          </div>
+          <div className="text-[16px] text-[#CB5A6F]">Pending Checks</div>
+          <div className="text-[16px] text-[#CB5A6F]">Completed Checks</div>
+        </div>
+        <div className="w-full">
+          <FilteredTable filterValue={0} />
         </div>
         {/* <MoneySpentCard />
           <CaregiversTableCard />
