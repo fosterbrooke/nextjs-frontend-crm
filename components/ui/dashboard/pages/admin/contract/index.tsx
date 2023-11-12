@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import TerminateAskModal from "./TerminateAskModal";
+import TerminateAskModal from "../../../Modals/TerminateAskModal";
 import TerminateArea from "./TerminateArea";
 import ContactList from "./ContactList";
 

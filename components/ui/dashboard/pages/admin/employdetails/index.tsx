@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import ProfileDetailPage from "../employees/ProfileDetailedPage";
 
 export default function employdetails() {
-  const [isDetail, setIsDetail] = useState<boolean>(false);
-
-  const onTerminateClicked = () => {
-    setIsDetail(false);
-  };
+  // const [isDetail, setIsDetail] = useState<boolean>(false);
 
   return (
     <ProfileDetailPage

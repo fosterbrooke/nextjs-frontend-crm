@@ -32,8 +32,8 @@ const CareplanPage = () => {
           onClick={() => setPage(1)}
           style={{
             borderBottom: "1px solid",
-            borderBottomColor: page === 1 ? "red" : "white",
-            color: page === 1 ? "red" : "",
+            borderBottomColor: page === 1 ? "#CB5A6F" : "white",
+            color: page === 1 ? "#CB5A6F" : "",
             cursor: "pointer",
             fontWeight: "bold",
           }}
@@ -44,8 +44,8 @@ const CareplanPage = () => {
           onClick={() => setPage(2)}
           style={{
             borderBottom: "1px solid",
-            borderBottomColor: page === 2 ? "red" : "white",
-            color: page === 2 ? "red" : "",
+            borderBottomColor: page === 2 ? "#CB5A6F" : "white",
+            color: page === 2 ? "#CB5A6F" : "",
             cursor: "pointer",
             fontWeight: "bold",
           }}
@@ -56,8 +56,8 @@ const CareplanPage = () => {
           onClick={() => setPage(3)}
           style={{
             borderBottom: "1px solid",
-            borderBottomColor: page === 3 ? "red" : "white",
-            color: page === 3 ? "red" : "",
+            borderBottomColor: page === 3 ? "#CB5A6F" : "white",
+            color: page === 3 ? "#CB5A6F" : "",
             cursor: "pointer",
             fontWeight: "bold",
           }}
@@ -68,8 +68,8 @@ const CareplanPage = () => {
           onClick={() => setPage(4)}
           style={{
             borderBottom: "1px solid",
-            borderBottomColor: page === 4 ? "red" : "white",
-            color: page === 4 ? "red" : "",
+            borderBottomColor: page === 4 ? "#CB5A6F" : "white",
+            color: page === 4 ? "#CB5A6F" : "",
             cursor: "pointer",
             fontWeight: "bold",
           }}

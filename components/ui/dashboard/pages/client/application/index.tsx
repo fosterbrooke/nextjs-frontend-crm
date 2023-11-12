@@ -195,19 +195,15 @@ export default function RecommendationsPage() {
                     onConnect={() => {}}
                   />
                   <div className="flex justify-center gap-4 py-2">
-                    <Button
-                      variant="contained"
-                      className="bg-success hover:bg-success normal-case rounded-full"
+                    <span
+                      className="bg-success hover:bg-success normal-case rounded-full px-4 py-2 text-white font-bold cursor-pointer"
                       onClick={handleAccept}
                     >
                       Accept
-                    </Button>
-                    <Button
-                      variant="contained"
-                      className="bg-brightRedColor hover:bg-brightRedColor normal-case rounded-full"
-                    >
+                    </span>
+                    <span className="bg-brightRedColor hover:bg-brightRedColor normal-case rounded-full px-4 py-2 text-white font-bold cursor-pointer">
                       Reject
-                    </Button>
+                    </span>
                   </div>
                 </>
               ))}

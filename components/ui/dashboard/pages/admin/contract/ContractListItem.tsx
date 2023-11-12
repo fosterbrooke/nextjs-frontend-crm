@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import ConditionSelect from "../../../ConditionSelect";
-import FilterIcon from "@/public/icons/Filter";
 import { Profile2UsersIcon } from "@/components/ui/common/Icons";
 import { Button } from "@mui/material";
-import TerminateAskModal from "./TerminateAskModal";
 
 interface contactItem {
   type: string;

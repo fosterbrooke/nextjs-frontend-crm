@@ -139,7 +139,7 @@ export default function Clientdetails() {
 
           <div className="mt-10 mx-96 px-40 flex flex-col">
             <div className="text-[#282828] text-[20px] font-bold text-center">
-              Client's Request
+              Client&apos;s Request
             </div>
             <div className="mt-4">
               <div className="mt-4 flex justify-between font-bold text-[#282828]">

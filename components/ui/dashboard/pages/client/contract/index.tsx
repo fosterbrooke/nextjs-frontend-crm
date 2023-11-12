@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import TerminateAskModal from "./TerminateAskModal";
 import TerminateArea from "./TerminateArea";
 import ContactList from "./ContactList";
+import TerminateAskModal from "../../../Modals/TerminateAskModal";
 
 export default function ContractPage() {
   const [modalOpen, setModalOpen] = useState(false);

@@ -44,10 +44,11 @@ export default function ConditionSelect({
   };
 
   return (
-    <div className="flex">
-      <div className="text-[#828282] flex items-center">
+    <div className="flex items-center">
+      <div className="text-[#828282] flex items-center ml-1">
         {icon}
         <span
+          className="text-center"
           style={{ fontFamily: "Arial", fontSize: "14px" }}
         >{`${method.toUpperCase()} BY`}</span>
       </div>

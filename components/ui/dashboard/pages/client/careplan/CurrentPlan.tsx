@@ -5,8 +5,8 @@ import DailyActivities from "./DailyActivities";
 import { Box, Modal, Typography } from "@mui/material";
 import Careplandlg from "./Careplandlg";
 import Image from "next/image";
-import careplan2Pic from "@/public/images/careplan/2.png";
-import careplan3Pic from "@/public/images/careplan/3.png";
+import careplan2Pic from "@/public/images/careplan/1.png";
+import careplan3Pic from "@/public/images/careplan/2.png";
 import careplan4Pic from "@/public/images/careplan/3.png";
 
 const CurrentPlan = () => {

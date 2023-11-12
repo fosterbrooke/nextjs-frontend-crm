@@ -34,23 +34,21 @@ export default function TerminateAskModal({
         </p>
         <Divider className="my-4" />
         <div className="flex justify-center gap-4">
-          <Button
-            variant="outlined"
-            className="text-[#DC0035] border-[#DC0035] hover:border-[#DC0035] normal-case"
+          <span
+            className="text-[#DC0035] border border-solid border-[#DC0035] hover:border-[#DC0035] normal-case rounded-lg px-4 py-2 cursor-pointer font-bold"
             onClick={() => setModalOpen(false)}
           >
             Cancel
-          </Button>
-          <Button
-            variant="contained"
-            className="bg-[#DC0035] border-[#DC0035] hover:bg-[#DC0035] normal-case"
+          </span>
+          <span
+            className="bg-brightRedColor hover:bg-brightRedColor font-bold text-white flex items-center rounded-lg px-4 py-2 cursor-pointer"
             onClick={() => {
               setModalOpen(false);
               setTerminated(true);
             }}
           >
             Terminate
-          </Button>
+          </span>
         </div>
       </div>
     </Dialog>

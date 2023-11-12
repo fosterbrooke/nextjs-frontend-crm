@@ -27,7 +27,7 @@ const PrimaryButton = ({
 
   return (
     <span
-      className={`${className} px-8 sm:px-4 py-3 bg-primary hover:bg-primary rounded-md normal-case text-white cursor-pointer`}
+      className={`px-8 sm:px-4 py-3 bg-primary hover:bg-primary rounded-md normal-case font-bold text-white cursor-pointer ${className}`}
       onClick={handleButtonClick}
     >
       {children}

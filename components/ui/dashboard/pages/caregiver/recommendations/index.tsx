@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Drawer from "@mui/material/Drawer";
 
-import RecommendedClient from "../../../RecommendedClient";
 import HourlyRate from "./components/HourlyRate";
 import Availability from "./components/Availability";
 import Location from "./components/Location";
@@ -11,6 +10,8 @@ import SvgFilter from "@/public/icons/Filter";
 import RaceSelection from "./components/RaceSelection";
 import GenderSelection from "./components/GenderSelection";
 import SvgClose from "@/public/icons/Close";
+import { useRouter } from "next/navigation";
+import RecommendedClient from "./components/RecommendedClient";
 
 const recommendedClientsData = [
   {
@@ -164,6 +165,8 @@ export default function RecommendationsPage() {
     setFilterMenuState(open);
   };
 
+  const router = useRouter();
+
   return (
     <div className="w-full flex justify-center">
       <div className="w-4/5 h-full m-10 p-10 bg-white">
@@ -199,7 +202,13 @@ export default function RecommendationsPage() {
           )}
           {showCaregiver &&
             recommendedClientsData.map((item, index) => (
-              <RecommendedClient key={index} {...item} onConnect={() => {}} />
+              <RecommendedClient
+                key={index}
+                {...item}
+                onConnect={() => {
+                  router.push("/dashboard/caregiver/client_profile");
+                }}
+              />
             ))}
         </div>
       </div>

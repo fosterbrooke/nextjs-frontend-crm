@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import app_logo from "@/public/icons/app_logo.svg";
 import sm_avatar from "@/public/avatars/sample.png";
 import CollapseDown from "@/public/icons/collapse_down";
@@ -9,11 +9,27 @@ import { Badge, IconButton, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Notifications } from "@mui/icons-material";
 import NotificationModal from "@/components/ui/dashboard/Modals/NotificationModal/NotificationModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HeaderWithSearchBtn = () => {
   const [open, setOpen] = useState(false);
+  const [role, setRole] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    let pathArray = pathname.split("/");
+    let endpoint = "";
+    if (pathArray.find((item) => item === "caregiver")) {
+      endpoint = "CAREGIVER";
+    } else if (pathArray.find((item) => item === "client")) {
+      endpoint = "CLIENT";
+    } else if (pathArray.find((item) => item === "admin")) {
+      endpoint = "ADMIN";
+    }
+    setRole(endpoint);
+  }, [pathname]);
+
   return (
     <>
       <div className="h-[120px] flex justify-center items-center text-distlineColor">
@@ -26,7 +42,7 @@ const HeaderWithSearchBtn = () => {
             priority={false}
             style={{ height: "auto" }}
           />
-          <div className="text-[14px] mt-2">CLIENT PORTAL</div>
+          <div className="text-[14px] mt-2">{role} PORTAL</div>
         </div>
         <div className="pl-[25px] flex flex-row items-center border h-[60px] w-[60%] sm:hidden md:hidden rounded-xl">
           <IconButton type="submit">
