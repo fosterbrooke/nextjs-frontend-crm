@@ -1,20 +1,15 @@
 import React, { Suspense, useState } from "react";
 import UpcomingCareVisitCard from "./UpcomingCareVisitCard";
-import CareVisitsCard from "./CareVisitsCard";
 import MoneySpentCard from "./MoneySpentCard";
-import MessagePreview from "../../../MessagePreview";
 import UpcomingInterviews from "../../../UpcomingInterviews";
 import UpcomingEventsPreview from "../../../UpcomingEventsPreview";
-import UpcomingVisitsCard from "../../../UpcomingVisitsCard";
-import CalendarCollapse from "../../../CalendarCollapse";
-import ActiveTimesheets from "../../../ActiveTimesheets";
-import CaregiversTableCard from "../../../CaregiversTableCard";
 import CaregivernumCard from "./components/CaregivernumCard";
 import ClientnumCard from "./components/ClientnumCard";
-import Requests from "./components/Requests";
-import ContractCard from "./components/ContractCard";
 import ViewapplicationCard from "./components/ViewapplicationCard";
+import Requests from "./components/Requests";
 import Userchart from "./components/Userchart";
+import ContractCard from "./components/ContractCard";
+import NotificationModal from "../../../Modals/NotificationModal/NotificationModal";
 
 const DashboardPage = () => {
   return (
@@ -60,6 +55,7 @@ const DashboardPage = () => {
             <UpcomingInterviews />
             <UpcomingEventsPreview />
           </div> */}
+        <NotificationModal name={""} open={true} setOpen={() => {}} />
       </Suspense>
     </div>
   );
