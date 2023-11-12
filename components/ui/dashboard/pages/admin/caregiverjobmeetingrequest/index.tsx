@@ -13,9 +13,9 @@ import { TimeIcon } from "@mui/x-date-pickers";
 import DatePicker from "../../../DatePicker";
 import DatePickerModal from "../../../Modals/DatePickerModal";
 import TimePickerModal from "../../../TimePickerModal";
-import AcceptedRequest from "./AcceptedRequest";
+import AcceptedRequest from "../Caregivermeetingrequest/AcceptedRequest";
 import { useRouter } from "next/navigation";
-export default function Caregivermeetingrequest() {
+export default function Caregiverjobmeetingrequest() {
   const router = useRouter();
   const [showday, setshowday] = useState(false);
   const [showtime, setshowtime] = useState(false);
@@ -26,7 +26,7 @@ export default function Caregivermeetingrequest() {
   return (
     <div className="mx-10 mt-4">
       <div className="text-[#000] text-[24px] font-bold text-center">
-        Caregivers Meeting Request
+        CaregiverJob Meeting Request
       </div>
       <div className="text-[#282828] text-center text-[14px]">
         Showing all 3 requests
@@ -288,7 +288,7 @@ export default function Caregivermeetingrequest() {
                   Reject
                 </button>
                 <button
-                  className="cursor-pointer px-4 py-3"
+                  className="cursor-pointer px-4 py-3 "
                   style={{
                     color: "white",
                     border: "1px solid",

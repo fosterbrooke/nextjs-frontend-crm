@@ -9,7 +9,7 @@ type RescheduleItemProps = {
 
 const RescheduleItem = ({ actor, date, time }: RescheduleItemProps) => {
   return (
-    <div className="flex items-center px-5 py-2 gap-x-4 bg-white border border-l-0 border-t-0 border-r-0 border-b-1 border-borderGreyColor">
+    <div className="flex items-center px-5 py-2 gap-x-4 bg-white bg-opacity-90 border border-l-0 border-t-0 border-r-0 border-b-1 border-borderGreyColor">
       <div className="flex flex-col gap-y-2">
         <div className="flex items-center gap-x-4">
           <div>

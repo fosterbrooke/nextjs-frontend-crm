@@ -18,6 +18,7 @@ const Notifications = () => {
         backgroundSize: "80% auto",
         backgroundRepeat: "no-repeat",
       }}
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="flex justify-between p-5 border border-l-0 border-t-0 border-r-0 border-b-1 border-borderGreyColor">
         <p className="text-base font-bold">Notifications</p>

@@ -104,7 +104,7 @@ export default function EmployeesPage() {
                     </td>
                     <td className="py-3">
                       <div
-                        className={`text-distlineColor text-center rounded-2xl py-2 ${
+                        className={`text-center rounded-2xl py-2 ${
                           statusbtn[item.status]
                         }`}
                       >

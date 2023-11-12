@@ -20,6 +20,7 @@ export default function NotificationModal({
   return (
     <div
       className="flex pr-11 pt-11 justify-end items-start w-screen h-screen fixed left-0 top-0 bg-black bg-opacity-5 backdrop-blur-[2px] z-[1000]"
+      style={{ display: open ? "flex" : "none" }}
       onClick={() => setOpen(false)}
     >
       <Notifications />

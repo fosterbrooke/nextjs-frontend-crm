@@ -8,8 +8,11 @@ import CollapseDown from "@/public/icons/collapse_down";
 import { Badge, IconButton, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Notifications } from "@mui/icons-material";
+import NotificationModal from "@/components/ui/dashboard/Modals/NotificationModal/NotificationModal";
+import { useState } from "react";
 
 const HeaderWithSearchBtn = () => {
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   return (
     <>
@@ -51,12 +54,13 @@ const HeaderWithSearchBtn = () => {
             Gabby
           </span>
           <CollapseDown color="#000" width={25} height={26} />
-          <IconButton>
+          <IconButton onClick={() => setOpen(true)}>
             <Badge color="error" variant="dot">
               <Notifications />
             </Badge>
           </IconButton>
         </div>
+        <NotificationModal name="" open={open} setOpen={setOpen} />
       </div>
     </>
   );

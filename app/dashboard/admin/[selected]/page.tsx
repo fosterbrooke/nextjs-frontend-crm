@@ -22,6 +22,7 @@ import Clientdetails from "@/components/ui/dashboard/pages/admin/clientsdetails/
 import Employdetails from "@/components/ui/dashboard/pages/admin/employdetails";
 import ProfileDetailPage from "@/components/ui/dashboard/pages/admin/application/components/ProfileDetailPage";
 import CaregiverProfilePage from "@/components/ui/dashboard/pages/admin/caregiver_profile";
+import Caregiverjobmeetingrequest from "@/components/ui/dashboard/pages/admin/caregiverjobmeetingrequest";
 
 interface sidebarItem {
   pathname: string;
@@ -112,6 +113,10 @@ const sidebarLinks: sidebarItem[] = [
   {
     pathname: "employdetails",
     component: <Employdetails />,
+  },
+  {
+    pathname: "caregiverjobmeetingrequest",
+    component: <Caregiverjobmeetingrequest />,
   },
   // {
   //   pathname: "service-overview",
