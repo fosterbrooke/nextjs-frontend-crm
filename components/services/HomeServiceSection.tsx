@@ -81,7 +81,7 @@ const HomeServiceSection = ({
             </PrimaryButton>
           </div>
         </div>
-        {align == "right" && !isLG ? (
+        {align === "right" && !isLG && (
           <Image
             src={photoUrl}
             alt="service_ad_photo"
@@ -89,8 +89,6 @@ const HomeServiceSection = ({
             height={454}
             className="float-right h-auto lg:mt-[50px] md:mt-[50px] sm:mt-[50px]"
           />
-        ) : (
-          <></>
         )}
       </div>
     </section>

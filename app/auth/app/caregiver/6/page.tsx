@@ -50,7 +50,7 @@ const Login = () => {
       <WithRightBG imgpathname="/images/registration_img_6.png">
         <LogoImg onClicked={() => router.push("/")} />
         <div className="flex ml-8 mt-[145px] fixed">
-          <BackBtn onClicked={() => router.push("/Care_Registration/5")} />
+          <BackBtn onClicked={() => router.push("/auth/app/caregiver/5")} />
         </div>
         <ProgressStatusBar completeness={5} hasBack={true} />
         <OptionalLbl />

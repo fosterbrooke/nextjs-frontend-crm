@@ -17,39 +17,16 @@ import { InputLabel } from "@mui/material";
 
 const Login = () => {
   const router = useRouter();
-  const [isYourself, setIsYourself] = useState<boolean>(true);
   const [role, setrole] = useState<string>("");
-  const [date, setDate] = useState<string>("");
-  const [gender, setGender] = useState<string>("");
-  const [relationship, setRelationship] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [mail, setMail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-
-  const [emergencyName, setEmergencyName] = useState<string>("");
-  const [emergencyAddress, setEmergencyAddress] = useState<string>("");
-  const [emergencyMail, setEmergencyMail] = useState<string>("");
-  const [emergencyPhone, setEmergencyPhone] = useState<string>("");
-  const [formIndex, setFormIndex] = useState<number>(1);
 
   const genderItems = ["Prefer not to say", "Male", "Female"];
-  const relationshipItems = [
-    "Son",
-    "Daughter",
-    "Wife",
-    "Brother",
-    "Family friend",
-    "Guardian",
-    "Manger",
-    "Others",
-  ];
 
   return (
     <>
       <WithRightBG imgpathname="/images/caregiver_registration4.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px]">
-          <BackBtn onClicked={() => router.push("/Care_Registration/3")} />
+        <div className="flex ml-8 mt-[145px] fixed">
+          <BackBtn onClicked={() => router.push("/auth/app/caregiver/3")} />
         </div>
         <ProgressStatusBar completeness={4} hasBack={true} />
         <OptionalLbl />

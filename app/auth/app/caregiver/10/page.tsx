@@ -86,7 +86,7 @@ const StartDateandDuration = () => {
       <WithRightBG imgpathname="/images/registration_img_10.png">
         <LogoImg onClicked={() => router.push("/")} />
         <div className="flex ml-8 mt-[145px] absolute">
-          <BackBtn onClicked={() => router.push("/Registration/9")} />
+          <BackBtn onClicked={() => router.push("/auth/app/caregiver/9")} />
         </div>
         <ProgressStatusBar completeness={10} hasBack={true} />
         <OptionalLbl />

@@ -9,11 +9,7 @@ import { Backdrop, Fade } from "@mui/material";
 
 const style = {};
 
-export default function AppFinishModal({
-  path
-} : {
-  path: string
-}) {
+export default function AppFinishModal({ path }: { path: string }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -68,7 +64,7 @@ export default function AppFinishModal({
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Account created successfully
             </Typography>
-            <div className="ml-12">
+            <div className="mt-2">
               <Image
                 alt="logo"
                 src={creation_success}
@@ -77,7 +73,7 @@ export default function AppFinishModal({
               />
             </div>
             <div
-              className="cursor-pointer font-arial text-[18px] border border-primary bg-white text-primary rounded-lg p-4 mt-16"
+              className="cursor-pointer font-arial text-[18px] border border-primary bg-white text-primary rounded-lg p-4 mt-8"
               onClick={() => {
                 router.push(path);
               }}

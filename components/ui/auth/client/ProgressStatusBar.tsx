@@ -15,9 +15,9 @@ const ProgressStatusBar = ({
             <div
               key={"progress_" + idx}
               className={`w-full mx-1  h-[6px] rounded-lg ${
-                idx == completeness-1
+                idx == completeness - 1
                   ? "bg-primaryDisabled"
-                  : idx < completeness-1
+                  : idx < completeness - 1
                   ? "bg-primary"
                   : "bg-borderGreyColor"
               }`}
