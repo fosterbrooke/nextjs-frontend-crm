@@ -1,6 +1,7 @@
 import React from "react";
 import { Profile2UsersIcon } from "@/components/ui/common/Icons";
 import { Button } from "@mui/material";
+import Link from "next/link";
 
 interface contactItem {
   type: string;
@@ -72,7 +73,9 @@ export default function ContractListItem(props: contactItem) {
           )}
 
           <Button variant="outlined" sx={{ textTransform: "none" }}>
-            View Contract
+            <Link href="/dashboard/client/caregiver_profile">
+              View Contract
+            </Link>
           </Button>
         </div>
       </div>

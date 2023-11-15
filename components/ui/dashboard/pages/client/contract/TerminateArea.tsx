@@ -275,13 +275,12 @@ export default function TerminateArea({
         </div>
       </div>
       <div className="my-12 flex justify-center">
-        <Button
-          variant="contained"
-          className="bg-[#DC0035] border-[#DC0035] hover:bg-[#DC0035] normal-case"
+        <span
+          className="bg-brightRedColor hover:bg-brightRedColor font-bold text-white flex items-center rounded-lg px-4 py-2 cursor-pointer"
           onClick={() => setModalOpen(true)}
         >
           Terminate Contract
-        </Button>
+        </span>
       </div>
     </>
   );

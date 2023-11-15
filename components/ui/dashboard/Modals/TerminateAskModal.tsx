@@ -32,8 +32,10 @@ export default function TerminateAskModal({
         <p className="font-bold mt-8 text-[18px]">
           Are you sure you want to Terminate contract?
         </p>
-        <Divider className="my-4" />
-        <div className="flex justify-center gap-4">
+        <div className="my-4">
+          <Divider />
+        </div>
+        <div className="flex justify-center gap-x-4">
           <span
             className="text-[#DC0035] border border-solid border-[#DC0035] hover:border-[#DC0035] normal-case rounded-lg px-4 py-2 cursor-pointer font-bold"
             onClick={() => setModalOpen(false)}
