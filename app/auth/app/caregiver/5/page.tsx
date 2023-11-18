@@ -115,15 +115,7 @@ const Login = () => {
                 start={item.start}
                 end={item.end}
                 status={item.id === selectedTimeTypeId ? true : false}
-                onClick={(e) => {
-                  if (
-                    e.type === "click" &&
-                    e.clientX !== 0 &&
-                    e.clientY !== 0
-                  ) {
-                    setSelectedTimeTypeId(item.id);
-                  }
-                }}
+                index={index}
               />
             ))}
           </div>

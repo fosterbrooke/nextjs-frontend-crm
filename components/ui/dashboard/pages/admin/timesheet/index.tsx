@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TimesheetUserCard from "./TimesheetUserCard";
 import TimesheetArea from "./TimesheetArea";
 
 const users = [
@@ -34,38 +33,23 @@ const users = [
 ];
 
 export default function TimesheetPage() {
-  const [curUser, setCurUser] = useState(-1);
-  const [name, setName] = useState("");
-  const [daterange, setDateRange] = useState("");
-  const handleCardClick = (idx: number, name: string, dateRange: string) => {
-    setName(name);
-    setDateRange(dateRange);
-    setCurUser(idx);
-  };
+  const [open, showList] = useState(false);
   return (
-    <div className="w-full h-full flex bg-white">
-      <div
-        className="w-[375px] overflow-hidden"
-        style={{
-          borderRight: "1px solid var(--grey-text, #828282)",
-        }}
-      >
-        <div className="h-full overflow-y-auto">
-          {users.map((user, idx) => (
-            <TimesheetUserCard
-              {...user}
-              selected={idx === curUser}
-              key={`messages-usercard-${idx}`}
-              onCardClick={() =>
-                handleCardClick(idx, user.name, user.dateRange)
-              }
-            />
-          ))}
+    <div className="w-full h-full flex p-4">
+      {!open && (
+        <div
+          className="bg-white w-full h-[100px] px-4 py-6 flex justify-between text-[20px] font-bold cursor-pointer"
+          style={{
+            border: "0.5px solid var(--Grey-border, #C4C4C4)",
+            background: "var(--mainwhite, #FFF)",
+          }}
+          onClick={() => showList(true)}
+        >
+          <span className="flex items-center">Pending Timesheet Approval</span>
+          <span className="flex items-center">20</span>
         </div>
-      </div>
-      <div className="w-[calc(100%-375px)] relative">
-        {curUser > -1 && <TimesheetArea name={name} daterange={daterange} />}
-      </div>
+      )}
+      {open && <TimesheetArea />}
     </div>
   );
 }

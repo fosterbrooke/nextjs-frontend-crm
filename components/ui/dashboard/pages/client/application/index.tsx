@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import RecommendedClient from "../../../RecommendedClient";
-import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 
 const recommendedClientsData = [
@@ -8,12 +7,18 @@ const recommendedClientsData = [
     isBestMatch: true,
     imagePath: "public/avatars/sample.png",
     name: "Jimmy Dunta",
-    age: 76,
+    age: 32,
     address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
+    distance: 12,
     hireNumber: 45,
     offerMin: 12,
     offerMax: 35,
+    experience: 8,
+    earned: 70,
+    goodNumber: 90,
+    badNumber: 3,
+    description:
+      "I have a strong blah blah blah, basically a bio describing caregiver self but just for guidiance i will just leave a bunch of rubbish text here so i see what it’d look.",
     workItems: [
       "Housekeeping",
       "Meal Preparation",
@@ -24,14 +29,21 @@ const recommendedClientsData = [
     matchPercentage: 99.8,
   },
   {
+    isBestMatch: false,
     imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
+    name: "Gabby Alao",
+    age: 43,
     address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
+    distance: 12,
     hireNumber: 45,
     offerMin: 12,
     offerMax: 35,
+    experience: 8,
+    earned: 60,
+    goodNumber: 90,
+    badNumber: 3,
+    description:
+      "I have a strong blah blah blah, basically a bio describing caregiver self but just for guidiance i will just leave a bunch of rubbish text here so i see what it’d look.",
     workItems: [
       "Housekeeping",
       "Meal Preparation",
@@ -39,17 +51,24 @@ const recommendedClientsData = [
       "24/7 Care",
       "Resipe Care",
     ],
-    matchPercentage: 99.8,
+    matchPercentage: 90.2,
   },
   {
+    isBestMatch: false,
     imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
+    name: "Gabby Alao",
+    age: 43,
     address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
+    distance: 12,
     hireNumber: 45,
     offerMin: 12,
     offerMax: 35,
+    experience: 8,
+    earned: 60,
+    goodNumber: 90,
+    badNumber: 3,
+    description:
+      "I have a strong blah blah blah, basically a bio describing caregiver self but just for guidiance i will just leave a bunch of rubbish text here so i see what it’d look.",
     workItems: [
       "Housekeeping",
       "Meal Preparation",
@@ -57,95 +76,9 @@ const recommendedClientsData = [
       "24/7 Care",
       "Resipe Care",
     ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
-  },
-  {
-    imagePath: "public/avatars/sample.png",
-    name: "Jimmy Dunta",
-    age: 76,
-    address: "Maryland lane, Arizona, USA.",
-    distance: 1.4,
-    hireNumber: 45,
-    offerMin: 12,
-    offerMax: 35,
-    workItems: [
-      "Housekeeping",
-      "Meal Preparation",
-      "Meal Preparation",
-      "24/7 Care",
-      "Resipe Care",
-    ],
-    matchPercentage: 99.8,
+    matchPercentage: 90.2,
   },
 ];
-
-const raceItems = [
-  "White & European American",
-  "Hispanic & Latino American",
-  "African American",
-  "Asian American",
-  "Native American & Alaska Natives",
-  "Native Hawaiians & Pacific Islanders",
-  "Middle Easterners & North African",
-  "Asian American",
-  "Others",
-];
-
-const genderItems = ["Any", "Male", "Female", "Prefer not to say"];
 
 export default function RecommendationsPage() {
   const [filterMenuState, setFilterMenuState] = useState<boolean>(false);

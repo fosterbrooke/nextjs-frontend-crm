@@ -52,7 +52,7 @@ const Login = () => {
         <div className="flex ml-8 mt-[145px] fixed">
           <BackBtn onClicked={() => router.push("/auth/app/caregiver/5")} />
         </div>
-        <ProgressStatusBar completeness={5} hasBack={true} />
+        <ProgressStatusBar completeness={6} hasBack={true} />
         <OptionalLbl />
         <div className="px-8 mx-auto mt-8 sm:w-full">
           <div className="flex flex-col items-center">
@@ -75,15 +75,7 @@ const Login = () => {
                     key={`communication_method_selection_${index}`}
                     title={item.title}
                     status={item.id === selectedComMethodID ? true : false}
-                    onClick={(e) => {
-                      if (
-                        e.type === "click" &&
-                        e.clientX !== 0 &&
-                        e.clientY !== 0
-                      ) {
-                        setComMethodId(item.id);
-                      }
-                    }}
+                    index={index}
                   />
                 ))}
                 <div className="mt-5 flex justify-between items-center border border-distlineColor rounded-md h-10 p-6 cursor-pointer">

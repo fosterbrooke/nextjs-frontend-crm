@@ -100,7 +100,7 @@ const Login = () => {
             </div>
             <div className="col start-3 col-span-1">
               <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                Diploma/Degree/Certificate Obtained
+                Diploma, Degree & Certificate
               </InputLabel>
               <InputField
                 type="text"

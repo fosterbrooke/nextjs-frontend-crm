@@ -3,7 +3,7 @@ import PaymentMethod from "./components/PaymentMethod";
 import PaymentHistory from "./components/PaymentHistory";
 
 const PaymentPage = () => {
-  const [tabNumber, setTabNumber] = useState<number>(1);
+  const [tabNumber, setTabNumber] = useState<number>(0);
 
   return (
     <div className="w-full h-full flex flex-col items-center">

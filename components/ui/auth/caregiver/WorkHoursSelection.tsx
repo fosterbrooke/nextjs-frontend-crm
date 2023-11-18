@@ -1,26 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 const WorkHoursSelection = ({
   timetype,
   start,
   end,
-  status,
-  onClick,
+  index,
 }: {
   timetype: string;
   start: number;
   end: number;
   status: boolean;
-  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  index: number;
 }) => {
   const getTimeString = (time: number) => {
     const timeVal = time > 12 ? time - 12 : time;
     const suffix = time > 12 ? "PM" : "AM";
     return `${timeVal}:00 ${suffix}`;
   };
+
+  const [status, setStatus] = useState(false);
 
   return (
     <div
@@ -29,7 +30,7 @@ const WorkHoursSelection = ({
         border: "1px solid var(--Grey-border, #C4C4C4)",
       }}
       onClick={(e) => {
-        onClick(e);
+        setStatus(!status);
       }}
     >
       <div className="w-full">
@@ -37,11 +38,8 @@ const WorkHoursSelection = ({
           <input
             type="radio"
             className="accent-[#CB5A6F] w-4 h-4 text-textdarkColor bg-gray-100 border-gray-300 "
-            name="planradio"
+            name={`planradio${index}`}
             checked={status}
-            onChange={(val) => {
-              console.log(val);
-            }}
           />
         </div>
         <div className="flex flex-col mx-2">

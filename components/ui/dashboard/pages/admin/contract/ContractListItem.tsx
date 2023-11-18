@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Profile2UsersIcon } from "@/components/ui/common/Icons";
 import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface contactItem {
   type: string;
@@ -21,6 +23,8 @@ export default function ContractListItem(props: contactItem) {
         return "#828282";
     }
   };
+
+  const router = useRouter();
 
   return (
     <>
@@ -63,17 +67,16 @@ export default function ContractListItem(props: contactItem) {
         </div>
         <div className="flex justify-end gap-4 py-2 w-[350px]">
           {props.status === "Active" && (
-            <Button
-              variant="contained"
-              className="bg-[#DC0035] hover:bg-[#DC0035] rounded-lg normal-case"
+            <span
+              className="bg-brightRedColor hover:bg-brightRedColor font-bold text-white flex items-center rounded-lg px-4 py-2 cursor-pointer"
               onClick={() => props.setModalOpen(true)}
             >
               Terminate Contract
-            </Button>
+            </span>
           )}
 
-          <Button variant="outlined" className="rounded-lg normal-case">
-            View Contract
+          <Button variant="outlined" sx={{ textTransform: "none" }}>
+            <Link href="/dashboard/admin/caregiver_profile">View Contract</Link>
           </Button>
         </div>
       </div>

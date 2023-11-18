@@ -1,225 +1,103 @@
-import { MoneysIcon, WalletIcon } from "@/components/ui/common/Icons";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import CloseIcon from "@mui/icons-material/Close";
-import { Avatar, IconButton, InputBase } from "@mui/material";
-import { TimeIcon } from "@mui/x-date-pickers";
 import React, { useState } from "react";
-import TimesheetSubmitButton from "./TimesheetSubmitButton";
-import ApproveDlg from "./approveDlg";
+import { PrimaryButton } from "@/components/ui/common/PrimaryButton";
+import Image from "next/image";
+import sm_avatar from "@/public/avatars/sample.png";
+import SeasonedLogoModal from "../../../Modals/SeasonedLogoModal";
 
-const fakerData = {
-  dateInfo: [
-    {
-      day: "Mon",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-    {
-      day: "Mon",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-    {
-      day: "Mon",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-    {
-      day: "Tue",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-    {
-      day: "Wed",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-    {
-      day: "Thur",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-    {
-      day: "Fri",
-      date: "23/09/23",
-      startHour: "10:30 AM",
-      endHour: "03:02 PM",
-      totalHour: "07:32:00",
-      totalAmount: "$70",
-    },
-  ],
-};
-
-const InfoComp = ({
-  description,
-  info,
-  icon,
-  color,
-}: {
-  description: string;
-  info: string;
-  icon: any;
-  color: string;
-}) => {
-  return (
-    <div className="flex items-center">
-      <div className={`p-2 rounded-full`} style={{ backgroundColor: color }}>
-        {icon}
-      </div>
-      <div className="ml-4 flex flex-col">
-        <span className="text-[#828282]">{description}</span>
-        <span className="text-[#282828] font-bold">{info}</span>
-      </div>
-    </div>
-  );
-};
-
-const SelectTimeComp = ({ hour, mode }: { hour: number; mode: string }) => {
-  const getFormatedStr = (num: number) => {
-    const val = num > 12 ? num - 12 : num;
-    const suffix = num > 12 ? "PM" : "AM";
-    return `${val.toString().length < 2 ? `0${val}` : val}:30 ${suffix}`;
-  };
-
-  return (
-    <div className="px-8 py-1 border border-solid border-[#828282]">
-      <div className="text-[#828282] text-[14px]">{`${mode} Hour`}</div>
-      <div className="text-[#282828] font-bold">{getFormatedStr(hour)}</div>
-    </div>
-  );
-};
-
-export default function TimesheetArea({
-  name,
-  daterange,
-}: {
+interface AdminPendingTimeSheetItem {
   name: string;
-  daterange: string;
-}) {
-  const [modalOpen, setModalOpen] = useState(false);
-  const handleApproveclicked = () => {
-    setModalOpen(true);
-  };
-  const handleSetmodal = () => {
-    setModalOpen(false);
-  };
-  const imagePath = "/images/profile_card_1.png";
+  date: string;
+  workHours: number;
+  client: string;
+  comments: string;
+}
+
+const fakeData: AdminPendingTimeSheetItem[] = [
+  {
+    name: "Kimberly Asha",
+    date: "23/09/23",
+    workHours: 8,
+    client: "Gabby Alao",
+    comments: "He came in 3 hours",
+  },
+  {
+    name: "Frank Sergio",
+    date: "23/09/23",
+    workHours: 8,
+    client: "Gabby Alao",
+    comments: "No comment",
+  },
+  {
+    name: "Frank Sergio",
+    date: "23/09/23",
+    workHours: 8,
+    client: "Gabby Alao",
+    comments: "He came in 3 hours late",
+  },
+];
+
+const CaregiverCard = (props: any) => {
+  return (
+    <div className="flex flex-col px-8 py-4 gap-y-2 bg-white">
+      <div>
+        <span className="text-[20px] font-bold">Caregiver: </span>
+        <span className="font-bold">{props.name}</span>
+      </div>
+      <span>Date: {props.date}</span>
+      <span>Hours worked: {props.workHours}</span>
+      <span>Client: {props.client}</span>
+      <span>Comments: {props.comments}</span>
+      <div className="mt-4 flex justify-between">
+        <span
+          className="px-12 py-2 rounded-md text-white cursor-pointer bg-success"
+          onClick={props.handleApprove}
+        >
+          Approve
+        </span>
+        <span className="px-12 py-2 rounded-md text-white cursor-pointer bg-brightRedColor">
+          Reject
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default function TimesheetArea() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <div>
-      <div className="px-4 py-2 flex justify-between border border-solid border-[#C4C4C4]">
-        <div className="flex items-center font-bold">
-          <span>{daterange}</span>
-        </div>
-        <div className="ml-2 flex items-center">
-          <Avatar
-            alt="Remy Sharp"
-            src="/public/avatars/sample.png"
-            sx={{ width: 48, height: 48 }}
-          />
-          <div className="ml-2 font-bold">{name}</div>
-        </div>
-        <div className="ml-2 flex items-center font-bold text-[#CB5A6F]">
-          <span>{"Rate/hr: $10/hr"}</span>
-        </div>
-        <div className="m-4 flex">
-          <button
-            className="px-8 py-2 rounded-md bg-primary"
-            style={{ color: "white" }}
-            onClick={handleApproveclicked}
-          >
-            Approve
-          </button>
-        </div>
-      </div>
-      <div className="p-8">
-        <div className="flex justify-between">
-          <InfoComp
-            description="Hours worked this week:"
-            info="40 hours 32 minutes"
-            icon={<TimeIcon className={`text-white text-3xl`} />}
-            color="#C75167"
-          />
-          <InfoComp
-            description="Payment this week:"
-            info="$430.00"
-            icon={<WalletIcon className={`text-white text-3xl`} />}
-            color="#4285F4"
-          />
-          <InfoComp
-            description="Total payment so far:"
-            info="$4290.00"
-            icon={<MoneysIcon className={`text-white text-3xl`} />}
-            color="#30A64A"
-          />
-        </div>
-      </div>
-      <div className="mx-12 my-4">
-        <table className="w-full h-10/12 border rounded-tl-xl rounded-tr-xl border-solid 1px border-[#282828] text-center">
-          <thead>
-            <tr
-              className="text font-[#282828] font-bold"
-              style={{ fontSize: "20px" }}
-            >
-              <th className="border border-solid 1px border-[#828282] rounded-md p-6">
-                Date
-              </th>
-              <th className="border border-solid 1px border-[#828282] p-6">
-                Start Hour
-              </th>
-              <th className="border border-solid 1px border-[#828282] p-6">
-                End Hour
-              </th>
-              <th className="border border-solid 1px border-[#828282] rounded-md">
-                Total Hour
-              </th>
-              <th className="p-6">Total Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fakerData.dateInfo.map((item, idx) => (
-              <tr key={`timesheetarea-tr-${idx}`}>
-                <td className="font-bold border border-solid 1px border-[#828282] text-[16px] p-4">{`${item.day},${item.date}`}</td>
-                <td className="border border-solid 1px border-[#828282] text-[14px] p-4">
-                  {item.startHour}
-                </td>
-                <td className="border border-solid 1px border-[#828282] text-[14px] p-4">
-                  {item.endHour}
-                </td>
-                <td className="border border-solid 1px border-[#828282] text-[14px] p-4">
-                  {item.totalHour}
-                </td>
-                <td className="border border-solid 1px border-[#828282] text-[14px] p-4">
-                  {item.totalAmount}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <ApproveDlg
-        open={modalOpen}
-        setModalOpen={setModalOpen}
-        imagePath={imagePath}
-      />
+    <div className="w-full flex flex-col px-4 gap-y-2">
+      {fakeData.map((item, idx) => (
+        <CaregiverCard
+          key={`admin-timesheet-pending-list`}
+          {...item}
+          handleApprove={() => setOpen(true)}
+        />
+      ))}
+      <SeasonedLogoModal
+        open={open}
+        onClose={() => setOpen(false)}
+        content={
+          <div className="flex flex-col items-center gap-y-2 px-24">
+            <Image
+              alt="logo"
+              src={sm_avatar}
+              width={60}
+              className="rounded-full m-4"
+              style={{ height: "auto" }}
+            />
+            <span className="font-bold text-primary text-[20px] text-center">
+              Kimberly Asha
+            </span>
+            <span className="font-bold text-textdarkColor text-center">
+              Timesheet Approved
+            </span>
+          </div>
+        }
+        footer={
+          <PrimaryButton handleClick={() => setOpen(false)}>Ok</PrimaryButton>
+        }
+      ></SeasonedLogoModal>
     </div>
   );
 }
