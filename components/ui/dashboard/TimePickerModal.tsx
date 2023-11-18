@@ -9,15 +9,21 @@ export default function TimePickerModal({
   open,
   setOpen,
   setValue,
+  format,
 }: {
   title: string;
   open: boolean;
   setOpen: any;
   setValue: any;
+  format?: boolean;
 }) {
   const handleTimeSelected = (newTime: any) => {
-    const dateStr = `${newTime.$H} / ${newTime.$m} / ${newTime.$H >=12 ? 'PM' : 'AM'}`;
-    setValue(dateStr);
+    const dateStr = `${newTime.$H} / ${newTime.$m} / ${
+      newTime.$H >= 12 ? "PM" : "AM"
+    }`;
+    if (format)
+      setValue(`${newTime.$H}:${newTime.$m} ${newTime.$H >= 12 ? "PM" : "AM"}`);
+    else setValue(dateStr);
   };
 
   return (
@@ -41,8 +47,7 @@ export default function TimePickerModal({
           </div>
         </div>
         <div>
-          <TimePickerCom title=""
-                        handleTimeSelected={handleTimeSelected} />
+          <TimePickerCom title="" handleTimeSelected={handleTimeSelected} />
         </div>
         <div>
           <div

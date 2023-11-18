@@ -3,8 +3,9 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Avatar, IconButton, InputBase } from "@mui/material";
 import { TimeIcon } from "@mui/x-date-pickers";
-import React from "react";
+import React, { useState } from "react";
 import TimesheetSubmitButton from "./TimesheetSubmitButton";
+import TimePickerModal from "../../../TimePickerModal";
 
 const fakerData = {
   dateInfo: [
@@ -70,11 +71,26 @@ const SelectTimeComp = ({ hour, mode }: { hour: number; mode: string }) => {
     return `${val.toString().length < 2 ? `0${val}` : val}:30 ${suffix}`;
   };
 
+  const [open, setOpen] = useState(false);
+  const [timeStr, setTimeStr] = useState("Select Time");
+
   return (
-    <div className="px-8 py-1 border border-solid border-[#828282]">
-      <div className="text-[#828282] text-[14px]">{`${mode} Hour`}</div>
-      <div className="text-[#282828] font-bold">{getFormatedStr(hour)}</div>
-    </div>
+    <>
+      <div
+        className="flex-1 px-8 py-1 border border-solid border-[#828282]"
+        onClick={() => setOpen(true)}
+      >
+        <div className="text-[#828282] text-[14px]">{`${mode} Hour`}</div>
+        <div className="text-[#282828] font-bold">{timeStr}</div>
+      </div>
+      <TimePickerModal
+        title={"Select Time"}
+        open={open}
+        setOpen={setOpen}
+        setValue={setTimeStr}
+        format={true}
+      />
+    </>
   );
 };
 
@@ -157,7 +173,7 @@ export default function TimesheetArea({
               </div>
             ))}
           </div>
-          <div className="mt-4 flex justify-around">
+          <div className="mt-4 flex gap-x-2 justify-around">
             {["", "", "", "", "", "", ""].map((item, idx) => (
               <SelectTimeComp
                 key={`timesheet-area-start-hour-${idx}`}
@@ -166,7 +182,7 @@ export default function TimesheetArea({
               />
             ))}
           </div>
-          <div className="mt-2 flex justify-around">
+          <div className="mt-2 flex gap-x-2 justify-around">
             {["", "", "", "", "", "", ""].map((item, idx) => (
               <SelectTimeComp
                 key={`timesheet-area-end-hour-${idx}`}
