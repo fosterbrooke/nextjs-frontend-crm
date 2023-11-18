@@ -160,7 +160,7 @@ export default function Careplandlg({
             Select from the services below to create a care plan
           </div>
 
-          <div className="py-4 grid grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2 mx-9">
+          <div className="px-4 py-4 grid grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2 mx-9 overflow-auto">
             {carePlanData.map((item, index) => (
               <CarePlanBox
                 key={`careplan_box_${index}`}
@@ -184,7 +184,7 @@ export default function Careplandlg({
 
           <div className="mx-40 flex justify-center">
             <button
-              className="text-center px-6 py-4 rounded-lg   "
+              className="text-center px-6 py-2 rounded-lg"
               style={{ backgroundColor: "#CB5A6F", color: "white" }}
               onClick={handleClick}
             >
