@@ -159,12 +159,13 @@ const Login = () => {
             title={item.title}
             description={item.description}
             thumbnail={item.thumbnail}
-            status={item.id === selectedCarePlanId ? true : false}
-            onClick={(e) => {
-              if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
-                setSelectedCarePlanId(item.id);
-              }
-            }}
+            index={index}
+            // status={item.id === selectedCarePlanId ? true : false}
+            // onClick={(e) => {
+            //   if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+            //     setSelectedCarePlanId(item.id);
+            //   }
+            // }}
           />
         ))}
       </div>

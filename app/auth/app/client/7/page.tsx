@@ -227,8 +227,8 @@ const SelectOption = () => {
                   <ComMethodSel
                     key={`com_method_sel_${index}`}
                     title={item.title}
-                    status={item.id === selectedComMethodID ? true : false}
-                    onClick={(e) => {
+                    statusProp={item.id === selectedComMethodID ? true : false}
+                    onClick={(e: any) => {
                       if (
                         e.type === "click" &&
                         e.clientX !== 0 &&

@@ -82,16 +82,7 @@ const Login = () => {
                   <ComMethodSel
                     key={`communication_method_selection_${index}`}
                     title={item.title}
-                    status={item.id === selectedComMethodID ? true : false}
-                    onClick={(e) => {
-                      if (
-                        e.type === "click" &&
-                        e.clientX !== 0 &&
-                        e.clientY !== 0
-                      ) {
-                        setComMethodId(item.id);
-                      }
-                    }}
+                    index={index}
                   />
                 ))}
                 <div className="mt-5 flex justify-between items-center border border-distlineColor rounded-md h-10 p-6 cursor-pointer">

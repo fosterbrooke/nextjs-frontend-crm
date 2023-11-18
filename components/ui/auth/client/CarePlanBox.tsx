@@ -1,25 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 const CarePlanBox = ({
   title,
   description,
   thumbnail,
-  status,
-  onClick,
+  index,
 }: {
   title: string;
   description: string;
   thumbnail: string;
-  status: boolean;
-  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  index: number;
 }) => {
+  const [status, setStatus] = useState(false);
   return (
     <div
       className="flex justify-between items-center border border-textdarkColor rounded-[8px] p-[8px] cursor-pointer"
-      onClick={(e) => {
-        onClick(e);
+      onClick={() => {
+        setStatus(!status);
       }}
     >
       <div
@@ -45,11 +44,10 @@ const CarePlanBox = ({
         <input
           type="radio"
           className="accent-[#CB5A6F] w-4 h-4 text-textdarkColor bg-gray-100 border-gray-300 "
-          name="planradio"
+          name={`plancare${index}`}
           checked={status}
-          onChange={(val) => {
-            console.log(val);
-          }}
+          onClick={() => setStatus(!status)}
+          onChange={() => {}}
         />
       </div>
     </div>

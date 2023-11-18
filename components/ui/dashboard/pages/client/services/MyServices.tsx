@@ -2,61 +2,6 @@ import CarePlanBox from "@/components/ui/auth/client/CarePlanBox";
 import React, { useState } from "react";
 import ServiceCatelogConfirmModal from "../../../Modals/ServiceCatelogConfirmModal";
 
-const ServiceFigure = ({
-  title,
-  bgColor,
-  fgColor,
-}: {
-  title: string;
-  bgColor: string;
-  fgColor: string;
-}) => {
-  return (
-    <div
-      className={`flex mx-4 justify-center items-center w-[128px] h-[128px] rounded-full cursor-pointer`}
-      style={{
-        backgroundColor: `${bgColor}`,
-        boxShadow: "4px 8px 4px 0px rgba(0, 0, 0, 0.25)",
-      }}
-    >
-      <span className={`font-bold text-center`} style={{ color: `${fgColor}` }}>
-        {title}
-      </span>
-    </div>
-  );
-};
-
-const Services1 = [
-  {
-    title: "Respite\nCare",
-    bgColor: "#FFF2F5",
-    fgColor: "#CB5A6F",
-  },
-  {
-    title: "Monitoring\nHealth\nConditions",
-    bgColor: "#4255F41A",
-    fgColor: "#4285F4",
-  },
-  {
-    title: "Medication\nManagement",
-    bgColor: "#30A64A1A",
-    fgColor: "#30A64A",
-  },
-];
-
-const Services2 = [
-  {
-    title: "Housekeeping",
-    bgColor: "#6631FC1A",
-    fgColor: "#6631FC",
-  },
-  {
-    title: "Meal\nPreparation",
-    bgColor: "#F82CCB1A",
-    fgColor: "#F82CCB",
-  },
-];
-
 type carePlanDataType = {
   id: number;
   thumbnail: string;
@@ -192,12 +137,13 @@ export default function MyServices() {
             title={item.title}
             description={item.description}
             thumbnail={item.thumbnail}
-            status={item.id === selectedCarePlanId ? true : false}
-            onClick={(e) => {
-              if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
-                setSelectedCarePlanId(item.id);
-              }
-            }}
+            index={index}
+            // status={item.id === selectedCarePlanId ? true : false}
+            // onClick={(e) => {
+            //   if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+            //     setSelectedCarePlanId(item.id);
+            //   }
+            // }}
           />
         ))}
       </div>

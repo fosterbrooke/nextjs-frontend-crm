@@ -74,7 +74,6 @@ const Login = () => {
                   <ComMethodSel
                     key={`communication_method_selection_${index}`}
                     title={item.title}
-                    status={item.id === selectedComMethodID ? true : false}
                     index={index}
                   />
                 ))}
