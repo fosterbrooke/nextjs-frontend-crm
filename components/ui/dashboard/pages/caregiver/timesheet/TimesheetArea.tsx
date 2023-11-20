@@ -1,44 +1,61 @@
 import { MoneysIcon, WalletIcon } from "@/components/ui/common/Icons";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { ArrowBack, ArrowForward, PropaneSharp } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Avatar, IconButton, InputBase } from "@mui/material";
 import { TimeIcon } from "@mui/x-date-pickers";
 import React, { useState } from "react";
-import TimesheetSubmitButton from "./TimesheetSubmitButton";
-import TimePickerModal from "../../../TimePickerModal";
 
-const fakerData = {
-  dateInfo: [
-    {
-      day: "Mon",
-      date: "23/09/23",
-    },
-    {
-      day: "Tue",
-      date: "24/09/23",
-    },
-    {
-      day: "Wed",
-      date: "25/09/23",
-    },
-    {
-      day: "Thur",
-      date: "26/09/23",
-    },
-    {
-      day: "Fri",
-      date: "27/09/23",
-    },
-    {
-      day: "Sat",
-      date: "28/09/23",
-    },
-    {
-      day: "Sun",
-      date: "29/09/23",
-    },
-  ],
-};
+const fakeData = [
+  {
+    date: "Mon 23/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "",
+    status: "Approved",
+  },
+  {
+    date: "Mon 24/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "He came 3hrs Late",
+    status: "Pending",
+  },
+  {
+    date: "Mon 25/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "",
+    status: "Pending",
+  },
+  {
+    date: "Mon 26/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "",
+    status: "Pending",
+  },
+  {
+    date: "Mon 27/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "",
+    status: "Pending",
+  },
+  {
+    date: "Mon 28/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "",
+    status: "Pending",
+  },
+  {
+    date: "Mon 29/09/23",
+    timeIn: "12:30",
+    timeOut: "18:30",
+    comment: "",
+    status: "Pending",
+  },
+];
 
 const InfoComp = ({
   description,
@@ -64,33 +81,40 @@ const InfoComp = ({
   );
 };
 
-const SelectTimeComp = ({ hour, mode }: { hour: number; mode: string }) => {
-  const getFormatedStr = (num: number) => {
-    const val = num > 12 ? num - 12 : num;
-    const suffix = num > 12 ? "PM" : "AM";
-    return `${val.toString().length < 2 ? `0${val}` : val}:30 ${suffix}`;
-  };
-
-  const [open, setOpen] = useState(false);
-  const [timeStr, setTimeStr] = useState("Select Time");
-
+const TimesheetDateItem = (props: any) => {
   return (
-    <>
-      <div
-        className="flex-1 px-8 py-1 border border-solid border-[#828282]"
-        onClick={() => setOpen(true)}
-      >
-        <div className="text-[#828282] text-[14px]">{`${mode} Hour`}</div>
-        <div className="text-[#282828] font-bold">{timeStr}</div>
+    <div className="w-full flex justify-around items-center py-2 gap-x-8">
+      <div className="flex items-center flex-2">
+        <span className="text-[20px] text-textdarkColor font-bold">
+          {props.date}
+        </span>
       </div>
-      <TimePickerModal
-        title={"Select Time"}
-        open={open}
-        setOpen={setOpen}
-        setValue={setTimeStr}
-        format={true}
-      />
-    </>
+      <div className="flex gap-x-2 flex-6 text-distlineColor">
+        <div className="flex flex-1 flex-col border border-solid border-distlineColor bg-white px-4 py-2 gap-y-1">
+          <span>Time In</span>
+          <span className="font-bold text-[18px]">{props.timeIn}</span>
+        </div>
+        <div className="flex flex-1 flex-col border border-solid border-distlineColor bg-white px-4 py-2 gap-y-1">
+          <span>Time Out</span>
+          <span className="font-bold text-[18px]">{props.timeOut}</span>
+        </div>
+        <div className="flex flex-3 flex-col border border-solid border-distlineColor bg-white px-4 py-2 gap-y-1">
+          <span>Client Comment</span>
+          <span className="font-bold text-[18px]">
+            {props.comment === "" ? "No comment" : props.comment}
+          </span>
+        </div>
+      </div>
+      <div className="flex items-center flex-3">
+        {props.status === "Approved" ? (
+          <span className="font-bold text-[18px] text-success">Approved</span>
+        ) : (
+          <span className="font-bold text-[18px] text-[#EDBB2A]">
+            Pending Approval
+          </span>
+        )}
+      </div>
+    </div>
   );
 };
 
@@ -102,7 +126,7 @@ export default function TimesheetArea({
   daterange: string;
 }) {
   return (
-    <div>
+    <div className="h-full flex flex-col">
       <div className="px-4 py-2 flex justify-between border border-solid border-[#C4C4C4]">
         <div className="flex items-center font-bold">
           <span>{daterange}</span>
@@ -140,8 +164,8 @@ export default function TimesheetArea({
           </div>
         </div>
       </div>
-      <div className="p-8">
-        <div className="flex justify-between">
+      <div className="flex flex-col flex-auto py-4 bg-blurColor overflow-auto">
+        <div className="px-8 flex justify-between">
           <InfoComp
             description="Hours worked this week:"
             info="40 hours 32 minutes"
@@ -161,44 +185,10 @@ export default function TimesheetArea({
             color="#30A64A"
           />
         </div>
-        <div className="mt-4 flex flex-col">
-          <div className="py-2 flex justify-around bg-[#F5F5F5]">
-            {fakerData.dateInfo.map((item, idx) => (
-              <div
-                key={`timesheet-area-datainfo-${idx}`}
-                className="flex flex-col text-[#828282]"
-              >
-                <span className="text-center">{item.day}</span>
-                <span>{item.date}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 flex gap-x-2 justify-around">
-            {["", "", "", "", "", "", ""].map((item, idx) => (
-              <SelectTimeComp
-                key={`timesheet-area-start-hour-${idx}`}
-                hour={10}
-                mode="Start"
-              />
-            ))}
-          </div>
-          <div className="mt-2 flex gap-x-2 justify-around">
-            {["", "", "", "", "", "", ""].map((item, idx) => (
-              <SelectTimeComp
-                key={`timesheet-area-end-hour-${idx}`}
-                hour={18}
-                mode="End"
-              />
-            ))}
-          </div>
-        </div>
-        <div className="mt-4 flex">
-          <div className="text-[#CB5A6F]">
-            Total Hour: <b>40:30</b>
-          </div>
-          <div className="ml-auto">
-            <TimesheetSubmitButton statusProp="initial" />
-          </div>
+        <div className="flex-auto px-8 py-4 mt-4 flex flex-col bg-white overflow-auto">
+          {fakeData.map((item, idx) => (
+            <TimesheetDateItem key={`timesheetdateitem-${idx}`} {...item} />
+          ))}
         </div>
       </div>
     </div>

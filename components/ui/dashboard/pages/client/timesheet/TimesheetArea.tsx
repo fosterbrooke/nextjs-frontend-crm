@@ -108,7 +108,7 @@ export default function TimesheetArea({
           />
           <div className="ml-2 font-bold">{name}</div>
         </div>
-        <div className="ml-2 flex items-center font-bold text-[#CB5A6F]">
+        <div className="ml-2 flex items-center font-bold text-primary">
           <span>{"Rate/hr: $10/hr"}</span>
         </div>
         <div className="m-4 flex">
