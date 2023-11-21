@@ -31,7 +31,7 @@ const ServicesBanner = () => {
             router.push("/auth/signup");
           }}
         >
-          Hire a Caregiver
+          Apply For Care
         </PrimaryButton>
       </div>
     </div>

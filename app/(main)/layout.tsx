@@ -85,12 +85,6 @@ export default function RootLayout({
             >
               Apply as a caregiver
             </button>
-            {/* <PrimaryButton
-              href="/auth/app/client/1"
-              className="px-16 py-2 text-[20px]"
-            >
-              Hire a Caregiver
-            </PrimaryButton> */}
             <button
               className={`bg-transparent text-primary hover:text-white hover:bg-primary text-bigPrimaryButtonTextSize px-8 py-4 mx-4 rounded-lg`}
               onClick={() => {
