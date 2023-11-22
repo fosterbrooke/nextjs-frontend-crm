@@ -50,7 +50,7 @@ const menuItems: MenuItem[] = [
     children: [],
   },
   {
-    name: "Employees",
+    name: "Caregivers",
     path: "/employees",
     icon: EmployeesIcon,
     role: ["admin"],
@@ -176,7 +176,7 @@ const theme = createTheme({
   },
 });
 
-import {SetCrumbContext} from "./Layout";
+import { SetCrumbContext } from "./Layout";
 
 const DashboardSideBar = () => {
   const router = useRouter();
