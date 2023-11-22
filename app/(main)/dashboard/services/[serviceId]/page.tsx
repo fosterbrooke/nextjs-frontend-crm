@@ -40,7 +40,9 @@ const ServiceDetail = async ({ params }: { params: { serviceId: number } }) => {
         <div className="flex justify-center">
           <Image
             alt="aboutus"
-            src={curService.photoUrl}
+            src={
+              curService.photoUrl ? curService.photoUrl : "/images/aboutus.png"
+            }
             className="mt-[50px]"
             width="478"
             height="488"
