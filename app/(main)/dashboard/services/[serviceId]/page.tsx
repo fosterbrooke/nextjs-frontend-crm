@@ -8,6 +8,7 @@ const getContent = async (serviceId: number): Promise<Service> => {
     .from("services")
     .select("*")
     .eq("id", serviceId);
+  console.log(data);
   if (error) {
     console.log(error);
     return {
@@ -36,13 +37,15 @@ const ServiceDetail = async ({ params }: { params: { serviceId: number } }) => {
       </p>
       <div className="border border-solid border-[#D9D9D9] mt-[90px] lg:mt-[50px] md:mt-[50px] sm:mt-[50px] mx-[5px]" />
       <div className="mt-[25px]">
-        <Image
-          alt="aboutus"
-          src="/images/aboutus.png"
-          className="w-full mt-[50px]"
-          width="478"
-          height="488"
-        />
+        <div className="flex justify-center">
+          <Image
+            alt="aboutus"
+            src={curService.photoUrl}
+            className="mt-[50px]"
+            width="478"
+            height="488"
+          />
+        </div>
         <div className="text-left mt-[50px]">
           <span className="text-adDescBigSize md:text-adDescSmallSize sm:text-adDescSmallSize text-bannerTextColor font-arial font-light">
             {curService.content?.header + ":"}
@@ -72,7 +75,7 @@ const ServiceDetail = async ({ params }: { params: { serviceId: number } }) => {
           </div>
         </div>
         <div className="text-center mt-[50px]">
-          <PrimaryButton href="/Registration/1">apply for care</PrimaryButton>
+          <PrimaryButton href="/auth/signup">Apply for care</PrimaryButton>
         </div>
       </div>
     </>
