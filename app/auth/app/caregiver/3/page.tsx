@@ -22,10 +22,10 @@ const Login = () => {
     <>
       <WithRightBG imgpathname="/images/registration_img_3.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px] fixed">
+        <div className="ml-8 mt-8 flex items-center">
           <BackBtn onClicked={() => router.push("/auth/app/caregiver/2")} />
+          <ProgressStatusBar completeness={3} hasBack={true} />
         </div>
-        <ProgressStatusBar completeness={3} hasBack={true} />
         <OptionalLbl />
         <div className="px-8 mx-auto mt-8 sm:w-full">
           <div className="text-center">

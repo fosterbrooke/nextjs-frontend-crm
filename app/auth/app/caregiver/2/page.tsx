@@ -136,12 +136,12 @@ const Login = () => {
   const [selectedCarePlanId, setSelectedCarePlanId] = useState<number>(7);
 
   return (
-    <>
+    <div className="flex flex-col w-screen h-screen">
       <LogoImg onClicked={() => router.push("/")} />
-      <div className="flex ml-8 mt-0 fixed">
-        <BackBtn onClicked={() => router.push("/Care_Registration/1")} />
+      <div className="ml-8 mt-8 flex items-center">
+        <BackBtn onClicked={() => router.push("/auth/app/caregiver/1")} />
+        <ProgressStatusBar completeness={2} hasBack={true} />
       </div>
-      <ProgressStatusBar completeness={2} hasBack={true} />
       <div className="text-center mt-8">
         <div className=" text-[32px] text-textdarkColor font-arial font-bold">
           Care Experience and Skills
@@ -152,28 +152,30 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2 mx-9">
-        {carePlanData.map((item, index) => (
-          <CarePlanBox
-            key={`careplan_box_${index}`}
-            title={item.title}
-            description={item.description}
-            thumbnail={item.thumbnail}
-            index={index}
-            // status={item.id === selectedCarePlanId ? true : false}
-            // onClick={(e) => {
-            //   if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
-            //     setSelectedCarePlanId(item.id);
-            //   }
-            // }}
-          />
-        ))}
+      <div className="flex flex-col flex-auto overflow-auto">
+        <div className="flex-auto overflow-auto mt-6 grid grid-cols-3 gap-4 sm:grid-cols-1 md:grid-cols-2 px-9">
+          {carePlanData.map((item, index) => (
+            <CarePlanBox
+              key={`careplan_box_${index}`}
+              title={item.title}
+              description={item.description}
+              thumbnail={item.thumbnail}
+              index={index}
+              // status={item.id === selectedCarePlanId ? true : false}
+              // onClick={(e) => {
+              //   if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+              //     setSelectedCarePlanId(item.id);
+              //   }
+              // }}
+            />
+          ))}
+        </div>
+        <div className="flex justify-between mx-8 mt-2">
+          <SaveExitBtn onClicked={() => {}} />
+          <ContinueBtn onClicked={() => router.push("/auth/app/caregiver/3")} />
+        </div>
       </div>
-      <div className="flex justify-between mx-8 my-4">
-        <SaveExitBtn onClicked={() => {}} />
-        <ContinueBtn onClicked={() => router.push("/auth/app/caregiver/3")} />
-      </div>
-    </>
+    </div>
   );
 };
 

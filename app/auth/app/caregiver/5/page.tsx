@@ -77,10 +77,11 @@ const Login = () => {
     <>
       <WithRightBG imgpathname="/images/caregiver_registration4.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px] fixed">
+        <div className="ml-8 mt-8 flex items-center">
           <BackBtn onClicked={() => router.push("/auth/app/caregiver/4")} />
+          <ProgressStatusBar completeness={5} hasBack={true} />
         </div>
-        <ProgressStatusBar completeness={5} hasBack={true} />
+
         <OptionalLbl />
         <div className="px-8 mx-auto mt-8 sm:w-full">
           <div className="text-center">
@@ -98,10 +99,7 @@ const Login = () => {
         </div>
 
         <div className="mt-5 ml-4 px-7">
-          <p
-            className="text-[18px] font-normal"
-            style={{ color: "#282828", fontFamily: "Frutiger LT Std" }}
-          >
+          <p className="text-[18px] text-textdarkColor font-normal">
             Preferred Work Hours: (Select all that apply)
           </p>
         </div>

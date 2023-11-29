@@ -81,10 +81,10 @@ const Login = () => {
     <TimeEntryContext.Provider value={contextValue}>
       <WithRightBG imgpathname="/images/registration_img_8.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px] fixed">
+        <div className="ml-8 mt-8 flex items-center">
           <BackBtn onClicked={() => router.push("/auth/app/caregiver/7")} />
+          <ProgressStatusBar completeness={8} hasBack={true} />
         </div>
-        <ProgressStatusBar completeness={8} hasBack={true} />
         <OptionalLbl />
         <div className="px-8 mx-auto mt-8 sm:w-full">
           <div

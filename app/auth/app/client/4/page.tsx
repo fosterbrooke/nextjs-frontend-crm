@@ -14,7 +14,6 @@ import BackBtn from "@/components/ui/auth/client/BackBtn";
 const Login = () => {
   const router = useRouter();
   const [name, setName] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
   const [mail, setMail] = useState<string>("");
 
   return (

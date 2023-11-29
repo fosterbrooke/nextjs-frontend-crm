@@ -1,44 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { Children, useState } from "react";
-
-import WithRightBG from "@/components/ui/auth/WithRightBG";
+import { useState } from "react";
 import LogoImg from "@/components/ui/auth/LogoImg";
-import OptionalLbl from "@/components/ui/auth/client/OptionalLbl";
 import ProgressStatusBar from "@/components/ui/auth/client/ProgressStatusBar";
-import SaveExitBtn from "@/components/ui/auth/client/SaveExitBtn";
-import ContinueBtn from "@/components/ui/auth/client/ContinueBtn";
 import BackBtn from "@/components/ui/auth/client/BackBtn";
-import ComMethodSel from "@/components/ui/auth/client/ComMethodSel";
-import DatePickerCom from "@/components/ui/auth/client/DatePickerCom";
-import DaySelection from "@/components/ui/auth/client/DaySelection";
-import WeekSelection from "@/components/ui/auth/client/WeekSelection";
-import MonthSelection from "@/components/ui/auth/client/MonthSelection";
-import BasicModal from "@/components/ui/auth/AppFinishModal";
 import AppFinishModal from "@/components/ui/auth/AppFinishModal";
-type comMethodDataType = {
-  id: number;
-  title: string;
-};
 
-const comMethodData: comMethodDataType[] = [
-  {
-    id: 0,
-    title: "No",
-  },
-  {
-    id: 1,
-    title: "Yes",
-  },
-];
 const Login = () => {
   const router = useRouter();
-  const [name, setName] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [mail, setMail] = useState<string>("");
-  const [selectedComMethodID, setComMethodId] = useState<number>();
   return (
     <>
       <div className="flex flex-col w-screen h-screen">

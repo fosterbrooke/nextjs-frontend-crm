@@ -43,10 +43,10 @@ const WorkHoursSelection = ({
           />
         </div>
         <div className="flex flex-col mx-2">
-          <p className="text-lg text-center first-letter:font-arial font-bold leading-5 text-textdarkColor mb-2">
+          <p className="text-lg text-center font-bold leading-5 text-textdarkColor mb-2">
             {timetype}
           </p>
-          <p className="text-sm text-center font-arial font-light leading-5 text-textdarkColor">
+          <p className="text-sm text-center font-light leading-5 text-textdarkColor">
             {`${getTimeString(start)} - ${getTimeString(end)}`}
           </p>
         </div>

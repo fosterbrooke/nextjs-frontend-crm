@@ -39,20 +39,14 @@ const Login = () => {
   const [mail, setMail] = useState<string>("");
   const [selectedComMethodID, setComMethodId] = useState<number>();
   return (
-    <>
+    <div className="flex flex-col w-screen h-screen">
       <LogoImg onClicked={() => router.push("/")} />
-      <div className="flex ml-8 mt-[0px] absolute">
+      <div className="ml-8 mt-8 flex items-center">
         <BackBtn onClicked={() => router.push("/auth/app/caregiver/10")} />
+        <ProgressStatusBar completeness={11} hasBack={true} />
       </div>
-      <ProgressStatusBar completeness={11} hasBack={true} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-        className="px-8 mx-auto mt-8 sm:w-full font-arial"
-      >
+
+      <div className="flex flex-col flex-auto overflow-auto items-center px-8 mx-auto mt-8 sm:w-full font-arial">
         <div className="text-center">
           <div className=" text-[32px] text-textdarkColor font-arial font-bold">
             Caregiver Agreement
@@ -257,7 +251,7 @@ const Login = () => {
         <br />
         <BasicModal path="/dashboard/caregiver" />
       </div>
-    </>
+    </div>
   );
 };
 
