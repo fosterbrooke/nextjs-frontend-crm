@@ -4,16 +4,16 @@ import StarIcon from "@/public/icons/rating_star";
 import { useState } from "react";
 
 const labels: { [index: string]: string } = {
-  0.5: "Useless",
-  1: "Useless+",
-  1.5: "Poor",
-  2: "Poor+",
-  2.5: "Ok",
-  3: "Ok+",
-  3.5: "Good",
-  4: "Good+",
-  4.5: "Excellent",
-  5: "Excellent+",
+  0.5: "0.5",
+  1: "1.0",
+  1.5: "1.5",
+  2: "2.0",
+  2.5: "2.5",
+  3: "3.0",
+  3.5: "3.5",
+  4: "4.0",
+  4.5: "4.5",
+  5: "5.0",
 };
 
 function getLabelText(value: number) {
@@ -47,7 +47,9 @@ const CustomRatingCom = () => {
         icon={<StarIcon fontSize="inherit" />}
       />
       {value !== null && (
-        <div className="text-[14px] text-distlineColor"><Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box></div>
+        <div className="text-[14px] text-distlineColor">
+          <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+        </div>
       )}
     </Box>
   );
