@@ -6,6 +6,7 @@ import RecommendedClient from "./components/RecommendedClient";
 import HourlyRate from "./components/HourlyRate";
 import Availability from "./components/Availability";
 import Location from "./components/Location";
+import Experience from "./components/Experience";
 
 import SvgFilter from "@/public/icons/Filter";
 import RaceSelection from "./components/RaceSelection";
@@ -165,10 +166,16 @@ export default function RecommendationsPage() {
             onClick={() => toggleFilterMenu(false)}
           ></SvgClose>
         </div>
-        <HourlyRate />
         <Availability />
+        <div className="w-full border-b border-borderGreyColor"></div>
+        <HourlyRate />
+        <div className="w-full border-b border-borderGreyColor"></div>
+        <Experience label={"Any"} />
+        <div className="w-full border-b border-borderGreyColor"></div>
         <Location />
+        <div className="w-full border-b border-borderGreyColor"></div>
         <RaceSelection label="Any" items={raceItems} />
+        <div className="w-full border-b border-borderGreyColor"></div>
         <GenderSelection label="Any" items={genderItems} />
       </Drawer>
       <ScheduleMettingModal
