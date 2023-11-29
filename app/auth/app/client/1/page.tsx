@@ -14,11 +14,8 @@ import CustomSelection from "@/components/ui/auth/client/CustomSelection";
 
 const Login = () => {
   const router = useRouter();
-  const [isYourself, setIsYourself] = useState<boolean>(true);
+  const [isYourself, setIsYourself] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
-  const [date, setDate] = useState<string>("");
-  const [gender, setGender] = useState<string>("");
-  const [relationship, setRelationship] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [mail, setMail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -28,6 +25,7 @@ const Login = () => {
   const [emergencyMail, setEmergencyMail] = useState<string>("");
   const [emergencyPhone, setEmergencyPhone] = useState<string>("");
   const [formIndex, setFormIndex] = useState<number>(1);
+  const [formCount, setFormCount] = useState<number[]>([2]);
 
   const genderItems = ["Prefer not to say", "Male", "Female"];
   const relationshipItems = [
@@ -40,6 +38,11 @@ const Login = () => {
     "Manger",
     "Others",
   ];
+
+  const addNewContact = () => {
+    let newArray = [...formCount, formCount.length + 2];
+    setFormCount(newArray);
+  };
 
   return (
     <>
@@ -71,7 +74,7 @@ const Login = () => {
                 <label
                   htmlFor="Yourself"
                   className={`ml-2 text-xs dark:text-gray-300 font-arial cursor-pointer ${
-                    isYourself ? "text-distlineColor" : "text-primary"
+                    !isYourself ? "text-distlineColor" : "text-primary"
                   }`}
                 >
                   Yourself
@@ -89,7 +92,7 @@ const Login = () => {
                 <label
                   htmlFor="Somebody"
                   className={`ml-2 text-xs dark:text-gray-300 font-arial cursor-pointer ${
-                    !isYourself ? "text-distlineColor" : "text-primary"
+                    isYourself ? "text-distlineColor" : "text-primary"
                   }`}
                 >
                   Somebody
@@ -167,60 +170,65 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="mx-5 pl-8 mt-5" onFocus={() => setFormIndex(2)}>
-          <div className="flex items-center gap-x-2">
-            <span
-              className={`left-[7px] top-[38px] w-8 h-8 border border-1 ${
-                formIndex == 2
-                  ? "bg-textdarkColor text-sectionBgColor border-textdarkColor"
-                  : "bg-white text-distlineColor border-distlineColor"
-              } rounded-full flex justify-center items-center text-center`}
-            >
-              2
-            </span>
-            <label>Emergency Contact (optional)</label>
-          </div>
-          <div className="mt-5 ml-4 px-7 pb-7 border-l-2 border-distlineColor">
-            <InputField
-              type="text"
-              title="Full Name of Contract"
-              placholder="Enter Full name"
-              value={emergencyName}
-              handleChange={setEmergencyName}
-            />
-            <div className="mt-7">
+        {formCount.map((item, idx) => (
+          <div className="mx-5 pl-8 mt-5" onFocus={() => setFormIndex(item)}>
+            <div className="flex items-center gap-x-2">
+              <span
+                className={`left-[7px] top-[38px] w-8 h-8 border border-1 ${
+                  formIndex == item
+                    ? "bg-textdarkColor text-sectionBgColor border-textdarkColor"
+                    : "bg-white text-distlineColor border-distlineColor"
+                } rounded-full flex justify-center items-center text-center`}
+              >
+                {item}
+              </span>
+              <label>Emergency Contact (optional)</label>
+            </div>
+            <div className="mt-5 ml-4 px-7 pb-7 border-l-2 border-distlineColor">
               <InputField
                 type="text"
-                title="Address"
-                placholder="Enter Address"
-                value={emergencyAddress}
-                handleChange={setEmergencyAddress}
+                title="Full Name of Contract"
+                placholder="Enter Full name"
+                value={emergencyName}
+                handleChange={setEmergencyName}
               />
-            </div>
-            <div className="mt-7">
-              <InputField
-                type="email"
-                title="Email (optional)"
-                placholder="Enter you Email"
-                value={emergencyMail}
-                handleChange={setEmergencyMail}
-              />
-            </div>
-            <div className="mt-7">
-              <InputField
-                type="text"
-                title="Phone (optional)"
-                placholder="7465165196"
-                value={emergencyPhone}
-                handleChange={setEmergencyPhone}
-              />
+              <div className="mt-7">
+                <InputField
+                  type="text"
+                  title="Address"
+                  placholder="Enter Address"
+                  value={emergencyAddress}
+                  handleChange={setEmergencyAddress}
+                />
+              </div>
+              <div className="mt-7">
+                <InputField
+                  type="email"
+                  title="Email (optional)"
+                  placholder="Enter you Email"
+                  value={emergencyMail}
+                  handleChange={setEmergencyMail}
+                />
+              </div>
+              <div className="mt-7">
+                <InputField
+                  type="text"
+                  title="Phone (optional)"
+                  placholder="7465165196"
+                  value={emergencyPhone}
+                  handleChange={setEmergencyPhone}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="mx-[90px] text-primary text-base font-arial font-bold">
+        ))}
+        <div
+          className="mx-[90px] text-primary text-base font-arial font-bold cursor-pointer"
+          onClick={addNewContact}
+        >
           Add another Emergency Contact +
         </div>
-        <div className="flex justify-between mx-8 mt-2 ">
+        <div className="flex justify-between mx-8 mt-2">
           <SaveExitBtn onClicked={() => {}} />
           <ContinueBtn onClicked={() => router.push("/auth/app/client/2")} />
         </div>
