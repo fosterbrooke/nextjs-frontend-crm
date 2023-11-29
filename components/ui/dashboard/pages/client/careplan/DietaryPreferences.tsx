@@ -39,7 +39,7 @@ const DietaryPreferences = () => {
           }}
           onClick={handleOpenModal}
         >
-          edit dietary preferences
+          Edit Dietary Preferences
         </button>
       </div>
       <Modal
