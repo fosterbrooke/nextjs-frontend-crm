@@ -65,10 +65,15 @@ const Login = () => {
                   type="radio"
                   value=""
                   name="role-radio"
-                  className="accent-[#CB5A6F] w-4 h-4"
+                  className="accent-[#CB5A6F] w-4 h-4 cursor-pointer"
                   onChange={() => setIsYourself(!isYourself)}
                 />
-                <label className="ml-2 text-xs text-distlineColor dark:text-gray-300 font-arial">
+                <label
+                  htmlFor="Yourself"
+                  className={`ml-2 text-xs dark:text-gray-300 font-arial cursor-pointer ${
+                    isYourself ? "text-distlineColor" : "text-primary"
+                  }`}
+                >
                   Yourself
                 </label>
               </div>
@@ -78,10 +83,15 @@ const Login = () => {
                   type="radio"
                   value=""
                   name="role-radio"
-                  className="accent-[#CB5A6F] w-4 h-4"
+                  className="accent-[#CB5A6F] w-4 h-4 cursor-pointer"
                   onChange={() => setIsYourself(!isYourself)}
                 />
-                <label className="ml-2 text-xs text-distlineColor dark:text-gray-300 font-arial">
+                <label
+                  htmlFor="Somebody"
+                  className={`ml-2 text-xs dark:text-gray-300 font-arial cursor-pointer ${
+                    !isYourself ? "text-distlineColor" : "text-primary"
+                  }`}
+                >
                   Somebody
                 </label>
               </div>
