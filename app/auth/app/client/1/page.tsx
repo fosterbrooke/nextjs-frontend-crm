@@ -50,13 +50,13 @@ const Login = () => {
   };
 
   return (
-    <>
-      <WithRightBG imgpathname="/images/registration_img_1.png">
-        <LogoImg onClicked={() => router.push("/")} />
-        <div className="ml-8 mt-8 flex items-center">
-          <ProgressStatusBar completeness={1} hasBack={false} />
-        </div>
-        <div className="px-8 mx-auto mt-8 sm:w-full">
+    <WithRightBG imgpathname="/images/registration_img_1.png">
+      <LogoImg onClicked={() => router.push("/")} />
+      <div className="ml-8 mt-8 flex items-center">
+        <ProgressStatusBar completeness={1} hasBack={false} />
+      </div>
+      <div className="flex flex-col flex-auto overflow-auto">
+        <div className="px-8 mx-auto sm:w-full">
           <div className="text-center">
             <div className=" text-[32px] text-textdarkColor font-arial font-bold">
               Personal Information
@@ -108,117 +108,63 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="mx-5 pl-8 mt-5" onFocus={() => setFormIndex(1)}>
-          <div className="flex items-center gap-x-2">
-            <span
-              className={`left-[7px] top-[38px] w-8 h-8 border border-1 ${
-                formIndex == 1
-                  ? "bg-textdarkColor text-sectionBgColor border-textdarkColor"
-                  : "bg-white text-distlineColor border-distlineColor"
-              } rounded-full flex justify-center items-center text-center`}
-            >
-              1
-            </span>
-            <label>General Information</label>
-          </div>
-          <div className="mt-5 ml-4 px-7 pb-7 border-l-2 border-distlineColor">
-            <InputField
-              type="text"
-              title="Full Name of Senior"
-              placholder="Enter Full Name"
-              value={name}
-              handleChange={setName}
-            />
-            <div className="grid grid-cols-2 mt-8 gap-7 items-center sm:grid-cols-1">
-              <DatePickerCom title="Desired Start Date" />
-              <div>
-                <CustomSelection
-                  name="Gender"
-                  label="Select"
-                  items={genderItems}
-                />
-              </div>
-            </div>
-            <div className="mt-7">
-              <InputField
-                type="text"
-                title="Address"
-                placholder="Enter Address"
-                value={address}
-                handleChange={setAddress}
-              />
-            </div>
-            {!role && (
-              <div className="mt-7">
-                <CustomSelection
-                  name="Relationship"
-                  label="Choose an option"
-                  items={relationshipItems}
-                />
-              </div>
-            )}
-            <div className="mt-7">
-              <InputField
-                type="email"
-                title="Email (optional)"
-                placholder="Enter you Email"
-                value={mail}
-                handleChange={setMail}
-              />
-            </div>
-            <div className="mt-7">
-              <InputField
-                type="text"
-                title="Phone (optional)"
-                placholder="7465165196"
-                value={phone}
-                handleChange={setPhone}
-              />
-            </div>
-          </div>
-        </div>
-        {formCount.map((item, idx) => (
-          <div
-            key={`contact-form-${idx}`}
-            className="mx-5 pl-8 mt-5"
-            onFocus={() => setFormIndex(item)}
-          >
+        <div className="flex flex-col flex-auto overflow-auto mt-4">
+          <div className="mx-5 pl-8 mt-5" onFocus={() => setFormIndex(1)}>
             <div className="flex items-center gap-x-2">
               <span
                 className={`left-[7px] top-[38px] w-8 h-8 border border-1 ${
-                  formIndex == item
+                  formIndex == 1
                     ? "bg-textdarkColor text-sectionBgColor border-textdarkColor"
                     : "bg-white text-distlineColor border-distlineColor"
                 } rounded-full flex justify-center items-center text-center`}
               >
-                {item}
+                1
               </span>
-              <label>Emergency Contact (optional)</label>
+              <label>General Information</label>
             </div>
             <div className="mt-5 ml-4 px-7 pb-7 border-l-2 border-distlineColor">
               <InputField
                 type="text"
-                title="Full Name of Contract"
-                placholder="Enter Full name"
-                value={emergencyName}
-                handleChange={setEmergencyName}
+                title="Full Name of Senior"
+                placholder="Enter Full Name"
+                value={name}
+                handleChange={setName}
               />
+              <div className="grid grid-cols-2 mt-8 gap-7 items-center sm:grid-cols-1">
+                <DatePickerCom title="Desired Start Date" />
+                <div>
+                  <CustomSelection
+                    name="Gender"
+                    label="Select"
+                    items={genderItems}
+                  />
+                </div>
+              </div>
               <div className="mt-7">
                 <InputField
                   type="text"
                   title="Address"
                   placholder="Enter Address"
-                  value={emergencyAddress}
-                  handleChange={setEmergencyAddress}
+                  value={address}
+                  handleChange={setAddress}
                 />
               </div>
+              {!(role === "Yourself") && (
+                <div className="mt-7">
+                  <CustomSelection
+                    name="Relationship"
+                    label="Choose an option"
+                    items={relationshipItems}
+                  />
+                </div>
+              )}
               <div className="mt-7">
                 <InputField
                   type="email"
                   title="Email (optional)"
                   placholder="Enter you Email"
-                  value={emergencyMail}
-                  handleChange={setEmergencyMail}
+                  value={mail}
+                  handleChange={setMail}
                 />
               </div>
               <div className="mt-7">
@@ -226,25 +172,81 @@ const Login = () => {
                   type="text"
                   title="Phone (optional)"
                   placholder="7465165196"
-                  value={emergencyPhone}
-                  handleChange={setEmergencyPhone}
+                  value={phone}
+                  handleChange={setPhone}
                 />
               </div>
             </div>
           </div>
-        ))}
-        <div
-          className="mx-[90px] text-primary text-base font-arial font-bold cursor-pointer"
-          onClick={addNewContact}
-        >
-          Add another Emergency Contact +
+          {formCount.map((item, idx) => (
+            <div
+              key={`contact-form-${idx}`}
+              className="mx-5 pl-8 mt-5"
+              onFocus={() => setFormIndex(item)}
+            >
+              <div className="flex items-center gap-x-2">
+                <span
+                  className={`left-[7px] top-[38px] w-8 h-8 border border-1 ${
+                    formIndex == item
+                      ? "bg-textdarkColor text-sectionBgColor border-textdarkColor"
+                      : "bg-white text-distlineColor border-distlineColor"
+                  } rounded-full flex justify-center items-center text-center`}
+                >
+                  {item}
+                </span>
+                <label>Emergency Contact (optional)</label>
+              </div>
+              <div className="mt-5 ml-4 px-7 pb-7 border-l-2 border-distlineColor">
+                <InputField
+                  type="text"
+                  title="Full Name of Contract"
+                  placholder="Enter Full name"
+                  value={emergencyName}
+                  handleChange={setEmergencyName}
+                />
+                <div className="mt-7">
+                  <InputField
+                    type="text"
+                    title="Address"
+                    placholder="Enter Address"
+                    value={emergencyAddress}
+                    handleChange={setEmergencyAddress}
+                  />
+                </div>
+                <div className="mt-7">
+                  <InputField
+                    type="email"
+                    title="Email (optional)"
+                    placholder="Enter you Email"
+                    value={emergencyMail}
+                    handleChange={setEmergencyMail}
+                  />
+                </div>
+                <div className="mt-7">
+                  <InputField
+                    type="text"
+                    title="Phone (optional)"
+                    placholder="7465165196"
+                    value={emergencyPhone}
+                    handleChange={setEmergencyPhone}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+          <div
+            className="mx-[90px] text-primary text-base font-arial font-bold cursor-pointer"
+            onClick={addNewContact}
+          >
+            Add another Emergency Contact +
+          </div>
+          <div className="flex justify-between mx-8 mt-2">
+            <SaveExitBtn onClicked={() => {}} />
+            <ContinueBtn onClicked={() => router.push("/auth/app/client/2")} />
+          </div>
         </div>
-        <div className="flex justify-between mx-8 mt-2">
-          <SaveExitBtn onClicked={() => {}} />
-          <ContinueBtn onClicked={() => router.push("/auth/app/client/2")} />
-        </div>
-      </WithRightBG>
-    </>
+      </div>
+    </WithRightBG>
   );
 };
 
