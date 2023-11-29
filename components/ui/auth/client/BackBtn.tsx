@@ -4,7 +4,7 @@ import Image from 'next/image'
 import arrow_back from "@/public/icons/arrow_back.svg";
 const BackBtn = ({ onClicked }: { onClicked: Function }) => {
     return (
-        <div className='flex cursor-pointer' onClick={() => onClicked()}>
+        <div className='flex items-center cursor-pointer' onClick={() => onClicked()}>
             <Image
                 alt='back'
                 src={arrow_back}

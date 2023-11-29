@@ -52,7 +52,7 @@ const InputField = ({
             multiline={multiline}
             rows={rows}
             value={value}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleChange(e.target.value)}
           />
           {/* <FormHelperText>Without label</FormHelperText> */}
         </ThemeProvider>

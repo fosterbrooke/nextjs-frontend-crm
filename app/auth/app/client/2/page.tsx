@@ -138,10 +138,10 @@ const Login = () => {
   return (
     <>
       <LogoImg onClicked={() => router.push("/")} />
-      <div className="flex ml-8 mt-0 fixed">
+      <div className="ml-8 mt-8 flex items-center">
         <BackBtn onClicked={() => router.push("/auth/app/client/1")} />
+        <ProgressStatusBar completeness={2} hasBack={true} />
       </div>
-      <ProgressStatusBar completeness={2} hasBack={true} />
       <div className="text-center mt-8">
         <div className=" text-[32px] text-textdarkColor font-arial font-bold">
           Care Plan

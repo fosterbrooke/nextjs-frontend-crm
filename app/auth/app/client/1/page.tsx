@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import WithRightBG from "@/components/ui/auth/WithRightBG";
 import LogoImg from "@/components/ui/auth/LogoImg";
@@ -14,7 +14,7 @@ import CustomSelection from "@/components/ui/auth/client/CustomSelection";
 
 const Login = () => {
   const router = useRouter();
-  const [isYourself, setIsYourself] = useState<boolean>(false);
+  const [role, setRole] = useState<string>("Yourself");
   const [name, setName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [mail, setMail] = useState<string>("");
@@ -44,11 +44,18 @@ const Login = () => {
     setFormCount(newArray);
   };
 
+  const handleRoleChange = (e: any) => {
+    console.log(e.target.value);
+    setRole(e.target.value);
+  };
+
   return (
     <>
       <WithRightBG imgpathname="/images/registration_img_1.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <ProgressStatusBar completeness={1} hasBack={false} />
+        <div className="ml-8 mt-8 flex items-center">
+          <ProgressStatusBar completeness={1} hasBack={false} />
+        </div>
         <div className="px-8 mx-auto mt-8 sm:w-full">
           <div className="text-center">
             <div className=" text-[32px] text-textdarkColor font-arial font-bold">
@@ -62,42 +69,42 @@ const Login = () => {
                 {" "}
                 Are you filling this out for{" "}
               </div>
-              <div className="flex items-center ml-2">
+              <span className="flex items-center ml-2">
                 <input
-                  id="Yourself"
                   type="radio"
-                  value=""
-                  name="role-radio"
+                  id="yourself"
+                  value="Yourself"
                   className="accent-[#CB5A6F] w-4 h-4 cursor-pointer"
-                  onChange={() => setIsYourself(!isYourself)}
+                  onChange={handleRoleChange}
+                  checked={role === "Yourself"}
                 />
                 <label
-                  htmlFor="Yourself"
+                  htmlFor="yourself"
                   className={`ml-2 text-xs dark:text-gray-300 font-arial cursor-pointer ${
-                    !isYourself ? "text-distlineColor" : "text-primary"
+                    role === "Yourself" ? "text-primary" : "text-distlineColor"
                   }`}
                 >
                   Yourself
                 </label>
-              </div>
-              <div className="flex items-center ml-4">
+              </span>
+              <span className="flex items-center ml-4">
                 <input
-                  id="Somebody"
                   type="radio"
-                  value=""
-                  name="role-radio"
+                  id="somebody"
+                  value="Somebody"
                   className="accent-[#CB5A6F] w-4 h-4 cursor-pointer"
-                  onChange={() => setIsYourself(!isYourself)}
+                  onChange={handleRoleChange}
+                  checked={role === "Somebody"}
                 />
                 <label
-                  htmlFor="Somebody"
+                  htmlFor="somebody"
                   className={`ml-2 text-xs dark:text-gray-300 font-arial cursor-pointer ${
-                    isYourself ? "text-distlineColor" : "text-primary"
+                    role === "Somebody" ? "text-primary" : "text-distlineColor"
                   }`}
                 >
                   Somebody
                 </label>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -141,7 +148,7 @@ const Login = () => {
                 handleChange={setAddress}
               />
             </div>
-            {!isYourself && (
+            {!role && (
               <div className="mt-7">
                 <CustomSelection
                   name="Relationship"
@@ -171,7 +178,11 @@ const Login = () => {
           </div>
         </div>
         {formCount.map((item, idx) => (
-          <div className="mx-5 pl-8 mt-5" onFocus={() => setFormIndex(item)}>
+          <div
+            key={`contact-form-${idx}`}
+            className="mx-5 pl-8 mt-5"
+            onFocus={() => setFormIndex(item)}
+          >
             <div className="flex items-center gap-x-2">
               <span
                 className={`left-[7px] top-[38px] w-8 h-8 border border-1 ${
