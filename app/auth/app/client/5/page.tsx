@@ -50,37 +50,55 @@ const Login = () => {
     };
 
   return (
-    <>
-      <WithRightBG imgpathname="/images/registration_img_5.png">
-        <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px] fixed">
-          <BackBtn onClicked={() => router.push("/auth/app/client/4")} />
-        </div>
+    <WithRightBG imgpathname="/images/registration_img_5.png">
+      <LogoImg onClicked={() => router.push("/")} />
+      <div className="ml-8 mt-8 flex items-center">
+        <BackBtn onClicked={() => router.push("/auth/app/client/4")} />
         <ProgressStatusBar completeness={5} hasBack={true} />
-        <div className="px-8 mx-auto mt-8 sm:w-full">
-          <div className="text-center">
-            <div className=" text-[32px] text-textdarkColor font-arial font-bold">
-              Daily Routine and Schedule
-            </div>
-            <div className="text-base text-distlineColor font-arial font-normal mt-4 mx-7">
-              Please provide information about the senior&apos;s typical daily
-              routine, including preferred waking and sleeping times, meal
-              times, and any specific activities or routines that are important
-              to them
-            </div>
+      </div>
+      <div className="px-8 mx-auto mt-8 sm:w-full">
+        <div className="text-center">
+          <div className=" text-[32px] text-textdarkColor font-arial font-bold">
+            Daily Routine and Schedule
+          </div>
+          <div className="text-base text-distlineColor font-arial font-normal mt-4 mx-7">
+            Please provide information about the senior&apos;s typical daily
+            routine, including preferred waking and sleeping times, meal times,
+            and any specific activities or routines that are important to them
           </div>
         </div>
-        <div className="mx-5 pl-8 mt-6">
-          <div className="text-center text-base font-bold font-arial text-textdarkColor">
-            <label>Tell us about the senior routine and schedule</label>
+      </div>
+      <div className="flex flex-col flex-auto overflow-auto mx-5 pl-8 mt-6">
+        <div className="text-center text-base font-bold font-arial text-textdarkColor">
+          <label>Tell us about the senior routine and schedule</label>
+        </div>
+        <div className="flex flex-col flex-auto overflow-auto mt-6 ml-4 px-7 pb-7">
+          <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
+            Waking Time
+          </p>
+          <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1 sm:gap-0">
+            <TimePickerCom
+              title="Preferred waking time"
+              handleTimeSelected={() => {}}
+            />
+            <div className="col-span-2">
+              <InputField
+                type="text"
+                title="Note"
+                placholder=""
+                value={dates.date1}
+                handleChange={handleSetDates("date1")}
+              />
+            </div>
           </div>
-          <div className="mt-6 ml-4 px-7 pb-7">
+
+          <div className="mt-4">
             <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
-              Waking Time
+              Sleeping Time
             </p>
-            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1 sm:gap-0">
+            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
               <TimePickerCom
-                title="Preferred waking time"
+                title="Preferred sleeping time"
                 handleTimeSelected={() => {}}
               />
               <div className="col-span-2">
@@ -88,144 +106,114 @@ const Login = () => {
                   type="text"
                   title="Note"
                   placholder=""
-                  value={dates.date1}
-                  handleChange={handleSetDates("date1")}
+                  value={dates.date2}
+                  handleChange={handleSetDates("date2")}
                 />
               </div>
             </div>
-
-            <div className="mt-4">
-              <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
-                Sleeping Time
-              </p>
-              <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
-                <TimePickerCom
-                  title="Preferred sleeping time"
-                  handleTimeSelected={() => {}}
-                />
-                <div className="col-span-2">
-                  <InputField
-                    type="text"
-                    title="Note"
-                    placholder=""
-                    value={dates.date2}
-                    handleChange={handleSetDates("date2")}
-                  />
-                </div>
-              </div>
+          </div>
+          <div className="mt-4">
+            <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
+              Meal Times
+            </p>
+            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
+              <TimePickerCom
+                title="Breakfast time"
+                handleTimeSelected={() => {}}
+              />
+              <TimePickerCom title="Lunch time" handleTimeSelected={() => {}} />
+              <TimePickerCom
+                title="Dinner time"
+                handleTimeSelected={() => {}}
+              />
             </div>
-            <div className="mt-4">
-              <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
-                Meal Times
-              </p>
-              <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
-                <TimePickerCom
-                  title="Breakfast time"
-                  handleTimeSelected={() => {}}
-                />
-                <TimePickerCom
-                  title="Lunch time"
-                  handleTimeSelected={() => {}}
-                />
-                <TimePickerCom
-                  title="Dinner time"
-                  handleTimeSelected={() => {}}
-                />
-              </div>
-              <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
-                <TimePickerCom
-                  title="Snack time"
-                  handleTimeSelected={() => {}}
-                />
-                <div className=" col-span-2">
-                  <InputField
-                    type="text"
-                    title="Note"
-                    placholder=""
-                    value={dates.date3}
-                    handleChange={handleSetDates("date3")}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="mt-4">
-              <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
-                Activities and Routines
-              </p>
-              <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
+            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
+              <TimePickerCom title="Snack time" handleTimeSelected={() => {}} />
+              <div className=" col-span-2">
                 <InputField
                   type="text"
-                  title="Activity/Routine 1"
-                  placholder="Name of Activity"
-                  value={dates.date4}
-                  handleChange={handleSetDates("date4")}
-                />
-                <CustomSelection
-                  label="Daily/Weekly"
-                  items={["Daily", "Weekly", "Monthly"]}
-                  name="Frequency"
-                />
-                <TimePickerCom
-                  title="Time of the day"
-                  handleTimeSelected={() => {}}
+                  title="Note"
+                  placholder=""
+                  value={dates.date3}
+                  handleChange={handleSetDates("date3")}
                 />
               </div>
+            </div>
+          </div>
+          <div className="mt-4">
+            <p className=" text-textdarkColor text-base font-normal font-arial ml-2">
+              Activities and Routines
+            </p>
+            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
               <InputField
                 type="text"
-                title="Note"
-                placholder="Leave a detailed note"
-                value={dates.date6}
-                handleChange={handleSetDates("date6")}
+                title="Activity/Routine 1"
+                placholder="Name of Activity"
+                value={dates.date4}
+                handleChange={handleSetDates("date4")}
               />
-              <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
+              <CustomSelection
+                label="Daily/Weekly"
+                items={["Daily", "Weekly", "Monthly"]}
+                name="Frequency"
+              />
+              <TimePickerCom
+                title="Time of the day"
+                handleTimeSelected={() => {}}
+              />
+            </div>
+            <InputField
+              type="text"
+              title="Note"
+              placholder="Leave a detailed note"
+              value={dates.date6}
+              handleChange={handleSetDates("date6")}
+            />
+            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
+              <InputField
+                type="text"
+                title="Activity/Routine 2"
+                placholder="Name of Activity"
+                value={dates.date7}
+                handleChange={handleSetDates("date7")}
+              />
+              <CustomSelection
+                label="Daily/Weekly"
+                items={["Daily", "Weekly", "Monthly"]}
+                name="Frequency"
+              />
+              <TimePickerCom
+                title="Time of the day"
+                handleTimeSelected={() => {}}
+              />
+            </div>
+            <InputField
+              type="text"
+              title="Note"
+              placholder="Leave a detailed note"
+              value={dates.date9}
+              handleChange={handleSetDates("date9")}
+            />
+            <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
+              <TimePickerCom title="Snack time" handleTimeSelected={() => {}} />
+              <div className=" col-span-2">
                 <InputField
                   type="text"
-                  title="Activity/Routine 2"
-                  placholder="Name of Activity"
-                  value={dates.date7}
-                  handleChange={handleSetDates("date7")}
+                  title="Note"
+                  placholder=""
+                  value={dates.date10}
+                  handleChange={handleSetDates("date10")}
                 />
-                <CustomSelection
-                  label="Daily/Weekly"
-                  items={["Daily", "Weekly", "Monthly"]}
-                  name="Frequency"
-                />
-                <TimePickerCom
-                  title="Time of the day"
-                  handleTimeSelected={() => {}}
-                />
-              </div>
-              <InputField
-                type="text"
-                title="Note"
-                placholder="Leave a detailed note"
-                value={dates.date9}
-                handleChange={handleSetDates("date9")}
-              />
-              <div className="grid grid-cols-3 mt-4 gap-7 items-center sm:grid-cols-1">
-                <TimePickerCom
-                  title="Snack time"
-                  handleTimeSelected={() => {}}
-                />
-                <div className=" col-span-2">
-                  <InputField
-                    type="text"
-                    title="Note"
-                    placholder=""
-                    value={dates.date10}
-                    handleChange={handleSetDates("date10")}
-                  />
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex justify-between mx-8 mt-auto ">
-          <SaveExitBtn onClicked={() => {}} />
-          <ContinueBtn onClicked={() => router.push("/auth/app/client/6")} />
-        </div>
-      </WithRightBG>
-    </>
+      </div>
+      <div className="flex justify-between mx-8 mt-auto">
+        <SaveExitBtn onClicked={() => {}} />
+        <ContinueBtn onClicked={() => router.push("/auth/app/client/6")} />
+      </div>
+    </WithRightBG>
   );
 };
 

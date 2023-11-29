@@ -27,7 +27,7 @@ type customSelectionProps = {
   name: string;
   label: string;
   items?: string[]; // Make the 'items' prop optional
-  onChange?: (value: string) => void; // Make this optional
+  onChange?: (value: number) => void; // Make this optional
 };
 
 const CustomSelection: FC<customSelectionProps> = ({
@@ -41,8 +41,11 @@ const CustomSelection: FC<customSelectionProps> = ({
   const handleChange = (event: SelectChangeEvent) => {
     const selectedValue = event.target.value;
     setValue(selectedValue);
-    onChange(selectedValue);
-    console.log(event.target.value);
+
+    let idx = items?.findIndex((item) => item === selectedValue);
+    if (idx) onChange(idx);
+    else if (idx === 0) onChange(0);
+    else onChange(NaN);
   };
 
   return (

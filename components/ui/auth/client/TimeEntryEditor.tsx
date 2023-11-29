@@ -66,9 +66,9 @@ const TimeEntryEditor = () => {
     setShow(!show);
   };
 
-  const handleSetTimeTo = (e: string) => {
-    setTimeTo(e);
-    if (dayOfWeek.length === 0 || e === "" || timeFrom === "") {
+  const handleSetTimeTo = (to: number) => {
+    setTimeTo(to);
+    if (dayOfWeek.length === 0 || Number.isNaN(to) || Number.isNaN(timeFrom)) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
@@ -76,27 +76,33 @@ const TimeEntryEditor = () => {
   };
   const handleSetDayOfWeek = (e: string[]) => {
     setDayOfWeek(e);
-    if (e.length === 0 || timeTo === "" || timeFrom === "") {
+    if (e.length === 0 || Number.isNaN(timeTo) || Number.isNaN(timeFrom)) {
       console.log(dayOfWeek, timeTo, timeFrom);
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
   };
-  const handleSetTimeFrom = (e: string) => {
-    setTimeFrom(e);
-    if (dayOfWeek.length === 0 || timeTo === "" || e === "") {
+  const handleSetTimeFrom = (from: number) => {
+    setTimeFrom(from);
+    if (dayOfWeek.length === 0 || Number.isNaN(timeTo) || Number.isNaN(from)) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
   };
 
-  const buttonClassName = `block ${
+  const getDuration = () => {
+    const duration = timeTo - timeFrom;
+    if (duration > 0) return duration;
+    else return 0;
+  };
+
+  const buttonClassName = `${
     isDisabled
-      ? "bg-[#f6f6f6]"
-      : "bg-primaryHover border-primary focus:bg-primaryDisabled"
-  } text-primary rounded-lg px-4 py-3 mt-4 mb-9 text-white font-arial border-2 w-[40%] font-bold`;
+      ? "bg-borderGreyColor text-[#f6f6f6]"
+      : "bg-primaryHover focus:bg-primaryDisabled"
+  } rounded-lg px-4 py-3 mt-4 mb-9 text-white font-arial w-[40%] font-bold cursor-pointer`;
 
   return (
     <>
@@ -147,12 +153,7 @@ const TimeEntryEditor = () => {
                 ]}
                 onChange={handleSetDayOfWeek}
               />
-              <DurationPane name="Duration" duration={0} />
-              {/* <CustomSelection
-                label="5 hrs"
-                name="Duration"
-                items={hoursPerDayItems}
-              /> */}
+              <DurationPane name="Duration" duration={getDuration()} />
             </div>
             <div className="w-full mt-2 grid gap-[14px] grid-cols-2 sm:grid-cols-1 lg:grid-cols-1">
               <CustomSelection

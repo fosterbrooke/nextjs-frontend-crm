@@ -41,20 +41,13 @@ const Login = () => {
   const [selectedComMethodID, setComMethodId] = useState<number>();
   return (
     <>
-      <div>
+      <div className="flex flex-col w-screen h-screen">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[0px] absolute">
+        <div className="ml-8 mt-8 flex items-center">
           <BackBtn onClicked={() => router.push("/auth/app/client/10")} />
+          <ProgressStatusBar completeness={11} hasBack={true} />
         </div>
-        <ProgressStatusBar completeness={11} hasBack={true} />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-          className="px-8 mx-auto mt-8 sm:w-full font-arial"
-        >
+        <div className="flex flex-col flex-auto overflow-auto items-center px-8 mx-auto mt-8 sm:w-full font-arial">
           <div className="text-center">
             <div className=" text-[32px] text-textdarkColor font-arial font-bold">
               Agreement and Terms

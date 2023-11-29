@@ -4,18 +4,18 @@ import { createContext } from "react";
 interface TimeEntryContextValue {
   dayOfWeek: string[];
   setDayOfWeek: React.Dispatch<React.SetStateAction<string[]>>;
-  timeFrom: string;
-  setTimeFrom: React.Dispatch<React.SetStateAction<string>>;
-  timeTo: string;
-  setTimeTo: React.Dispatch<React.SetStateAction<string>>;
+  timeFrom: number;
+  setTimeFrom: React.Dispatch<React.SetStateAction<number>>;
+  timeTo: number;
+  setTimeTo: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const TimeEntryContext = createContext<TimeEntryContextValue>({
   dayOfWeek: [],
   setDayOfWeek: () => {},
-  timeFrom: "",
+  timeFrom: -1,
   setTimeFrom: () => {},
-  timeTo: "",
+  timeTo: -1,
   setTimeTo: () => {},
 });
 

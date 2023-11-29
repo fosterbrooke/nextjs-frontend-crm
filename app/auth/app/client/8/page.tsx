@@ -7,10 +7,8 @@ import { Children, useState } from "react";
 import WithRightBG from "@/components/ui/auth/WithRightBG";
 import LogoImg from "@/components/ui/auth/LogoImg";
 import ProgressStatusBar from "@/components/ui/auth/client/ProgressStatusBar";
-import InputField from "@/components/ui/auth/client/InputField";
 import SaveExitBtn from "@/components/ui/auth/client/SaveExitBtn";
 import ContinueBtn from "@/components/ui/auth/client/ContinueBtn";
-import Relationship from "@/components/ui/auth/client/RelationshipSelection";
 import BackBtn from "@/components/ui/auth/client/BackBtn";
 import OptionalLbl from "@/components/ui/auth/client/OptionalLbl";
 import TimeEntryEditor from "@/components/ui/auth/client/TimeEntryEditor";
@@ -48,25 +46,10 @@ const hoursPerDayItems = [
 
 const Login = () => {
   const router = useRouter();
-  const [isYourself, setIsYourself] = useState<boolean>(true);
-  const [name, setName] = useState<string>("");
-  const [date, setDate] = useState<string>("");
-  const [gender, setGender] = useState<string>("");
-  const [days, setDays] = useState<string>("");
-  const [relationship, setRelationship] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [mail, setMail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-
-  const [emergencyName, setEmergencyName] = useState<string>("");
-  const [emergencyAddress, setEmergencyAddress] = useState<string>("");
-  const [emergencyMail, setEmergencyMail] = useState<string>("");
-  const [emergencyPhone, setEmergencyPhone] = useState<string>("");
-  const [formIndex, setFormIndex] = useState<number>(1);
 
   const [dayOfWeek, setDayOfWeek] = useState<string[]>([]);
-  const [timeFrom, setTimeFrom] = useState<string>("");
-  const [timeTo, setTimeTo] = useState<string>("");
+  const [timeFrom, setTimeFrom] = useState<number>(NaN);
+  const [timeTo, setTimeTo] = useState<number>(NaN);
 
   const contextValue = {
     dayOfWeek,
@@ -81,10 +64,10 @@ const Login = () => {
     <TimeEntryContext.Provider value={contextValue}>
       <WithRightBG imgpathname="/images/registration_img_8.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px] fixed">
+        <div className="ml-8 mt-8 flex items-center">
           <BackBtn onClicked={() => router.push("/auth/app/client/7")} />
+          <ProgressStatusBar completeness={8} hasBack={true} />
         </div>
-        <ProgressStatusBar completeness={8} hasBack={true} />
         <OptionalLbl />
         <div className="px-8 mx-auto mt-8 sm:w-full">
           <div
@@ -121,13 +104,6 @@ const Login = () => {
                     "Sunday",
                   ]}
                 />
-                {/* <InputField
-                  type="text"
-                  title="Hours per Day"
-                  placholder="3hrs"
-                  value={days}
-                  handleChange={setDays}
-                /> */}
                 <CustomSelection
                   label="5 hrs"
                   name="Hours per Day"

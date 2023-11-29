@@ -6,6 +6,11 @@ type durationPaneProps = {
 };
 
 const DurationPane: FC<durationPaneProps> = ({ name, duration }) => {
+  const formatDuration = (duration: number) => {
+    if (duration < 10) return `0${duration}:00`;
+    return `${duration}:00`;
+  };
+
   return (
     <div className="flex flex-col min-w-[120px]">
       <div className="text-xs font-arial font-normal text-distlineColor">
@@ -19,7 +24,7 @@ const DurationPane: FC<durationPaneProps> = ({ name, duration }) => {
               fontFamily: "Digital Numbers",
             }}
           >
-            00:00
+            {formatDuration(duration)}
           </p>
         </div>
       </div>

@@ -85,10 +85,10 @@ const StartDateandDuration = () => {
     <>
       <WithRightBG imgpathname="/images/registration_img_10.png">
         <LogoImg onClicked={() => router.push("/")} />
-        <div className="flex ml-8 mt-[145px] absolute">
+        <div className="ml-8 mt-8 flex items-center">
           <BackBtn onClicked={() => router.push("/auth/app/client/9")} />
+          <ProgressStatusBar completeness={10} hasBack={true} />
         </div>
-        <ProgressStatusBar completeness={10} hasBack={true} />
         <OptionalLbl />
         <div
           style={{
@@ -171,7 +171,7 @@ const StartDateandDuration = () => {
               />
             </div>
           </div>
-          <div className="text-center text-base text-textdarkColor font-arial font-normal mt-4">
+          <div className="text-center text-base text-textdarkColor font-arial font-normal my-4">
             Add payment method (optional)
           </div>
           <div className="cursor-pointer text-[18px] bg-primary text-white rounded-lg py-4 w-[50%] text-center">

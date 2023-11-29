@@ -65,8 +65,8 @@ const Login = () => {
   const [formIndex, setFormIndex] = useState<number>(1);
 
   const [dayOfWeek, setDayOfWeek] = useState<string[]>([]);
-  const [timeFrom, setTimeFrom] = useState<string>("");
-  const [timeTo, setTimeTo] = useState<string>("");
+  const [timeFrom, setTimeFrom] = useState<number>(NaN);
+  const [timeTo, setTimeTo] = useState<number>(NaN);
 
   const contextValue = {
     dayOfWeek,
