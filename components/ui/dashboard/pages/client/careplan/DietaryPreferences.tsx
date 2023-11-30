@@ -35,7 +35,8 @@ const DietaryPreferences = () => {
             background: "#CB5A6F",
             color: "white",
             padding: "12px",
-            fontSize: "20px",
+            fontSize: "16px",
+            fontWeight: "700",
           }}
           onClick={handleOpenModal}
         >
@@ -61,7 +62,7 @@ const DietaryPreferences = () => {
                 className="mt-4 flex justify-center"
                 style={{ fontSize: "16px", color: "#828282" }}
               >
-                select from the services below to create a care plan
+                Select from the services below to create a care plan
               </p>
             </div>
             <div className="mt-8 ">
