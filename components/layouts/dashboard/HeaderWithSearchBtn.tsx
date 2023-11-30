@@ -33,7 +33,7 @@ const HeaderWithSearchBtn = () => {
     setRole(endpoint);
   }, [pathname]);
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleMenuClose = () => {

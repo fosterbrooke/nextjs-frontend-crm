@@ -10,11 +10,13 @@ export default function SeasonedLogoModal({
   onClose,
   footer,
   content,
+  allowDivider,
 }: {
   open: boolean;
   onClose: any;
   content: ReactElement;
   footer: ReactElement;
+  allowDivider?: boolean;
 }) {
   const router = useRouter();
 
@@ -32,9 +34,17 @@ export default function SeasonedLogoModal({
           />
         </div>
         {content}
-        <div className="my-4">
-          <Divider />
-        </div>
+        {allowDivider !== undefined ? (
+          allowDivider && (
+            <div className="my-4">
+              <Divider />
+            </div>
+          )
+        ) : (
+          <div className="my-4">
+            <Divider />
+          </div>
+        )}
         <div className="flex justify-center gap-4">{footer}</div>
       </div>
     </Dialog>

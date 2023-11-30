@@ -30,7 +30,7 @@
     "next-env.d.tsx",
     "**/*.tsx",
     ".next/types/**/*.tsx"
-, "app/auth/forgotpassword", "components/ui/dashboard/pages/client/services/ScheduledServices"  ],
+, "app/auth/forgotpassword", "components/ui/dashboard/pages/client/services/ScheduledServices", "components/ui/dashboard/Modals/AddNewClient/Succeed.tsx"  ],
   "exclude": [
     "node_modules"
   ]
