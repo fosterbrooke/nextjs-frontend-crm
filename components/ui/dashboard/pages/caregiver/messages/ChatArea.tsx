@@ -1,10 +1,11 @@
 import { Avatar, IconButton, InputBase } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { PhoneIcon, UserAddIcon } from "../../../../common/Icons";
 import MoodIcon from "@mui/icons-material/Mood";
 import LinkIcon from "@mui/icons-material/Link";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import SendIcon from "@mui/icons-material/Send";
+import NewChatModal from "../../../Modals/NewChatModal";
 
 const months = [
   "Jan",
@@ -100,6 +101,7 @@ export default function ChatArea({
   partner: string;
   subtitle: string;
 }) {
+  const [open, setOpen] = useState<boolean>(false);
   const curDate = new Date();
 
   return (
@@ -117,7 +119,7 @@ export default function ChatArea({
           <div>{subtitle}</div>
         </div>
         <div className="ml-auto">
-          <IconButton>
+          <IconButton onClick={() => setOpen(true)}>
             <PhoneIcon />
           </IconButton>
           <IconButton>
@@ -154,6 +156,11 @@ export default function ChatArea({
           </IconButton>
         </div>
       </div>
+      <NewChatModal
+        open={open}
+        title="New Chat"
+        onClose={() => setOpen(false)}
+      />
     </div>
   );
 }

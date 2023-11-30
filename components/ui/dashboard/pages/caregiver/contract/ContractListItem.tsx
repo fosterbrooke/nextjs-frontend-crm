@@ -2,13 +2,15 @@ import React from "react";
 import { Profile2UsersIcon } from "@/components/ui/common/Icons";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import { AnyTxtRecord } from "dns";
 
 interface contactItem {
   type: string;
   createdAt: string;
   name: string;
   status: string;
-  setModalOpen: any;
+  handleTerminate: any;
+  handleViewContact: any;
 }
 
 export default function ContractListItem(props: contactItem) {
@@ -73,16 +75,18 @@ export default function ContractListItem(props: contactItem) {
             // </Button>
             <span
               className="bg-brightRedColor hover:bg-brightRedColor font-bold text-white flex items-center rounded-lg px-4 py-2 cursor-pointer"
-              onClick={() => props.setModalOpen(true)}
+              onClick={() => props.handleTerminate()}
             >
               Terminate Contract
             </span>
           )}
 
-          <Button variant="outlined" sx={{ textTransform: "none" }}>
-            <Link href="/dashboard/caregiver/client_profile">
-              View Contract
-            </Link>
+          <Button
+            variant="outlined"
+            sx={{ textTransform: "none" }}
+            onClick={() => props.handleViewContact()}
+          >
+            View Contract
           </Button>
         </div>
       </div>

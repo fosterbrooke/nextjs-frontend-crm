@@ -97,7 +97,7 @@ export default function TimesheetArea() {
         footer={
           <PrimaryButton handleClick={() => setOpen(false)}>Ok</PrimaryButton>
         }
-      ></SeasonedLogoModal>
+      />
     </div>
   );
 }

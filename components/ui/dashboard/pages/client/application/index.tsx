@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RecommendedClient from "../../../RecommendedClient";
+import RecommendedClient from "../../../RecommendedCaregiver";
 import { useRouter } from "next/navigation";
 
 const recommendedClientsData = [

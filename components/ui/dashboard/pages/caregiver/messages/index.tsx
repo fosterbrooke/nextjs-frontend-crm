@@ -3,7 +3,7 @@ import { Avatar, Button, IconButton, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 
-import ChatToggleButtonGroup from "./ChatToggleButtonGroup";
+import ChatToggleButtonGroup from "../../../ChatToggleButtonGroup";
 import ConditionSelect from "../../../ConditionSelect";
 import FilterIcon from "@/public/icons/Filter";
 import UserCard from "./UserCard";

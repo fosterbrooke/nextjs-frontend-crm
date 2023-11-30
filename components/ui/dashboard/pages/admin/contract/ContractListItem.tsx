@@ -9,7 +9,8 @@ interface contactItem {
   createdAt: string;
   name: string;
   status: string;
-  setModalOpen: any;
+  handleTerminate: any;
+  handleViewContact: any;
 }
 
 export default function ContractListItem(props: contactItem) {
@@ -69,14 +70,18 @@ export default function ContractListItem(props: contactItem) {
           {props.status === "Active" && (
             <span
               className="bg-brightRedColor hover:bg-brightRedColor font-bold text-white flex items-center rounded-lg px-4 py-2 cursor-pointer"
-              onClick={() => props.setModalOpen(true)}
+              onClick={() => props.handleTerminate()}
             >
               Terminate Contract
             </span>
           )}
 
-          <Button variant="outlined" sx={{ textTransform: "none" }}>
-            <Link href="/dashboard/admin/caregiver_profile">View Contract</Link>
+          <Button
+            variant="outlined"
+            sx={{ textTransform: "none" }}
+            onClick={() => props.handleViewContact()}
+          >
+            View Contract
           </Button>
         </div>
       </div>

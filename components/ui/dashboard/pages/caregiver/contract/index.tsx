@@ -9,7 +9,12 @@ export default function ContractPage() {
   return (
     <div className="mr-8 bg-blurColor">
       {!isTerminated ? (
-        <ContactList open={modalOpen} setModalOpen={setModalOpen} />
+        <ContactList 
+          open={modalOpen} 
+          setModalOpen={setModalOpen} 
+          handleTerminate={() => setModalOpen(true)}
+          handleViewContact={() => setTerminated(true)}
+        />
       ) : (
         <TerminateArea open={modalOpen} setModalOpen={setModalOpen} />
       )}

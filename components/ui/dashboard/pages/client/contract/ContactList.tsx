@@ -70,9 +70,13 @@ const fakerData: contactItem[] = [
 export default function ContactList({
   open,
   setModalOpen,
+  handleTerminate,
+  handleViewContact,
 }: {
   open: boolean;
   setModalOpen: any;
+  handleTerminate: any;
+  handleViewContact: any;
 }) {
   return (
     <div>
@@ -92,7 +96,8 @@ export default function ContactList({
           <ContractListItem
             key={`contract-listitem-${idx}`}
             {...item}
-            setModalOpen={setModalOpen}
+            handleTerminate={handleTerminate}
+            handleViewContact={handleViewContact}
           />
         ))}
       </div>
