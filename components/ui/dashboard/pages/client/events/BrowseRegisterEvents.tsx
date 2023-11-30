@@ -4,6 +4,7 @@ import SvgFilter from "@/public/icons/Filter";
 import ConditionSelect from "@/components/ui/dashboard/ConditionSelect";
 import RegisterEventCard from "../../RegisterEventCard";
 import UpcomingEventModal from "./UpcomingEventModal";
+import EventViewModal from "./EventViewModal";
 
 const eventsData = [
   {
@@ -52,11 +53,18 @@ const eventsData = [
 
 const BrowseRegisterEvents = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [viewOpen, setViewOpen] = useState<boolean>(false);
   const handleClose = () => {
     setOpen(false);
   };
+  const handleViewModalClose = () => {
+    setViewOpen(false);
+  };
   const onRegisterClicked = () => {
     setOpen(true);
+  };
+  const onViewClicked = () => {
+    setViewOpen(true);
   };
 
   return (
@@ -79,10 +87,12 @@ const BrowseRegisterEvents = () => {
             date={item.date}
             time={item.time}
             onRegisterClick={onRegisterClicked}
+            onViewClick={onViewClicked}
           />
         ))}
       </div>
       <UpcomingEventModal open={open} handleClose={handleClose} />
+      <EventViewModal open={viewOpen} handleClose={handleViewModalClose} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ const RegisteredEventsPage = () => {
     setIsEditing(false);
   };
   const onRegisterClicked = () => {};
+  const onViewClicked = () => {};
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-between">
@@ -19,6 +20,7 @@ const RegisteredEventsPage = () => {
         date={"10 Nov, 2023"}
         time={"03:32 PM"}
         onRegisterClick={onRegisterClicked}
+        onViewClick={onViewClicked}
       />
       <div className="flex items-center justify-between w-3/5">
         <div className="inline-flex items-center">

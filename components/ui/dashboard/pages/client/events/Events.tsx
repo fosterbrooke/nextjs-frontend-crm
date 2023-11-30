@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RowSelection from "../../../RowsSelection";
 import { Pagination } from "@mui/material";
 import BrowseRegisterEvents from "./BrowseRegisterEvents";
+import EventViewModal from "./EventViewModal";
 
 const Events = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
