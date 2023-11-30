@@ -62,7 +62,7 @@ const EmergencyContacts = () => {
             fontSize: "20px",
           }}
         >
-          edit dietary preferences
+          Edit Dietary Preferences
         </button>
       </div>
     </div>
