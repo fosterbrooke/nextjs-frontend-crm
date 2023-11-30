@@ -8,7 +8,6 @@ import SvgPeople from "@/public/icons/People";
 import SvgLocation from "@/public/icons/Location";
 import RegisterSuccessModal from "./RegisterSuccessModal";
 import { useState } from "react";
-import SvgQRCode from "@/public/icons/QRCode";
 import SvgQrCode from "@/public/QrCode";
 
 type EventViewModalProps = {
