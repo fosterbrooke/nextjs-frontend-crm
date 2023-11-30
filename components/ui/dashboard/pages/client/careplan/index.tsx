@@ -23,7 +23,7 @@ const CareplanPage = () => {
   };
 
   return (
-    <div className="flex flex-col mx-32 my-12 px-36">
+    <div className="flex flex-col my-12 px-36 w-full">
       <div
         className="flex flex-row  px-36 sm:flex-col justify-between "
         style={{ color: "#282828", fontSize: "20px" }}

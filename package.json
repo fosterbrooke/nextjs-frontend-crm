@@ -19,6 +19,7 @@
     "@popperjs/core": "2.9.1",
     "@reduxjs/toolkit": "^1.9.7",
     "@supabase/supabase-js": "^2.26.0",
+    "@svgr/cli": "^8.1.0",
     "@syncfusion/ej2-react-splitbuttons": "^22.1.37",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",

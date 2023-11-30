@@ -49,6 +49,9 @@ const RecommendedClient: React.FC<Props> = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
+  const handleScheduleMeetingClicked = () => {
+    setModalOpen(true);
+  };
   return (
     <div
       className="my-4"
@@ -58,7 +61,9 @@ const RecommendedClient: React.FC<Props> = ({
           ? "rgba(0, 0, 0, 0.25) 6px 7px 18px 0px"
           : "none",
       }}
-      onClick={() => router.push("/dashboard/client/caregiver_profile")}
+      onClick={(e: any) => {
+        router.push("/dashboard/client/caregiver_profile");
+      }}
     >
       {isBestMatch && (
         <div className="block">
@@ -122,7 +127,10 @@ const RecommendedClient: React.FC<Props> = ({
                 <div>
                   <span
                     className="flex items-center font-bold cursor-pointer px-3 py-2 bg-primary rounded-full text-white text-center"
-                    onClick={() => setModalOpen(true)}
+                    onClick={(e: any) => {
+                      e.stopPropagation();
+                      setModalOpen(true);
+                    }}
                   >
                     Schedule meeting
                   </span>

@@ -8,14 +8,14 @@ const EmergencyContacts = () => {
     setName(true);
   };
   return (
-    <div className="mx-24 my-12">
+    <div className="mx-24 my-8">
       <div className="flex justify-center font-bold">
         <p style={{ color: "#282828", fontSize: "28px" }}>
           Your emergency contact
         </p>
       </div>
-      <div className="flex flex-col justify-center mt-6">
-        <div className="px-36 mt-6">
+      <div className="flex flex-col justify-center mt-4">
+        <div className="px-36 mt-4">
           <InputField
             type="text"
             title="Full Name of Contact"
@@ -24,7 +24,7 @@ const EmergencyContacts = () => {
             handleChange={handle}
           />
         </div>
-        <div className="px-36 mt-6">
+        <div className="px-36 mt-4">
           <InputField
             type="text"
             title="Address"
@@ -33,7 +33,7 @@ const EmergencyContacts = () => {
             handleChange={handle}
           />
         </div>
-        <div className="px-36 mt-6">
+        <div className="px-36 mt-4">
           <InputField
             type="text"
             title="Email"
@@ -52,17 +52,18 @@ const EmergencyContacts = () => {
           />
         </div>
       </div>
-      <div className="p-32 flex justify-center">
+      <div className="p-8 flex justify-center">
         <button
           style={{
             borderRadius: "8px",
             background: "#CB5A6F",
             color: "white",
             padding: "12px",
-            fontSize: "20px",
+            fontSize: "16px",
+            fontWeight: "700",
           }}
         >
-          edit dietary preferences
+          Edit Emergency Contact
         </button>
       </div>
     </div>

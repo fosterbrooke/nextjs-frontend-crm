@@ -6,6 +6,9 @@ import { Paper } from "@mui/material";
 import { ClockIcon } from "@mui/x-date-pickers";
 import AppointmentRescheduleModal from "../../../Modals/AppointmentRescheduleModal";
 import { useRouter } from "next/navigation";
+import CustomRatingCom from "../../../CustomRatingCom";
+import SvgLike from "@/public/icons/Like";
+import SvgDislike from "@/public/icons/Dislike";
 
 const UpcomingCareVisitCard = () => {
   const [open, setOpen] = useState(false);
@@ -37,8 +40,8 @@ const UpcomingCareVisitCard = () => {
           />
           <div className="ml-4 flex flex-col w-full">
             <div className="flex flex-row flex-wrap items-center">
-              <span className="font-bold text-[18px]">Pamela Sandals</span>
-              <div className="flex flex-row ml-auto gap-1">
+              <span className="font-bold text-[18px]">Frank Sergio</span>
+              <div className="flex flex-row ml-10 gap-1">
                 {["Housekeeping", "Meal Preparation", "+3"].map(
                   (item, index) => {
                     return (
@@ -52,18 +55,35 @@ const UpcomingCareVisitCard = () => {
               </div>
             </div>
             <div className="mt-2">
-              <span className="text-distlineColor text-[14px] mr-[14px]">
-                76yrs/old
-              </span>
-              <span className="text-distlineColor text-[14px] mr-[14px]">
+              <span className="text-distlineColor text-[14px] mr-[14px] tracking-wider">
                 Maryland lane, Arizona, USA.
               </span>
-              <span className="text-distlineColor text-[14px] mr-[14px]">
+              <span className="text-distlineColor text-[14px] mr-[14px] tracking-wider">
                 12miles away
               </span>
-              <span className="text-distlineColor text-[14px] mr-[14px]">
+              <span className="text-distlineColor text-[14px] mr-[14px] tracking-wider">
                 $12 - 35/hr.
               </span>
+            </div>
+            <div className="flex mt-1">
+              <CustomRatingCom />
+              <div className="flex items-center gap-x-4">
+                <p className="text-sm text-bannerTextColor underline font-arial">
+                  Reviews
+                </p>
+                <div className="flex items-center gap-x-2">
+                  <SvgLike />
+                  <p className="text-sm text-[#00FF50] font-bold font-arial">
+                    {90}
+                  </p>
+                </div>
+                <div className="flex items-center gap-x-2">
+                  <SvgDislike />
+                  <p className="text-sm text-[#EB4336] font-bold font-arial">
+                    {12}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
