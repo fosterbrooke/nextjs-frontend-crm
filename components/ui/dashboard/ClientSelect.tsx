@@ -26,7 +26,11 @@ const clients = [
   },
 ];
 
-export default function ClientSelect() {
+export default function ClientSelect({
+  onSelect
+}: {
+  onSelect: any;
+}) {
   const [curIdx, setCurIdx] = React.useState<number>(-1);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -37,6 +41,7 @@ export default function ClientSelect() {
 
   const handleItemClick = (newIdx: number) => {
     setCurIdx(newIdx);
+    onSelect(clients[newIdx].name);
     setAnchorEl(null);
   };
 

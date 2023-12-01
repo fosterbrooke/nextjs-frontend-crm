@@ -42,13 +42,14 @@ const theme = createTheme({
   },
 });
 
-export default function ServiceSelect() {
+export default function ServiceSelect({ onSelect }: { onSelect: any }) {
   const [personName, setServiceName] = React.useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
     const {
       target: { value },
     } = event;
+    onSelect(value);
     setServiceName(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value

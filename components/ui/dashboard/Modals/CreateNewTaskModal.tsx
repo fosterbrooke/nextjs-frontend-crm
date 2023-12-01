@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ChooseDay from "../ChooseDay";
 import ChooseTime from "../ChooseTime";
 import { Dialog, Modal } from "@mui/material";
@@ -13,6 +13,9 @@ export default function CreateNewTaskModal({
   open: boolean;
   setOpen: any;
 }) {
+  const [clientName, setClientName] = useState<string>("");
+  const [selServices, setSelServices] = useState<string[]>([]);
+
   return (
     <Modal
       open={open}
@@ -23,11 +26,17 @@ export default function CreateNewTaskModal({
         <div className="flex">
           <div className="text-[24px] font-bold">Create New Task</div>
           <div className="ml-auto font-bold text-primary">
-            <ClientSelect />
+            <ClientSelect
+              onSelect={(newName: string) => setClientName(newName)}
+            />
           </div>
         </div>
         <div className="mt-8">
-          <ServiceSelect />
+          <ServiceSelect
+            onSelect={(newServices: string[]) =>
+              setSelServices([...newServices])
+            }
+          />
         </div>
         <div className="mt-4 flex gap-4">
           <div className="flex flex-col">

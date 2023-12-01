@@ -1,9 +1,38 @@
+import CustomSelection from "@/components/ui/auth/client/CustomSelection";
 import DurationPane from "@/components/ui/auth/client/DurationPane";
 import InputField from "@/components/ui/auth/client/InputField";
 import { MoneysIcon, WalletIcon } from "@/components/ui/common/Icons";
+import TimeEntryContext from "@/contexts/TimeEntryContext";
 import { Avatar } from "@mui/material";
 import { TimeIcon } from "@mui/x-date-pickers";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+const timeItems = [
+  "0 AM",
+  "1 AM",
+  "2 AM",
+  "3 AM",
+  "4 AM",
+  "5 AM",
+  "6 AM",
+  "7 AM",
+  "8 AM",
+  "9 AM",
+  "10 AM",
+  "11 AM",
+  "0 PM",
+  "1 PM",
+  "2 PM",
+  "3 PM",
+  "4 PM",
+  "5 PM",
+  "6 PM",
+  "7 PM",
+  "8 PM",
+  "9 PM",
+  "10 PM",
+  "11 PM",
+];
 
 const InfoComp = ({
   description,
@@ -30,6 +59,23 @@ const InfoComp = ({
 };
 
 const TimeSheetReviewItem = (props: any) => {
+  const [timeTo, setTimeTo] = useState<number>(-1);
+  const [timeFrom, setTimeFrom] = useState<number>(-1);
+
+  const handleSetTimeTo = (to: number) => {
+    setTimeTo(to);
+  };
+
+  const handleSetTimeFrom = (from: number) => {
+    setTimeFrom(from);
+  };
+
+  const getDuration = () => {
+    const duration = timeTo - timeFrom;
+    if (duration > 0) return duration;
+    else return 0;
+  };
+
   return (
     <div
       className="m-4 p-4 bg-white flex flex-col gap-y-4"
@@ -44,24 +90,22 @@ const TimeSheetReviewItem = (props: any) => {
         </div>
         <div className="flex gap-x-4 ml-auto">
           <div className="flex-1">
-            <DurationPane name="Duration" duration={0} />
+            <DurationPane name="Duration" duration={getDuration()} />
           </div>
-          <div className="flex-1">
-            <InputField
-              type="text"
-              title="Duration"
-              placholder="3hrs"
-              value={""}
-              handleChange={() => {}}
+          <div className="flex-1 w-[160px]">
+            <CustomSelection
+              label="From"
+              name="Time"
+              items={timeItems}
+              onChange={handleSetTimeFrom}
             />
           </div>
-          <div className="flex-1">
-            <InputField
-              type="text"
-              title="Duration"
-              placholder="3hrs"
-              value={""}
-              handleChange={() => {}}
+          <div className="flex-1 w-[160px]">
+            <CustomSelection
+              label="To"
+              name="Time"
+              items={timeItems}
+              onChange={handleSetTimeTo}
             />
           </div>
         </div>

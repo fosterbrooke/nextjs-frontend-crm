@@ -1,14 +1,68 @@
 import { PrimaryButton } from "@/components/ui/common/PrimaryButton";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateNewTaskModal from "../../../Modals/CreateNewTaskModal";
 
 const weekNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const serviceData = [
+  {
+    serviceName: "Meal Preparation",
+    imageUrl: "/avatars/sample.png",
+    caregiverName: "Gabby Alao",
+    day: 0,
+    startHour: 0,
+    endHour: 3,
+  },
+  {
+    serviceName: "House Keeping",
+    imageUrl: "/avatars/sample.png",
+    caregiverName: "Kimberly Alao",
+    day: 1,
+    startHour: 0,
+    endHour: 2,
+  },
+  {
+    serviceName: "Regular assessment and care plans",
+    imageUrl: "/avatars/sample.png",
+    caregiverName: "Kimberly Alao",
+    day: 2,
+    startHour: 2,
+    endHour: 3,
+  },
+  {
+    serviceName: "Meal Preparation",
+    imageUrl: "/avatars/sample.png",
+    caregiverName: "Gabby Alao",
+    day: 3,
+    startHour: 0,
+    endHour: 3,
+  },
+  {
+    serviceName: "House Keeping",
+    imageUrl: "/avatars/sample.png",
+    caregiverName: "Kimberly Alao",
+    day: 4,
+    startHour: 1,
+    endHour: 2,
+  },
+  {
+    serviceName: "House Keeping",
+    imageUrl: "/avatars/sample.png",
+    caregiverName: "Kimberly Alao",
+    day: 5,
+    startHour: 0,
+    endHour: 1,
+  },
+];
 
 export default function TaskManagement() {
   const [open, setOpen] = useState(false);
   const handleCreateTask = () => {
     setOpen(true);
   };
+
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <div className="w-full px-8 flex flex-col">
