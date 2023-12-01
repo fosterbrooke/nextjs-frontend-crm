@@ -28,17 +28,22 @@ export default function CreateNewTaskModal({
       selDate == null ||
       startHour == null ||
       endHour == null
-    )
-      return;
-
-    console.log("passed");
-    onSave({
-      clientName,
-      selServices,
-      selDate,
-      startHour,
-      endHour,
-    });
+    ) {
+      alert("Please select all fields. You might be forgotten client name");
+    } else {
+      setClientName("");
+      setSelServices([]);
+      setDate(null);
+      setStartHour(null);
+      setEndHour(null);
+      onSave({
+        clientName,
+        selServices,
+        selDate,
+        startHour,
+        endHour,
+      });
+    }
   };
 
   return (
