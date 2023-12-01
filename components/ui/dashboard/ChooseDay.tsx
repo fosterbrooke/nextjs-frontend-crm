@@ -4,7 +4,11 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import DatePickerModal from "@/components/ui/dashboard/Modals/DatePickerModal";
 
-const ChooseDay = () => {
+const ChooseDay = ({
+  onSelect
+}: {
+  onSelect?: any
+}) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("__ / __ / ____");
   const handleClick = () => {
@@ -27,6 +31,7 @@ const ChooseDay = () => {
         open={open}
         setOpen={setOpen}
         setValue={setValue}
+        onSelect={onSelect}
       />
     </div>
   );

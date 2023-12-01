@@ -9,12 +9,37 @@ import ClientSelect from "../ClientSelect";
 export default function CreateNewTaskModal({
   open,
   setOpen,
+  onSave,
 }: {
   open: boolean;
   setOpen: any;
+  onSave: any;
 }) {
   const [clientName, setClientName] = useState<string>("");
   const [selServices, setSelServices] = useState<string[]>([]);
+  const [selDate, setDate] = useState<Date | null>(null);
+  const [startHour, setStartHour] = useState<Date | null>(null);
+  const [endHour, setEndHour] = useState<Date | null>(null);
+
+  const handleSave = () => {
+    if (
+      clientName === "" ||
+      selServices.length === 0 ||
+      selDate == null ||
+      startHour == null ||
+      endHour == null
+    )
+      return;
+
+    console.log("passed");
+    onSave({
+      clientName,
+      selServices,
+      selDate,
+      startHour,
+      endHour,
+    });
+  };
 
   return (
     <Modal
@@ -42,19 +67,19 @@ export default function CreateNewTaskModal({
           <div className="flex flex-col">
             <div className="font-[24px] font-bold ">Select Days</div>
             <div className="w-[240px] mt-2">
-              <ChooseDay />
+              <ChooseDay onSelect={(date: Date) => setDate(date)} />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="font-[24px] font-bold ">Time-From</div>
             <div className="w-[240px] mt-2">
-              <ChooseTime />
+              <ChooseTime onSelect={(time: Date) => setStartHour(time)} />
             </div>
           </div>
           <div className="flex flex-col">
             <div className="font-[24px] font-bold ">Time-To</div>
             <div className="w-[240px] mt-2">
-              <ChooseTime />
+              <ChooseTime onSelect={(time: Date) => setEndHour(time)} />
             </div>
           </div>
         </div>
@@ -68,7 +93,10 @@ export default function CreateNewTaskModal({
             </div>
           </div>
           <div className="flex-1">
-            <div className="w-full p-2 rounded-md border border-solid border-primary flex justify-center items-center bg-primary cursor-pointer">
+            <div
+              className="w-full p-2 rounded-md border border-solid border-primary flex justify-center items-center bg-primary cursor-pointer"
+              onClick={handleSave}
+            >
               <span className="text-white text-[20px]">Save</span>
             </div>
           </div>

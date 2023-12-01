@@ -26,7 +26,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <DashboardSideBar />
           <div
             style={{ borderLeft: "1px solid #C4C4C4" }}
-            className="w-full flex flex-col"
+            className="w-full h-full flex flex-col"
           >
             <div className="flex flex-row items-center h-[100px] justify-between">
               <div className="flex flex-col ml-4">
@@ -58,7 +58,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 </div>
               </div>
             </div>
-            <Scrollbars className="h-full">{children}</Scrollbars>
+            <div className="w-full h-full flex-auto overflow-auto">
+              {children}
+            </div>
           </div>
         </div>
       </div>

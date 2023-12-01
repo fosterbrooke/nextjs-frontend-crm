@@ -9,7 +9,14 @@ const SvgRibbon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path fill="#C75167" d="M0 0h143.224l-15.853 10.933 15.853 10.933H0V0Z" />
-    <text x="50%" y="50%" fill="white" dominant-baseline="middle" text-anchor="middle" font-size="12">
+    <text
+      x="50%"
+      y="50%"
+      fill="white"
+      dominantBaseline="middle"
+      textAnchor="middle"
+      fontSize="12"
+    >
       BEST MATCH
     </text>
   </svg>

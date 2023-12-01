@@ -10,17 +10,20 @@ export default function TimePickerModal({
   setOpen,
   setValue,
   format,
+  onSelect,
 }: {
   title: string;
   open: boolean;
   setOpen: any;
   setValue: any;
+  onSelect?: any;
   format?: boolean;
 }) {
   const handleTimeSelected = (newTime: any) => {
     const dateStr = `${newTime.$H} / ${newTime.$m} / ${
       newTime.$H >= 12 ? "PM" : "AM"
     }`;
+    if (onSelect) onSelect(new Date(1990, 1, 1, newTime.$H, newTime.$m));
     if (format)
       setValue(`${newTime.$H}:${newTime.$m} ${newTime.$H >= 12 ? "PM" : "AM"}`);
     else setValue(dateStr);

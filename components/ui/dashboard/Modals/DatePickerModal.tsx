@@ -9,14 +9,17 @@ export default function DatePickerModal({
   open,
   setOpen,
   setValue,
+  onSelect,
 }: {
   title: string;
   open: boolean;
   setOpen: any;
   setValue: any;
+  onSelect?: any;
 }) {
   const handleDateSelect = (newDate: any) => {
     const dateStr = `${newDate.$D} / ${newDate.$M} / ${newDate.$y}`;
+    if (onSelect) onSelect(new Date(newDate.$y, newDate.$M, newDate.$D));
     setValue(dateStr);
   };
 

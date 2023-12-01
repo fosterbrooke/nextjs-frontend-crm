@@ -4,7 +4,11 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import TimePickerModal from "./TimePickerModal";
 
-const ChooseTime = () => {
+const ChooseTime = ({
+  onSelect
+}: {
+  onSelect?: any
+}) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("__ __");
   const handleClick = () => {
@@ -27,6 +31,7 @@ const ChooseTime = () => {
         open={open}
         setOpen={setOpen}
         setValue={setValue}
+        onSelect={onSelect}
       />
     </div>
   );
