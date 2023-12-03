@@ -74,7 +74,7 @@ export default function ChatPanel(props: any) {
         }}
       >
         <div className="mt-2 px-4">
-          <ChatToggleButtonGroup chatTypes={["Admin", "Client"]} />
+          <ChatToggleButtonGroup chatTypes={["Client", "Caregiver"]} />
           <div className="mt-2 flex">
             <ConditionSelect
               icon={<FilterListIcon />}

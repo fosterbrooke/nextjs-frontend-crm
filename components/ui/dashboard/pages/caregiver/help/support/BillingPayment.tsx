@@ -67,8 +67,8 @@ export default function BillingPayment() {
   };
 
   return (
-    <div className="m-10" style={{ border: "1px", borderTopColor: "#282828" }}>
-      <div className="m-10 grid grid-cols-3 gap-3">
+    <div className="mx-10" style={{ border: "1px", borderTopColor: "#282828" }}>
+      <div className="mx-10 grid grid-cols-3 gap-3">
         {fakedata.map((item, idx) => (
           <div
             key={`keysolutionsubitem-${idx}`}

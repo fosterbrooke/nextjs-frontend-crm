@@ -74,7 +74,7 @@ export default function MessagesPage(props: any) {
         }}
       >
         <div className="mt-2 px-4">
-          <ChatToggleButtonGroup chatTypes={["Admin", "Client"]} />
+          <ChatToggleButtonGroup chatTypes={["Admin", "Caregiver"]} />
           <div className="mt-2 flex">
             <ConditionSelect
               icon={<FilterListIcon />}

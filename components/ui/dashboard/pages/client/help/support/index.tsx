@@ -71,11 +71,15 @@ export default function HelpSupportPage() {
           </div>
         ))}
       </div>
-      <Divider className="my-8" />
-      <div className="flex justify-center text-textdarkColor text-[20px]">
-        Select which ever options meets your needs
-      </div>
-      <div>{renderSolutionItems()}</div>
+      {curIdx > -1 && (
+        <>
+          <Divider className="my-4" />
+          <div className="flex justify-center text-textdarkColor text-[20px] mb-4">
+            Select which ever options meets your needs
+          </div>
+        </>
+      )}
+      {renderSolutionItems()}
     </div>
   );
 }
