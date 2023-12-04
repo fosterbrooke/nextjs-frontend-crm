@@ -19,7 +19,11 @@ export default function SeasonedLogoModal({
   const router = useRouter();
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      onClick={(event) => event.stopPropagation()}
+    >
       <div className="flex flex-col p-4">
         <div className="flex justify-center">
           <Image

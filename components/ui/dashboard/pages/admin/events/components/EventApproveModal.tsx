@@ -3,22 +3,20 @@ import Image from "next/image";
 import SvgClose from "@/public/icons/Close";
 import { CalendarMonth } from "@mui/icons-material";
 import SvgMoney from "@/public/icons/Money";
-import SvgShare from "@/public/icons/Share";
-import SvgPeople from "@/public/icons/People";
 import SvgLocation from "@/public/icons/Location";
-import RegisterSuccessModal from "./RegisterSuccessModal";
 import { useState } from "react";
-import SvgQrCode from "@/public/QrCode";
+import SeasonedLogoModal from "@/components/ui/dashboard/Modals/SeasonedLogoModal";
+import { PrimaryButton } from "@/components/ui/common/PrimaryButton";
 
-type EventViewModalProps = {
+type EventApproveModalProps = {
   open: boolean;
   handleClose: () => void; // Assuming handleClose is a function with no parameters and no return value
 };
 
-export default function EventViewModal({
+export default function EventApproveModal({
   open,
   handleClose,
-}: EventViewModalProps) {
+}: EventApproveModalProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const handleModalClose = () => {
     setModalOpen(false);
@@ -41,7 +39,7 @@ export default function EventViewModal({
           <div className="flex justify-between ">
             <div className="flex items-center">
               <CalendarMonth sx={{ fontSize: 30 }} />
-              <p className="text-sm font-bold ml-2">Upcoming Event</p>
+              <p className="text-sm font-bold ml-2">Pending Approval</p>
             </div>
             <SvgClose
               className="cursor-pointer"
@@ -73,19 +71,7 @@ export default function EventViewModal({
                   <span className="flex items-center bg-white text-sm px-2 py-1 rounded-full cursor-pointer">
                     <SvgMoney />
                     <p className="text-[#30A64A] text-xs ml-2 font-arial tracking-wider">
-                      Fee: 40
-                    </p>
-                  </span>
-                  <span className="flex items-center bg-white text-sm px-2 py-1 rounded-full cursor-pointer">
-                    <SvgShare />
-                    <p className="text-[#4285F4] text-xs ml-2 font-arial tracking-wider">
-                      Share
-                    </p>
-                  </span>
-                  <span className="flex items-center bg-white text-sm px-2 py-1 rounded-full cursor-pointer">
-                    <SvgPeople />
-                    <p className="text-[#CB5A6F] text-xs ml-2 font-arial tracking-wider">
-                      1000
+                      Fee: 320
                     </p>
                   </span>
                 </div>
@@ -110,46 +96,34 @@ export default function EventViewModal({
                 </p>
               </div>
               <div className="flex gap-x-4">
-                <div className="w-[120px] p-2 bg-[#CB5A6F] flex items-center justify-center rounded-lg">
-                  <p className="text-white text-sm">Add to Calendar</p>
+                <div className="w-[120px] p-2 border-2 border-[#DC0035] flex items-center justify-center rounded-lg cursor-pointer">
+                  <p className="text-[#DC0035] text-sm">Reject</p>
                 </div>
                 <div
-                  className="w-[120px] p-2 flex items-center justify-center border-2 border-[#30A64A] rounded-lg cursor-pointer"
+                  className="w-[120px] p-2 flex items-center justify-center border-2 bg-[#30A64A] rounded-lg cursor-pointer"
                   onClick={() => handleModalOpen()}
                 >
-                  <p className="text-[#30A64A] text-sm font-bold">View Pass</p>
+                  <p className="text-white text-sm font-bold">Approve</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-2xl">
-              Receipt for order 131QEY123DB to <b>Oldies Hangout</b>
-            </p>
-            <div className="w-full px-20 py-4 grid grid-cols-2 gap-2 text-xl bg-[#F6F6F6]">
-              <p>Name</p>
-              <p>Your email</p>
-              <p className="font-bold">Pamela Stacy</p>
-              <p className="font-bold">pamapam@gmail.com</p>
-              <p>Your phone number</p>
-              <p>Purchased on</p>
-              <p className="font-bold">142135678123</p>
-              <p className="font-bold">Sep 23, 2023</p>
-              <p>Quantity</p>
-              <p>Total</p>
-              <p className="font-bold">001</p>
-              <p className="font-bold">$40</p>
-            </div>
-          </div>
-          <div className="flex justify-center items-center">
-            <SvgQrCode />
-            <p className="text-center">
-              Show this one-time QR code for event entry at check-in
-            </p>
-          </div>
         </div>
       </div>
-      <RegisterSuccessModal open={modalOpen} handleClose={handleModalClose} />
+      <SeasonedLogoModal
+        open={modalOpen}
+        onClose={handleModalClose}
+        content={
+          <div className="flex flex-col items-center gap-y-2 px-24 py-16">
+            <span className="font-bold text-[20px] text-center tracking-wider">
+              Oldies Hangout Approved
+            </span>
+          </div>
+        }
+        footer={
+          <PrimaryButton handleClick={handleModalClose}>Ok</PrimaryButton>
+        }
+      ></SeasonedLogoModal>
     </div>
   );
 }

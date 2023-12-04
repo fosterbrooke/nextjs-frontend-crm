@@ -32,7 +32,7 @@ const eventsData = [
 
 const BrowseEvents = () => {
   return (
-    <div className="h-full flex flex-col px-20 justify-between">
+    <div className="h-full flex flex-col px-20 items-center justify-between">
       <div className="flex flex-col">
         <div className="flex justify-end">
           <ConditionSelect
@@ -42,7 +42,7 @@ const BrowseEvents = () => {
             choices={["All", "Free", "Paid", "Ongoing", "Past Events"]}
           />
         </div>
-        <div className="flex justify-between">
+        <div className="flex gap-2">
           {eventsData.map((item, index) => (
             <EventCard
               key={index}

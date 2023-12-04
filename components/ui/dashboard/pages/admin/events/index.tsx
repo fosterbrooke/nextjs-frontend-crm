@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MyEvents from "./components/MyEvents";
 import BrowseEvents from "./components/BrowseEvents";
+import EventRequest from "./components/EventRequest";
 
 const EventsPage = () => {
   const [tabNumber, setTabNumber] = useState<number>(0);
@@ -40,9 +41,31 @@ const EventsPage = () => {
             Browse Events
           </p>
         </div>
+        <div
+          className={`cursor-pointer ${
+            tabNumber == 2
+              ? "border border-t-0 border-l-0 border-r-0 border-b-primary"
+              : ""
+          }`}
+          onClick={() => setTabNumber(2)}
+        >
+          <p
+            className={`font-arial font-bold ${
+              tabNumber == 2 ? "text-primary" : "text-textdarkColor"
+            }`}
+          >
+            Event Request
+          </p>
+        </div>
       </div>
-      <div className="w-full h-full px-40 py-2">
-        {tabNumber == 0 ? <MyEvents /> : <BrowseEvents />}
+      <div className="w-full h-full px-2 py-2">
+        {tabNumber == 0 ? (
+          <MyEvents />
+        ) : tabNumber == 1 ? (
+          <BrowseEvents />
+        ) : (
+          <EventRequest />
+        )}
       </div>
     </div>
   );
